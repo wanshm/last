@@ -1,25 +1,31 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
+    <!-- look at 
+    https://github.com/c-frame/aframe-physics-system/blob/master/CannonDriver.md#installation
+    https://github.com/c-frame/aframe-physics-system/blob/master/AmmoDriver.md#installation 
+    -->
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <script src="script.js"></script>
     <script src="https://aframe.io/releases/1.7.1/aframe.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/gh/c-frame/aframe-extras@7.6.1/dist/aframe-extras.min.js"></script>
     <script src="https://cdn.jsdelivr.net/gh/c-frame/aframe-physics-system@v4.2.2/dist/aframe-physics-system.min.js"></script>
     <script src="https://unpkg.com/aframe-environment-component@1.5.x/dist/aframe-environment-component.min.js"></script>
+    <script src="kinema.js"></script>
     <title>last</title>
 </head>
 <body>
     <a-scene>
-        <a-entity id="camerarig" movement-controls>
+        <a-entity id="camerarig" movement-controls="fly:true">
              <a-entity camera
-                position="0 1.6 0"
+                kinema-body="radius:1.0"
+                position="0 1.8 -1"
                 look-controls="pointerLockEnabled: true"
-                wasd-controls
+                
                 >
                 
             </a-entity>
-            <!-- <a-camera keyboard-controls="pointerLockEnabled: true"></a-camera> -->
         </a-entity>
         <a-sky color="black"></a-sky>
         <a-plane static-body scale="1000 1000 1" rotation="90 0 0" side="double" color="white"></a-plane>
