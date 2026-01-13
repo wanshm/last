@@ -17,18 +17,19 @@
 </head>
 <body>
     <a-scene>
-        <a-entity id="camerarig" movement-controls="fly:true">
+        <a-entity id="floor" environment="playArea:1; stageSize:1000; groundYScale: 200; seed:2"></a-entity>
+        <a-entity id="ceiling" rotation="190 0 0" position="0 200 0" environment="playArea:1; stageSize:1000;dressing:mushrooms; groundYScale: 200; seed:1"></a-entity>
+        <a-entity id="camerarig" movement-controls="fly:true; speed:1" position="0 1.8 -1">
              <a-entity camera
-                kinema-body="radius:1.0"
-                position="0 1.8 -1"
-                look-controls="pointerLockEnabled: true"
                 
+                kinema-body="radius:1"
+                look-controls="pointerLockEnabled: true"
                 >
                 
             </a-entity>
         </a-entity>
         <a-sky color="black"></a-sky>
-        <a-plane static-body scale="1000 1000 1" rotation="90 0 0" side="double" color="white"></a-plane>
+        <a-plane static-body position="0 -1 0" scale="1000 1000 0.1" rotation="90 0 0" side="double" color="white"></a-plane>
     </a-scene>
 </body>
 </html>
