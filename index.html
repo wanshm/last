@@ -18,13 +18,20 @@
 </head>
 <body>
     <a-scene>
+
+        <a-assets>
+            <a-asset-item id="terrain-cave" src="127-0-0-1-5500 (2).glb"></a-asset-item>
+        </a-assets>
         <a-entity id="floor" environment="playArea:1; stageSize:1000; groundFrequency:10; groundYScale: 200; seed:2; "></a-entity>
-        <a-entity id="ceiling" rotation="190 0 0" position="0 200 0" environment=" playArea:1; stageSize:1000;ground:canyon; groundYScale: 200; seed:1"></a-entity>
-        <a-entity id="camerarig" kinema-body="radius:1;" movement-controls="fly:false; speed:1" position="0 21.8 -1">
+        <a-entity id="ceiling" rotation="190 0 0" position="0 200 0" environment="playArea:1; stageSize:1000;ground:canyon; groundYScale: 200; seed:1"></a-entity>
+        
+        <a-gltf-model src="#terrain-cave" nav-mesh></a-gltf-model>
+        <a-entity id="camerarig" kinema-body="radius:1" nav-agent="speed: 1.5" movement-controls="constrainToNavMesh:true; fly:true; speed:1" position="0 21.8 -1">
              <a-entity camera
                 
                 position="0 1.8 0"
                 look-controls="pointerLockEnabled: true"
+
                 >
                 
             </a-entity>
