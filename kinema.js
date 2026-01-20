@@ -173,7 +173,7 @@ AFRAME.registerComponent('kinema-body', {
         // TODO - Why is the 4x scalar necessary.
         // NOTE: Does not work if physics runs on a worker.
         //In below calculation, 100 was 1000.  Allows the camera to drop faster
-        velocity.add(this.system.driver.world.gravity.scale(dt * 4.0 / 100));
+        velocity.add(this.system.driver.world.gravity.scale(dt * 4.0 / 1000));
       }
 
       body.velocity.copy(velocity);
