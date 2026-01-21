@@ -1,14 +1,41 @@
+let rnd = (l,u) => Math.random() * (u-l) + l
+let scene, Bullet;
 
 
-window.addEventListener("DOMContentLoaded",function (){
-    const scene = document.querySelector("a-scene");
-    const box = document.createElement("a-box");
-    box.setAttribute("color","black");
-    box.setAttribute("position","0 .5 0");
-    console.log(box)
-    scene.append(box);
-} )
+window.addEventListener("DOMContentLoaded",function() {
+  scene = document.querySelector("a-scene");
+
+
+  let building1 = new Building1(0.5,-0.43,0.5);
+
+  window.addEventListener("keydown",function(e){
+    if(e.code == "Space" || e.key == " "){
+      bullet = new Bullet();
+    }
+  });
+
+  
+
+})
+
+function loop(){
+  if(bullet){
+    bullet.fire();
+  }
+  window.requestAnimationFrame(loop)
+}
 
 
 
 
+// function distance(obj1,obj2){
+//   let x1 = obj1.object3D.position.x;
+//   let y1 = obj1.object3D.position.y;
+//   let z1 = obj1.object3D.position.z;
+//   let x2 = obj2.object3D.position.x;
+//   let y2 = obj2.object3D.position.y;
+//   let z2 = obj2.object3D.position.z;
+
+//   let d = Math.sqrt(Math.pow(x1-x2,2) + Math.pow(y1-y2,2) + Math.pow(z1-z2,2));
+//   return d;
+// } 

@@ -5,12 +5,17 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <script src="script.js"></script>
     <script src="https://aframe.io/releases/1.7.1/aframe.min.js"></script>
+    <script src="Building1.js"></script>
+    <script src="bullet.js"></script>
     <title>last</title>
 </head>
 <body>
     <a-scene>
-        <a-sky color="black"></a-sky>
+        <a-sky color="#42e9f5"></a-sky>
         <a-plane scale="1000 1000 1" rotation="90 0 0" side="double" color="white"></a-plane>
+        <a-camera position="0 1.4 5" wasd-controls="acceleration: 50; fly: true" look-controls> </a-camera>
+          <a-cursor color="red"> </a-cursor>
+        </a-camera>
     </a-scene>
 </body>
 </html>
