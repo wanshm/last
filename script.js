@@ -1,30 +1,27 @@
 let rnd = (l,u) => Math.random() * (u-l) + l
-let scene, Bullet;
+let scene, bullets = [];
 
 
-window.addEventListener("DOMContentLoaded",function() {
+window.addEventListener("DOMContentLoaded", function () {
   scene = document.querySelector("a-scene");
 
+  let building1 = new Building1(0.5, -0.43, 0.5);
 
-  let building1 = new Building1(0.5,-0.43,0.5);
-
-  window.addEventListener("keydown",function(e){
-    if(e.code == "Space" || e.key == " "){
-      bullet = new Bullet();
+  window.addEventListener("keydown", function (e) {
+    if (e.code == "Space" || e.key == " ") {
+      let bullet = new Bullet(); 
+      bullets.push(bullet);
     }
   });
 
-  
+  loop();
+});
 
-})
+function loop() {
+  bullets.forEach(bullet => bullet.fire());
 
-function loop(){
-  if(bullet){
-    bullet.fire();
-  }
-  window.requestAnimationFrame(loop)
-}
-
+  window.requestAnimationFrame(loop);
+} 
 
 
 
