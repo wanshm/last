@@ -1,4 +1,4 @@
-let camera, scene
+let camera, scene, attacks= [];
 window.addEventListener("DOMContentLoaded",function (){
     
     camera = document.querySelector("#camerarig")
@@ -10,26 +10,51 @@ window.addEventListener("DOMContentLoaded",function (){
     console.log(box)
     scene.append(box);
     
-
-    
-
+    loop();
 } )
 
 window.addEventListener("click",function(){
     const scene = document.querySelector("a-scene");
     const slash = document.createElement("a-ring");
-    
-    console.log(camera.object3D)
-
+    attacks.push(slash);
+    slash.setAttribute("atktype","slash")
     slash.setAttribute("side","double")
-    slash.setAttribute("rotation", {x:90,y:0,z:90})
+    slash.object3D.rotation.set(
+        camera.object3D.children[0].rotation.x +Math.PI/2,
+        camera.object3D.children[0].rotation.y,
+        THREE.MathUtils.degToRad(0)
+    );
     console.log(slash)
-    slash.setAttribute("position",{ x:camera.object3D.position.x,y:camera.object3D.position.y +1,z:camera.object3D.position.z})
+    slash.setAttribute("position",{ x:camera.object3D.position.x,y:camera.object3D.position.y +3,z:camera.object3D.position.z })
+    slash.setAttribute("theta-start", 100);
+    slash.setAttribute("theta-length", 0);
     scene.append(slash)
-    setTimeout(() => {
-        slash.parentNode.removeChild(slash);
-    }, 1000);
+    console.log(camera.object3D.children[0])
+    
+
+
+
 })
 
+function loop(){
 
+    attacks.forEach((attack,i)=>{
+        if(attack.getAttribute("atktype")=="slash"){
+            const start = attack.getAttribute("theta-start")
+            const length = attack.getAttribute("theta-length")
+            
+            attack.setAttribute("theta-start", parseInt(start) + 50);
+            attack.setAttribute("theta-length", parseInt(length) + 100);
+            console.log([start, length])
+            setTimeout(() => {
+                attack.parentNode.removeChild(attack);
+                attacks.splice(i,1);
+            }, 1000);
+        }
+    })
+
+
+    window.requestAnimationFrame(loop)
+
+}
 
