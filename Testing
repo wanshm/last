@@ -273,7 +273,7 @@ class Floor2{
 }}
 
 
-class Building1{
+class Testing{
   constructor(x,y,z){
     this.obj = document.createElement("a-entity");
 
@@ -299,15 +299,6 @@ class Building1{
 
     let floor2 = new Floor2(0,3,0);
     this.obj.append( floor2.obj );
-
-    let floor3 = new Floor2(0,6,0);
-    this.obj.append( floor3.obj );
-
-    let floor4 = new Floor2(0,9,0);
-    this.obj.append( floor4.obj );
-
-    let floor5 = new Floor2(0,12,0);
-    this.obj.append( floor5.obj );
 
     this.obj.setAttribute("position",{x:x, y:y, z:z});
     scene.append( this.obj )

@@ -6,6 +6,8 @@ window.addEventListener("DOMContentLoaded", function () {
   scene = document.querySelector("a-scene");
 
   let building1 = new Building1(0.5, -0.43, 0.5);
+  // let Testing1 = new Testing(0.5, -0.43, 0.5); // Testing class instantiation
+
 
   window.addEventListener("keydown", function (e) {
     if (e.code == "Space" || e.key == " ") {
