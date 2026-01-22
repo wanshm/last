@@ -18,7 +18,8 @@ class Testing{
     floor1window1.setAttribute("width","2.7");
     floor1window1.setAttribute("depth","0.15");
     floor1window1.setAttribute("side","double");
-    floor1window1.setAttribute("dynamic-body", "true");
+    floor1window1.setAttribute("class", "breakable");
+    floor1window1.setAttribute("static-body", "");  
     this.obj.append( floor1window1 );
     
     this.obj.setAttribute("position",{x:x, y:y, z:z});

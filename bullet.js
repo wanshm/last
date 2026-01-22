@@ -2,7 +2,9 @@
   constructor() {
     this.obj = document.createElement("a-sphere");
     this.obj.setAttribute("radius", 0.5);
-    this.obj.setAttribute("static-body", "true");
+    this.obj.setAttribute("color", "hsl(308, 100%, 50%)");
+    this.obj.setAttribute("dynamic-body", "mass: 0.1;");
+    this.obj.setAttribute("class", "bullet");
     // this.obj.setAttribute("src", "#bulletTexture");
 
     let camera = document.querySelector("a-camera"); 
@@ -20,9 +22,21 @@
     this.dx = v_xz * Math.sin(theta);
     this.dy = v * Math.sin(phi);
 
-    // Set bullet lifespan (5 seconds)
+   
     this.lifespan = 5000;
     this.creationTime = Date.now();
+
+    this.obj.addEventListener("collide", (e) => {
+    const hitEl = e.detail.body.el;
+
+    if (!hitEl) return;
+
+
+    if (hitEl.classList.contains("breakable")) {
+    hitEl.remove();      
+    this.obj.remove();   
+  }
+});
   }
 
   fire() {
