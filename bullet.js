@@ -3,7 +3,7 @@
     this.obj = document.createElement("a-sphere");
     this.obj.setAttribute("radius", 0.5);
     this.obj.setAttribute("static-body", "true");
-    this.obj.setAttribute("src", "#bulletTexture");
+    // this.obj.setAttribute("src", "#bulletTexture");
 
     let camera = document.querySelector("a-camera"); 
     let pos = camera.object3D.position;
