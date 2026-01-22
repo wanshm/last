@@ -34,6 +34,7 @@ class Floor1Wall{
     floor1wall1.setAttribute("width","14.8");
     floor1wall1.setAttribute("depth","0.25");
     floor1wall1.setAttribute("side","double");
+    floor1wall1.setAttribute("static-body", "true");
     this.obj.append( floor1wall1 );
 
     let floor1wall2 = document.createElement("a-box");
@@ -43,6 +44,7 @@ class Floor1Wall{
     floor1wall2.setAttribute("width","0.35");
     floor1wall2.setAttribute("depth","0.25");
     floor1wall2.setAttribute("side","double");
+    floor1wall2.setAttribute("static-body", "true");
     this.obj.append( floor1wall2 );
 
     let floor1wall3 = document.createElement("a-box");
@@ -52,6 +54,7 @@ class Floor1Wall{
     floor1wall3.setAttribute("width","0.35");
     floor1wall3.setAttribute("depth","0.25");
     floor1wall3.setAttribute("side","double");
+    floor1wall3.setAttribute("static-body", "true");
     this.obj.append( floor1wall3 );
 
     let floor1wall4 = document.createElement("a-box");
@@ -61,6 +64,7 @@ class Floor1Wall{
     floor1wall4.setAttribute("width","0.35");
     floor1wall4.setAttribute("depth","0.25");
     floor1wall4.setAttribute("side","double");
+    floor1wall4.setAttribute("static-body", "true");
     this.obj.append( floor1wall4 );
 
     let floor1wall5 = document.createElement("a-box");
@@ -70,6 +74,7 @@ class Floor1Wall{
     floor1wall5.setAttribute("width","0.35");
     floor1wall5.setAttribute("depth","0.25");
     floor1wall5.setAttribute("side","double");
+    floor1wall5.setAttribute("static-body", "true");
     this.obj.append( floor1wall5 );
 
     let floor1wall6 = document.createElement("a-box");
@@ -79,6 +84,7 @@ class Floor1Wall{
     floor1wall6.setAttribute("width","0.35");
     floor1wall6.setAttribute("depth","0.25");
     floor1wall6.setAttribute("side","double");
+    floor1wall6.setAttribute("static-body", "true");
     this.obj.append( floor1wall6 );
 
     let floor1wall7 = document.createElement("a-box");
@@ -88,6 +94,7 @@ class Floor1Wall{
     floor1wall7.setAttribute("width","0.35");
     floor1wall7.setAttribute("depth","0.25");
     floor1wall7.setAttribute("side","double");
+    floor1wall7.setAttribute("static-body", "true");
     this.obj.append( floor1wall7 );
 
     let floor1window1 = document.createElement("a-box");
@@ -98,6 +105,7 @@ class Floor1Wall{
     floor1window1.setAttribute("width","2.7");
     floor1window1.setAttribute("depth","0.15");
     floor1window1.setAttribute("side","double");
+    floor1window1.setAttribute("dynamic-body", "true");
     this.obj.append( floor1window1 );
 
     let floor1window2 = document.createElement("a-box");
@@ -108,6 +116,7 @@ class Floor1Wall{
     floor1window2.setAttribute("width","2.7");
     floor1window2.setAttribute("depth","0.15");
     floor1window2.setAttribute("side","double");
+    floor1window2.setAttribute("dynamic-body", "true");
     this.obj.append( floor1window2 );
 
     let floor1window3 = document.createElement("a-box");
@@ -118,6 +127,7 @@ class Floor1Wall{
     floor1window3.setAttribute("width","2.7");
     floor1window3.setAttribute("depth","0.15");
     floor1window3.setAttribute("side","double");
+    floor1window3.setAttribute("dynamic-body", "true");
     this.obj.append( floor1window3 );
 
     let floor1window4 = document.createElement("a-box");
@@ -128,6 +138,7 @@ class Floor1Wall{
     floor1window4.setAttribute("width","2.7");
     floor1window4.setAttribute("depth","0.15");
     floor1window4.setAttribute("side","double");
+    floor1window4.setAttribute("dynamic-body", "true");
     this.obj.append( floor1window4 );
 
     let floor1window5 = document.createElement("a-box");
@@ -138,6 +149,7 @@ class Floor1Wall{
     floor1window5.setAttribute("width","2.3");
     floor1window5.setAttribute("depth","0.15");
     floor1window5.setAttribute("side","double");
+    floor1window5.setAttribute("dynamic-body", "true");
     this.obj.append( floor1window5 );
 
     
