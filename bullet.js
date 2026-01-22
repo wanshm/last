@@ -26,17 +26,6 @@
     this.lifespan = 5000;
     this.creationTime = Date.now();
 
-    this.obj.addEventListener("collide", (e) => {
-    const hitEl = e.detail.body.el;
-
-    if (!hitEl) return;
-
-
-    if (hitEl.classList.contains("breakable")) {
-    hitEl.remove();      
-    this.obj.remove();   
-  }
-});
   }
 
   fire() {
