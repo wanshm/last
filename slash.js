@@ -9,9 +9,9 @@ class Slash{
         this.center.append(this.slash)
         this.slash.append(sword)
         
+        this.animated = false;
+
         sword.append(crossguard)
-        sword.setAttribute("hidden","true")
-        this.slash.setAttribute("atktype","slash")
         this.slash.setAttribute("side","double")
         this.slash.object3D.scale.set(10, 5, 1)
         this.center.object3D.rotation.set(
@@ -34,16 +34,23 @@ class Slash{
 
     }    
 
-
-    getAttribute(args){
-        return this.slash.getAttribute(args)
-    }
-    setAttribute(args){
-        return this.slash.setAttribute(args)
-    }
-
     remove(){
         if(this.center.parentNode)
         this.center.parentNode.removeChild(this.center);
+    }
+
+    animate(){
+        const start = this.slash.getAttribute("theta-start")
+        const length = this.slash.getAttribute("theta-length")
+        const sword = this.slash.children[0];
+        const swordAngle = sword.object3D.rotation;
+        if(parseInt(start) < 300){
+        this.slash.setAttribute("theta-start", parseInt(start) + 7);
+        this.slash.setAttribute("theta-length", parseInt(length) + 5);
+        swordAngle.z+= THREE.MathUtils.degToRad(12);
+        } else {
+            this.animated = true;
+        }
+
     }
 }
