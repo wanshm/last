@@ -190,6 +190,8 @@ class Floor1Door{
     floor1wall4.setAttribute("width","0.35");
     floor1wall4.setAttribute("depth","0.25");
     floor1wall4.setAttribute("side","double");
+    floor1wall4.setAttribute("id","RightDoorHinge");
+    floor1wall4.setAttribute("static-body", "");
     this.obj.append( floor1wall4 );
 
     let floor1wall5 = document.createElement("a-box");
@@ -199,6 +201,8 @@ class Floor1Door{
     floor1wall5.setAttribute("width","0.35");
     floor1wall5.setAttribute("depth","0.25");
     floor1wall5.setAttribute("side","double");
+    floor1wall5.setAttribute("id","LeftDoorHinge");
+    floor1wall5.setAttribute("static-body", "");
     this.obj.append( floor1wall5 );
 
     let floor1window1 = document.createElement("a-box");
@@ -224,21 +228,27 @@ class Floor1Door{
     let LeftDoor = document.createElement("a-box");
     LeftDoor.setAttribute("color","#D7DFD8");
     LeftDoor.setAttribute("opacity","0.3");
-    LeftDoor.setAttribute("position","-1.175 1.6 0");
-    LeftDoor.setAttribute("height","4");
+    // LeftDoor.setAttribute("position","-1.175 1.6 0");
+    LeftDoor.setAttribute("height","3");
     LeftDoor.setAttribute("width","2.35");
     LeftDoor.setAttribute("depth","0.15");
     LeftDoor.setAttribute("side","double");
+    LeftDoor.setAttribute("dynamic-body", "");
+    LeftDoor.setAttribute("force-pushable", " ");
+    LeftDoor.setAttribute("constraint","type:hinge; target: #LeftDoorHinge; axis: 0 1 0;targetAxis: 0 1 0; pivot: -1.125 0 0;targetPivot: 0 0 0.125;");
     this.obj.append( LeftDoor );
 
     let RightDoor = document.createElement("a-box");
     RightDoor.setAttribute("color","#D7DFD8");
     RightDoor.setAttribute("opacity","0.3");
     RightDoor.setAttribute("position","1.175 1.6 0");
-    RightDoor.setAttribute("height","4");
+    RightDoor.setAttribute("height","3");
     RightDoor.setAttribute("width","2.35");
     RightDoor.setAttribute("depth","0.15");
     RightDoor.setAttribute("side","double");
+    RightDoor.setAttribute("dynamic-body", "");
+    RightDoor.setAttribute("force-pushable", " ");
+    RightDoor.setAttribute("constraint","type:hinge; target: #RightDoorHinge; axis: 0 1 0;targetAxis: 0 1 0; pivot: 1.125 0 0;targetPivot: 0 0 0.125;");
     this.obj.append( RightDoor );
 
     this.obj.setAttribute("position",{x:x, y:y, z:z});

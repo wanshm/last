@@ -3,7 +3,7 @@
     this.obj = document.createElement("a-sphere");
     this.obj.setAttribute("radius", 0.5);
     this.obj.setAttribute("color", "hsl(308, 100%, 50%)");
-    this.obj.setAttribute("dynamic-body", "mass: 0.1;");
+    // this.obj.setAttribute("dynamic-body", "mass: 0.1;");
     this.obj.setAttribute("class", "bullet");
     // this.obj.setAttribute("src", "#bulletTexture");
 
