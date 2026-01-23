@@ -15,5 +15,5 @@ function distance(obj1, obj2){
 }
 
 function radiansToDegrees(r){
-  return r/Math.PI *180;
+  return r / Math.PI *180;
 }
