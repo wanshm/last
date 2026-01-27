@@ -19,6 +19,7 @@ class Slash{
             camera.object3D.children[0].rotation.y,
             THREE.MathUtils.degToRad(0)
         );
+        this.slash.object3D.rotation.set(-Math.PI/4,0,0)
         this.center.setAttribute("position",{ x:camera.object3D.position.x,y:camera.object3D.position.y + 3,z:camera.object3D.position.z })
         this.slash.setAttribute("position","0 -7 0")
         this.slash.setAttribute("theta-start", 100);
