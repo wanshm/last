@@ -1,7 +1,7 @@
   class Bullet {
   constructor() {
     this.obj = document.createElement("a-sphere");
-    this.obj.setAttribute("radius", 0.5);
+    this.obj.setAttribute("radius", 0.2);
     this.obj.setAttribute("color", "hsl(308, 100%, 50%)");
     // this.obj.setAttribute("dynamic-body", "mass: 0.1;");
     this.obj.setAttribute("class", "bullet");
@@ -15,7 +15,7 @@
 
     let theta = camera.object3D.rotation.y + Math.PI; 
     let phi = camera.object3D.rotation.x;
-    let v = 1; 
+    let v = 5; 
 
     let v_xz = v * Math.cos(phi);
     this.dz = v_xz * Math.cos(theta);

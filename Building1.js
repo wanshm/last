@@ -288,35 +288,50 @@ class Building1{
     this.obj = document.createElement("a-entity");
 
     let base = new Floor1Base(0,0,0);
+    base.obj.setAttribute("static-body", " ");
     this.obj.append( base.obj );
 
     let floor2base = new Floor1Base(0,3.3,0);
+    floor2base.obj.setAttribute("static-body", " ");
     this.obj.append( floor2base.obj );
 
     let wall1 = new Floor1Wall(0,0,0);
+    wall1.obj.setAttribute("static-body", "");
     this.obj.append( wall1.obj );
 
     let wall2 = new Floor1Wall(0,0,0);
     wall2.obj.setAttribute("rotation",{x:0, y:90, z:0});
+    wall2.obj.setAttribute("static-body", "");
     this.obj.append( wall2.obj );
 
     let wall3 = new Floor1Wall(0,0,0);
     wall3.obj.setAttribute("rotation",{x:0, y:-90, z:0});
+    wall3.obj.setAttribute("static-body", "");
     this.obj.append( wall3.obj );
 
     let door = new Floor1Door(0,0,7.125);
+    door.obj.setAttribute("static-body", " ");
     this.obj.append( door.obj );
 
     let floor2 = new Floor2(0,3,0);
+    floor2.obj.setAttribute("static-body", " ");
+    bullets.forEach(bullet => {
+      if (distance(bullet.obj, floor2.obj) < 2) {
+        floor2.obj.setAttribute("dynamic-body", " ");
+        
+      }
+    });
     this.obj.append( floor2.obj );
 
-    let floor3 = new Floor2(0,6,0);
+    let floor3 = new Floor2(0,6,0); 
     this.obj.append( floor3.obj );
 
     let floor4 = new Floor2(0,9,0);
+    floor4.obj.setAttribute("static-body", " ");
     this.obj.append( floor4.obj );
 
     let floor5 = new Floor2(0,12,0);
+    floor5.obj.setAttribute("static-body", " ");
     this.obj.append( floor5.obj );
 
     this.obj.setAttribute("position",{x:x, y:y, z:z});
@@ -325,3 +340,15 @@ class Building1{
 
   }
 }
+
+function distance(obj1,obj2){
+  let x1 = obj1.object3D.position.x;
+  let y1 = obj1.object3D.position.y;
+  let z1 = obj1.object3D.position.z;
+  let x2 = obj2.object3D.position.x;
+  let y2 = obj2.object3D.position.y;
+  let z2 = obj2.object3D.position.z;
+
+  let d = Math.sqrt(Math.pow(x1-x2,2) + Math.pow(y1-y2,2) + Math.pow(z1-z2,2));
+  return d;
+} 
