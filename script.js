@@ -1,4 +1,4 @@
-let camera, scene, attacks= [], hotbarinfo = ["slash","bullet"],hotbaritems=[];
+let camera, scene, attacks= [], hotbarinfo = ["Slash","Bullet","Spells"],hotbaritems=[], hotbarselection=0;
 window.addEventListener("DOMContentLoaded",function (){
     
     camera = document.querySelector("#camerarig")
@@ -24,8 +24,33 @@ window.addEventListener("DOMContentLoaded",function (){
 
 window.addEventListener("click",function(){
     
-    const slash = new Slash();
-    attacks.push(slash);
+    if(hotbarselection==0){
+        const slash = new Slash();
+        attacks.push(slash);
+    }
+})
+
+window.addEventListener("keydown",function(e){
+
+    console.log(e.key)
+
+    switch(e.key){
+        case "1":
+            hotbaritems[0].select()
+            hotbarselection=0;
+            break;
+        case "2":
+            hotbaritems[1].select()
+            hotbarselection=1;
+            break;
+        case "3":
+            hotbaritems[2].select()
+            hotbarselection=2;
+            break;
+    }
+
+    //deselects other hotbar items
+    hotbaritems.filter((item,i)=>{return i !== hotbarselection}).forEach((item)=>{item.deselect();})
 
 })
 

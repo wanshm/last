@@ -1,7 +1,9 @@
 class HotBarItem {
     constructor(text, number){
 
-        this.number
+        this.number = number;
+        this.selected = this.number==1  ? true:false;
+
 
         const scene = document.querySelector("a-scene");
 
@@ -13,7 +15,9 @@ class HotBarItem {
         this.hbn = document.createElement("a-text");
         this.hbt = document.createElement("a-text");
 
-        this.hbb.object3D.scale.set(.125,.15,.01);
+        
+        this.selected && this.hbb.setAttribute("color","gray")
+        this.hbb.object3D.scale.set(.125,.125,.01);
         this.center.setAttribute("position","0 2 0")
 
         this.hbn.setAttribute("value",number);
@@ -23,6 +27,12 @@ class HotBarItem {
         this.center.append(this.hbb)
         this.hbb.append(this.hbn);
         this.hbb.append(this.hbt);
+
+        this.hbt.setAttribute("position","-.5 -.3 1");
+        this.hbn.setAttribute("position","-.5 .3 1");
+        this.hbt.setAttribute("color","black");
+        this.hbn.setAttribute("color","black");
+
         this.hbb.setAttribute("position",{x:camera.object3D.position.x, y : camera.object3D.position.y , z:camera.object3D.position.z })
         
         console.log(camera.children[0].object3D)
@@ -32,11 +42,21 @@ class HotBarItem {
     }
 
     followCam(){
-        this.hbb.setAttribute("position",{x:0 + this.number/100, y : 0, z:-1 })
+        this.hbb.setAttribute("position",{x:0 +this.number/4, y : 0, z:-1 })
         this.center.object3D.rotation.set(
             camera.children[0].object3D.rotation.x,
             camera.children[0].object3D.rotation.y,
-            THREE.MathUtils.degToRad(0)
+            0
         );
+    }
+
+    select(){
+        this.selected = true;
+        this.hbb.setAttribute("color","gray");
+    }
+
+    deselect(){
+        this.selected = false;
+        this.hbb.setAttribute("color","white");
     }
 }
