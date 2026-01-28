@@ -35,7 +35,7 @@ class Wall1{
 
 }
 
-class building2{
+class Building2{
   constructor(x,y,z){
     this.obj = document.createElement("a-entity");
 
