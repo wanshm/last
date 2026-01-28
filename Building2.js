@@ -1,4 +1,4 @@
-class Floor1Base{
+class FloorBase{
   constructor(x,y,z){
     this.obj = document.createElement("a-entity");
   
@@ -22,11 +22,11 @@ class Wall1{
     let wall = document.createElement("a-box");
     wall.setAttribute("color","#808080");
     wall.setAttribute("position","0 2.5 0");
-    wall.setAttribute("height","5");
+    wall.setAttribute("height","1");
     wall.setAttribute("width","0.5");
-    wall.setAttribute("depth","15");
-    // wall.setAttribute("force-pushable", "");
-    // wall.setAttribute("dynamic-body", " ");
+    wall.setAttribute("depth","1");
+    wall.setAttribute("force-pushable", "");
+    wall.setAttribute("dynamic-body", " ");
     this.obj.append( wall );
     
     this.obj.setAttribute("position",{x:x, y:y, z:z});
@@ -39,8 +39,8 @@ class Building2{
   constructor(x,y,z){
     this.obj = document.createElement("a-entity");
 
-    let base = new Floor1Base(0,0,0);
-    // base.obj.setAttribute("static-body", " ");
+    let base = new FloorBase(0,0,0);
+    base.obj.setAttribute("static-body", " ");
     this.obj.append( base.obj );
 
     let wall1 = new Wall1(-7.25,0,0);
