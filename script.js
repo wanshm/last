@@ -6,7 +6,9 @@ window.addEventListener("DOMContentLoaded", function () {
   scene = document.querySelector("a-scene");
 
   // let building1 = new Building1(0.5, -0.43, 0.5);
+  
   let building2 = new Building2(0.5, -0.43, 0.5);
+
 
 
 

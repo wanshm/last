@@ -25,8 +25,8 @@ class Wall1{
     wall.setAttribute("height","5");
     wall.setAttribute("width","0.5");
     wall.setAttribute("depth","15");
-    wall.setAttribute("force-pushable", "");
-    wall.setAttribute("dynamic-body", " ");
+    // wall.setAttribute("force-pushable", "");
+    // wall.setAttribute("dynamic-body", " ");
     this.obj.append( wall );
     
     this.obj.setAttribute("position",{x:x, y:y, z:z});
@@ -40,7 +40,7 @@ class building2{
     this.obj = document.createElement("a-entity");
 
     let base = new Floor1Base(0,0,0);
-    base.obj.setAttribute("static-body", " ");
+    // base.obj.setAttribute("static-body", " ");
     this.obj.append( base.obj );
 
     let wall1 = new Wall1(-7.25,0,0);
