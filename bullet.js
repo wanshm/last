@@ -1,11 +1,12 @@
   class Bullet {
   constructor() {
     this.obj = document.createElement("a-sphere");
-    this.obj.setAttribute("radius", 0.2);
+    this.obj.setAttribute("radius", 1.2);
     this.obj.setAttribute("color", "hsl(308, 100%, 50%)");
-    // this.obj.setAttribute("dynamic-body", "mass: 0.1;");
+    this.obj.setAttribute("dynamic-body", " mass:0; shape: sphere; ");
     this.obj.setAttribute("class", "bullet");
     // this.obj.setAttribute("src", "#bulletTexture");
+    this.obj.setAttribute("raycaster", "objects:[force-pushable]");
 
     let camera = document.querySelector("a-camera"); 
     let pos = camera.object3D.position;

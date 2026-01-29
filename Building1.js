@@ -8,6 +8,7 @@ class Floor1Base{
     base.setAttribute("height","0.1");
     base.setAttribute("width","15");
     base.setAttribute("depth","15");
+    // base.setAttribute("dynamic-body", " mass:0.1; shape: box; ");
     this.obj.append( base );
     
     this.obj.setAttribute("position",{x:x, y:y, z:z});
@@ -26,7 +27,8 @@ class Floor1Wall{
     floor1wall1.setAttribute("width","14.8");
     floor1wall1.setAttribute("depth","0.25");
     floor1wall1.setAttribute("side","double");
-    floor1wall1.setAttribute("static-body", "true");
+    floor1wall1.setAttribute("force-pushable", "");
+    floor1wall1.setAttribute("dynamic-body", " mass:0.1; shape: box; ");
     this.obj.append( floor1wall1 );
 
     let floor1wall2 = document.createElement("a-box");
@@ -36,7 +38,8 @@ class Floor1Wall{
     floor1wall2.setAttribute("width","0.35");
     floor1wall2.setAttribute("depth","0.25");
     floor1wall2.setAttribute("side","double");
-    floor1wall2.setAttribute("static-body", "true");
+    floor1wall2.setAttribute("force-pushable", "");
+    floor1wall2.setAttribute("dynamic-body", " mass:0.1; shape: box; ");
     this.obj.append( floor1wall2 );
 
     let floor1wall3 = document.createElement("a-box");
@@ -46,7 +49,8 @@ class Floor1Wall{
     floor1wall3.setAttribute("width","0.35");
     floor1wall3.setAttribute("depth","0.25");
     floor1wall3.setAttribute("side","double");
-    floor1wall3.setAttribute("static-body", "true");
+    floor1wall3.setAttribute("force-pushable", "");
+    floor1wall3.setAttribute("dynamic-body", " mass:0.1; shape: box; ");
     this.obj.append( floor1wall3 );
 
     let floor1wall4 = document.createElement("a-box");
@@ -56,7 +60,8 @@ class Floor1Wall{
     floor1wall4.setAttribute("width","0.35");
     floor1wall4.setAttribute("depth","0.25");
     floor1wall4.setAttribute("side","double");
-    floor1wall4.setAttribute("static-body", "true");
+    floor1wall4.setAttribute("force-pushable", "");
+    floor1wall4.setAttribute("dynamic-body", " mass:0.1; shape: box; ");
     this.obj.append( floor1wall4 );
 
     let floor1wall5 = document.createElement("a-box");
@@ -66,7 +71,8 @@ class Floor1Wall{
     floor1wall5.setAttribute("width","0.35");
     floor1wall5.setAttribute("depth","0.25");
     floor1wall5.setAttribute("side","double");
-    floor1wall5.setAttribute("static-body", "true");
+    floor1wall5.setAttribute("force-pushable", "");
+    floor1wall5.setAttribute("dynamic-body", " mass:0.1; shape: box; ");
     this.obj.append( floor1wall5 );
 
     let floor1wall6 = document.createElement("a-box");
@@ -76,7 +82,8 @@ class Floor1Wall{
     floor1wall6.setAttribute("width","0.35");
     floor1wall6.setAttribute("depth","0.25");
     floor1wall6.setAttribute("side","double");
-    floor1wall6.setAttribute("static-body", "true");
+    floor1wall6.setAttribute("force-pushable", "");
+    floor1wall6.setAttribute("dynamic-body", " mass:0.1; shape: box; ");
     this.obj.append( floor1wall6 );
 
     let floor1wall7 = document.createElement("a-box");
@@ -86,7 +93,8 @@ class Floor1Wall{
     floor1wall7.setAttribute("width","0.35");
     floor1wall7.setAttribute("depth","0.25");
     floor1wall7.setAttribute("side","double");
-    floor1wall7.setAttribute("static-body", "true");
+    floor1wall7.setAttribute("force-pushable", "");
+    floor1wall7.setAttribute("dynamic-body", " mass:0.1; shape: box; ");
     this.obj.append( floor1wall7 );
 
     let floor1window1 = document.createElement("a-box");
@@ -163,6 +171,8 @@ class Floor1Door{
     floor1wall1.setAttribute("width","14.8");
     floor1wall1.setAttribute("depth","0.25");
     floor1wall1.setAttribute("side","double");
+    floor1wall1.setAttribute("force-pushable", "");
+    floor1wall1.setAttribute("dynamic-body", " mass:0.1; shape: box; ");
     this.obj.append( floor1wall1 );
 
     let floor1wall2 = document.createElement("a-box");
@@ -172,6 +182,8 @@ class Floor1Door{
     floor1wall2.setAttribute("width","0.35");
     floor1wall2.setAttribute("depth","0.25");
     floor1wall2.setAttribute("side","double");
+    floor1wall2.setAttribute("force-pushable", "");
+    floor1wall2.setAttribute("dynamic-body", " mass:0.1; shape: box; ");
     this.obj.append( floor1wall2 );
 
     let floor1wall3 = document.createElement("a-box");
@@ -181,6 +193,8 @@ class Floor1Door{
     floor1wall3.setAttribute("width","0.35");
     floor1wall3.setAttribute("depth","0.25");
     floor1wall3.setAttribute("side","double");
+    floor1wall3.setAttribute("force-pushable", "");
+    floor1wall3.setAttribute("dynamic-body", " mass:0.1; shape: box; ");
     this.obj.append( floor1wall3 );
 
     let floor1wall4 = document.createElement("a-box");
@@ -191,7 +205,8 @@ class Floor1Door{
     floor1wall4.setAttribute("depth","0.25");
     floor1wall4.setAttribute("side","double");
     floor1wall4.setAttribute("id","RightDoorHinge");
-    floor1wall4.setAttribute("static-body", "");
+    floor1wall4.setAttribute("force-pushable", "");
+    floor1wall4.setAttribute("dynamic-body", " mass:0.1; shape: box; ");
     this.obj.append( floor1wall4 );
 
     let floor1wall5 = document.createElement("a-box");
@@ -202,7 +217,8 @@ class Floor1Door{
     floor1wall5.setAttribute("depth","0.25");
     floor1wall5.setAttribute("side","double");
     floor1wall5.setAttribute("id","LeftDoorHinge");
-    floor1wall5.setAttribute("static-body", "");
+    floor1wall5.setAttribute("force-pushable", "");
+    floor1wall5.setAttribute("dynamic-body", " mass:0.1; shape: box; ");
     this.obj.append( floor1wall5 );
 
     let floor1window1 = document.createElement("a-box");

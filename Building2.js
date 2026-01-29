@@ -26,7 +26,7 @@ class Wall1{
     wall.setAttribute("width","0.5");
     wall.setAttribute("depth","1");
     wall.setAttribute("force-pushable", "");
-    wall.setAttribute("dynamic-body", " ");
+    wall.setAttribute("dynamic-body", " mass:0.1; shape: box; ");
     this.obj.append( wall );
     
     this.obj.setAttribute("position",{x:x, y:y, z:z});

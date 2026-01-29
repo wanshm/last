@@ -5,15 +5,15 @@ let scene, bullets = [];
 window.addEventListener("DOMContentLoaded", function () {
   scene = document.querySelector("a-scene");
 
-  // let building1 = new Building1(0.5, -0.43, 0.5);
+  let building1 = new Building1(0.5, -0.43, 0.5);
   
-  let building2 = new Building2(0.5, -0.43, 0.5);
+  // let building2 = new Building2(0.5, -0.43, 0.5);
 
 
 
 
   window.addEventListener("keydown", function (e) {
-    if (e.code == "Space" || e.key == " ") {
+    if (e.code == "Space" || e.key == "i") {
       let bullet = new Bullet(); 
       bullets.push(bullet);
     }
@@ -25,6 +25,7 @@ window.addEventListener("DOMContentLoaded", function () {
 });
 
 function loop() {
+  
   bullets.forEach(bullet => bullet.fire());
 
   window.requestAnimationFrame(loop);
