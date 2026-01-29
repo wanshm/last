@@ -9,7 +9,7 @@ window.addEventListener("DOMContentLoaded",function (){
     box.setAttribute("position","0 25.5 0");
     scene.append(box);
 
-    console.log(camera.object3D.children)
+    console.log(camera)
 
     for(let i = 0; i < hotbarinfo.length; i++){
         if(camera.children[0]){
@@ -22,13 +22,18 @@ window.addEventListener("DOMContentLoaded",function (){
     loop();
 } )
 
-window.addEventListener("click",function(){
-    
+window.addEventListener("click",function(e){
+    console.log(e);
     if(hotbarselection==0){
         const slash = new Slash();
         attacks.push(slash);
+    } 
+    else if (hotbarselection == 1){
+        const bullet = new Bullet();
+        attacks.push(bullet);
     }
 })
+
 
 window.addEventListener("keydown",function(e){
 
@@ -65,6 +70,12 @@ function loop(){
             attack.animate()
             if(attack.animated) {
                 attack.remove();
+                attacks.splice(i,1);
+            }
+        } else if (attack instanceof Bullet){
+            attack.fire();
+            if(distance(camera,attack.obj)> 200){
+                attack.remove()
                 attacks.splice(i,1);
             }
         }

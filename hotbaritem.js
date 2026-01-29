@@ -2,8 +2,6 @@ class HotBarItem {
     constructor(text, number){
 
         this.number = number;
-        this.selected = this.number==1  ? true:false;
-
 
         const scene = document.querySelector("a-scene");
 
@@ -51,12 +49,10 @@ class HotBarItem {
     }
 
     select(){
-        this.selected = true;
         this.hbb.setAttribute("color","gray");
     }
 
     deselect(){
-        this.selected = false;
         this.hbb.setAttribute("color","white");
     }
 }
