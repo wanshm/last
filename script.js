@@ -13,6 +13,8 @@ window.addEventListener("DOMContentLoaded",function (){
 
     console.log(camera)
 
+    const book = new Spellbook();
+
     for(let i = 0; i < hotbarinfo.length; i++){
         if(camera.children[0]){
             const hb = new HotBarItem(hotbarinfo[i],i+1);

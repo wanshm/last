@@ -17,6 +17,7 @@
     <script src="https://cdn.jsdelivr.net/gh/n5ro/aframe-physics-system@v$npm_package_version/dist/aframe-physics-system.min.js"></script> Physics system
     <script src="Building1.js"></script>
     <script src="Building2.js"></script>
+    <script src="spellbook.js"></script>
     <script src="Testing.js"></script> <!--Testing stuff please Ignore-->
     <title>last</title>
 </head>
@@ -28,7 +29,8 @@
         <a-entity id="floor" environment="playArea:1; stageSize:1000; groundFrequency:10; groundYScale: 200; seed:2; "></a-entity>
         <a-entity id="ceiling" rotation="190 0 0" position="0 200 0" environment="playArea:1; stageSize:1000;ground:canyon; groundYScale: 200; seed:1"></a-entity>
         
-        <a-entity position="0 0 0" id="camerarig" kinema-body="radius:1" nav-agent="speed: 1.5" movement-controls="constrainToNavMesh:true; fly:false; speed:1" position="0 21.8 -1">
+        <!-- give camerarig kinemabody -->
+        <a-entity position="0 0 0" id="camerarig"  movement-controls="constrainToNavMesh:true; fly:false; speed:1" position="0 21.8 -1">
              <a-entity camera
                 position="0 2 0"
                 look-controls="pointerLockEnabled: true"

@@ -6,7 +6,7 @@ class HotBarItem {
         const scene = document.querySelector("a-scene");
 
 
-        this.center = document.createElement("a-box")
+        this.center = document.createElement("a-entity")
 
 
         this.hbb = document.createElement("a-box");
@@ -30,8 +30,6 @@ class HotBarItem {
         this.hbn.setAttribute("position","-.5 .3 1");
         this.hbt.setAttribute("color","black");
         this.hbn.setAttribute("color","black");
-
-        this.hbb.setAttribute("position",{x:camera.object3D.position.x, y : camera.object3D.position.y , z:camera.object3D.position.z })
         
         console.log(camera.children[0].object3D)
         
