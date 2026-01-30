@@ -6,6 +6,14 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <script src="script.js"></script>
     <script src="https://aframe.io/releases/1.7.1/aframe.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/gh/c-frame/aframe-extras@7.6.1/dist/aframe-extras.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/gh/c-frame/aframe-physics-system@v4.2.2/dist/aframe-physics-system.min.js"></script>
+    <script src="https://unpkg.com/aframe-environment-component@1.5.x/dist/aframe-environment-component.min.js"></script>
+    <script src="kinema.js"></script>
+    <script src="helper.js"></script>
+    <script src="slash.js"></script>
+    <script src="hotbaritem.js"></script>
+    <script src="bullet.js"></script>
     <script src="https://cdn.jsdelivr.net/gh/c-frame/aframe-physics-system@v4.2.4/dist/aframe-physics-system.min.js"></script>
     <script src="https://cdn.jsdelivr.net/gh/n5ro/aframe-physics-system@v$npm_package_version/dist/aframe-physics-system.min.js"></script> <!-- Physics system -->
     <script src="Building1.js"></script>
@@ -16,14 +24,27 @@
 </head>
 <body>
     <a-scene>
-        <a-sky color="#42e9f5"></a-sky>
-        <a-plane scale="1000 1000 1" rotation="90 0 0" side="double" color="white" static-body ></a-plane>
-        <a-assets>
+<!--         <a-assets>
           <img id="bulletTexture" src="Sliver.png">
-        </a-assets>
-        <a-camera position="0 1.4 15" wasd-controls="acceleration: 50; fly: true" look-controls >
+        </a-assets> -->
+        <a-entity id="floor" environment="playArea:1; stageSize:1000; groundFrequency:10; groundYScale: 200; seed:2; "></a-entity>
+        <a-entity id="ceiling" rotation="190 0 0" position="0 200 0" environment="playArea:1; stageSize:1000;ground:canyon; groundYScale: 200; seed:1"></a-entity>
+        
+        <a-entity position="0 0 0" id="camerarig" kinema-body="radius:1" nav-agent="speed: 1.5" movement-controls="constrainToNavMesh:true; fly:false; speed:1" position="0 21.8 -1">
+             <a-entity camera
+                position="0 2 0"
+                look-controls="pointerLockEnabled: true"
+                >
+                <a-cursor></a-cursor>
+            </a-entity>
+        </a-entity>
+        <a-sky color="black"></a-sky>
+        <a-plane static-body position="0 -1 0" scale="1000 1000 0.1" rotation="90 0 0" side="double" color="white"></a-plane>
+        <a-plane scale="1000 1000 1" rotation="90 0 0" side="double" color="white" static-body ></a-plane>
+       
+<!--         <a-camera position="0 1.4 15" wasd-controls="acceleration: 50; fly: true" look-controls >
             <a-cursor></a-cursor>
-        </a-camera>
+        </a-camera> -->
 
         
     </a-scene>
