@@ -331,12 +331,7 @@ class Building1{
 
     let floor2 = new Floor2(0,3,0);
     floor2.obj.setAttribute("static-body", " ");
-    bullets.forEach(bullet => {
-      if (distance(bullet.obj, floor2.obj) < 2) {
-        floor2.obj.setAttribute("dynamic-body", " ");
-        
-      }
-    });
+    
     this.obj.append( floor2.obj );
 
     let floor3 = new Floor2(0,6,0); 
