@@ -47,18 +47,16 @@ class Bullet{
     this.dz = v_xz * Math.cos(this.theta);
     this.dx = v_xz * Math.sin(this.theta);
     this.dy = v * Math.sin(this.phi);
-    
 //     this.lifespan = 5000;
 //     this.creationTime = Date.now();
-
   }
+
+
   fire(){
 
     this.obj.object3D.position.x += this.dx;
     this.obj.object3D.position.y += this.dy;
     this.obj.object3D.position.z += this.dz; 
-
-    //this.obj.object3D.rotation.y = this.theta - Math.PI/2;
   }
 
   remove(){
