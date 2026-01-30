@@ -8,6 +8,8 @@ window.addEventListener("DOMContentLoaded",function (){
     box.setAttribute("dynamic-body","")
     box.setAttribute("position","0 25.5 0");
     scene.append(box);
+  
+    let building1 = new Building1(0.5, -0.43, 0.5);
 
     console.log(camera)
 

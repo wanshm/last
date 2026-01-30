@@ -1,12 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <!-- yiyoiyoyoy -->
-    <!-- look at 
-    https://github.com/c-frame/aframe-physics-system/blob/master/CannonDriver.md#installation
-    https://github.com/c-frame/aframe-physics-system/blob/master/AmmoDriver.md#installation 
-    https://www.youtube.com/watch?v=ho0NNhgQH8c <-- doesn't work
-    -->
+  
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <script src="script.js"></script>
@@ -19,19 +14,22 @@
     <script src="slash.js"></script>
     <script src="hotbaritem.js"></script>
     <script src="bullet.js"></script>
+    <script src="https://cdn.jsdelivr.net/gh/c-frame/aframe-physics-system@v4.2.4/dist/aframe-physics-system.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/gh/n5ro/aframe-physics-system@v$npm_package_version/dist/aframe-physics-system.min.js"></script> <!-- Physics system -->
+    <script src="Building1.js"></script>
+    <script src="Building2.js"></script>
+    <script src="bullet.js"></script>
+    <script src="Testing.js"></script> <!--Testing stuff please Ignore-->
     <title>last</title>
 </head>
 <body>
     <a-scene>
-
-        <!-- <a-assets>
-            <a-asset-item id="terrain-cave" src="127-0-0-1-5500 (2).glb"></a-asset-item>
+<!--         <a-assets>
+          <img id="bulletTexture" src="Sliver.png">
         </a-assets> -->
-        <!-- nav mesh dont work bruh -->
         <a-entity id="floor" environment="playArea:1; stageSize:1000; groundFrequency:10; groundYScale: 200; seed:2; "></a-entity>
         <a-entity id="ceiling" rotation="190 0 0" position="0 200 0" environment="playArea:1; stageSize:1000;ground:canyon; groundYScale: 200; seed:1"></a-entity>
         
-        <!-- <a-gltf-model src="#terrain-cave" nav-mesh></a-gltf-model> -->
         <a-entity position="0 0 0" id="camerarig" kinema-body="radius:1" nav-agent="speed: 1.5" movement-controls="constrainToNavMesh:true; fly:false; speed:1" position="0 21.8 -1">
              <a-entity camera
                 position="0 2 0"
@@ -42,6 +40,13 @@
         </a-entity>
         <a-sky color="black"></a-sky>
         <a-plane static-body position="0 -1 0" scale="1000 1000 0.1" rotation="90 0 0" side="double" color="white"></a-plane>
+        <a-plane scale="1000 1000 1" rotation="90 0 0" side="double" color="white" static-body ></a-plane>
+       
+<!--         <a-camera position="0 1.4 15" wasd-controls="acceleration: 50; fly: true" look-controls >
+            <a-cursor></a-cursor>
+        </a-camera> -->
+
+        
     </a-scene>
 </body>
 </html>
