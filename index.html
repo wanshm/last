@@ -29,23 +29,23 @@
         <a-entity id="floor" environment="playArea:1; stageSize:1000; groundFrequency:10; groundYScale: 200; seed:2; "></a-entity>
         <a-entity id="ceiling" rotation="190 0 0" position="0 200 0" environment="playArea:1; stageSize:1000;ground:canyon; groundYScale: 200; seed:1"></a-entity>
         
-        <!-- give camerarig kinemabody -->
-        <a-entity position="0 0 0" id="camerarig"  movement-controls="constrainToNavMesh:true; fly:false; speed:1" position="0 21.8 -1">
+        <!-- <a-entity position="0 0 0" id="camerarig" kinema-body="radius:1" nav-agent="speed: 1.5" movement-controls="constrainToNavMesh:true; fly:true; speed:2" position="0 21.8 -1">
              <a-entity camera
                 position="0 2 0"
                 look-controls="pointerLockEnabled: true"
                 >
                 <a-cursor></a-cursor>
-            </a-entity>
+            </a-entity> -->
         </a-entity>
         <a-sky color="black"></a-sky>
         <a-plane static-body position="0 -1 0" scale="1000 1000 0.1" rotation="90 0 0" side="double" color="white"></a-plane>
         
        
-<!--         <a-camera position="0 1.4 15" wasd-controls="acceleration: 50; fly: true" look-controls >
+        <a-camera position="0 1.4 15" id="camerarig"  wasd-controls="acceleration: 50; fly: true" look-controls >
             <a-cursor></a-cursor>
-        </a-camera> -->
+        </a-camera>
 
+    
         
     </a-scene>
 </body>
