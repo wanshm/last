@@ -1,4 +1,4 @@
-let camera, scene, attacks= [], hotbarinfo = ["Slash","Bullet","Spells"],hotbaritems=[], hotbarselection=0;
+let camera, scene, attacks= [], hotbarinfo = ["Slash","Bullet","Spells"],hotbaritems=[], hotbarselection=0, book;
 window.addEventListener("DOMContentLoaded",function (){
     
     camera = document.querySelector("#camerarig")
@@ -13,7 +13,7 @@ window.addEventListener("DOMContentLoaded",function (){
 
     console.log(camera)
 
-    const book = new Spellbook();
+    book = new Spellbook();
 
     for(let i = 0; i < hotbarinfo.length; i++){
         if(camera.children[0]){
@@ -57,6 +57,7 @@ window.addEventListener("keydown",function(e){
             hotbarselection=2;
             break;
     }
+    hotbarselection == 2 ? book.appear() : book.disappear();
 
     //deselects other hotbar items
     hotbaritems.filter((item,i)=>{return i !== hotbarselection}).forEach((item)=>{item.deselect();})
@@ -64,6 +65,22 @@ window.addEventListener("keydown",function(e){
 })
 
 function loop(){
+
+    book && book.followCam()
+
+    if(book.appearing){
+        book.opacity+= 0.1;
+        book.center.children[0].setAttribute("opacity",book.opacity);
+        book.center.children[1].setAttribute("opacity",book.opacity);
+        book.appearing = book.opacity > 1 ? false:true;
+    }
+    if (book.disappearing){
+        book.opacity-= 0.1;
+        book.center.children[0].setAttribute("opacity",book.opacity);
+        book.center.children[1].setAttribute("opacity",book.opacity);
+        book.disappearing = book.opacity < 0 ? false:true;
+    }
+
 
     hotbaritems.forEach((item)=>{
         item.followCam()
