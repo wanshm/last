@@ -5,11 +5,13 @@ window.addEventListener("DOMContentLoaded",function (){
     scene = document.querySelector("a-scene");
     const box = document.createElement("a-box");
     box.setAttribute("color","blue");
-    box.setAttribute("dynamic-body","")
+    box.setAttribute("dynamic-body","mass:0.0001; shape: box;");
     box.setAttribute("position","0 25.5 0");
     scene.append(box);
   
-    let building1 = new Building1(0.5, -0.43, 0.5);
+    // let building1 = new Building1(0.5, -0.43, 0.5);
+    let building2 = new Building2(5,1,-5);
+    
 
     console.log(camera)
 
