@@ -9,14 +9,20 @@ window.addEventListener("DOMContentLoaded",function (){
     box.setAttribute("position","0 25.5 0");
     scene.append(box);
   
+    const met = new Meteor
+
+    met.addLaser()
+
     // let building1 = new Building1(0.5, -0.43, 0.5);
     let building2 = new Building2(5,1,-5);
     
 
     console.log(camera)
 
+    //create spellbook
     book = new Spellbook();
 
+    //create hotbar
     for(let i = 0; i < hotbarinfo.length; i++){
         if(camera.children[0]){
             const hb = new HotBarItem(hotbarinfo[i],i+1);
@@ -24,10 +30,11 @@ window.addEventListener("DOMContentLoaded",function (){
         }
     }
 
-
+    //start loop
     loop();
 } )
 
+//click listener
 window.addEventListener("click",function(e){
     console.log(e);
     if(hotbarselection==0){
@@ -40,11 +47,18 @@ window.addEventListener("click",function(e){
     }
 })
 
+//wheel listener
+window.addEventListener("wheel",(e)=>{
+    console.log(e)
+    
+  })
 
+//keyboard listener
 window.addEventListener("keydown",function(e){
 
     console.log(e.key)
 
+    //hotbar switch
     switch(e.key){
         case "1":
             hotbaritems[0].select()
@@ -59,6 +73,7 @@ window.addEventListener("keydown",function(e){
             hotbarselection=2;
             break;
     }
+    //spellbook animation
     hotbarselection == 2 ? book.appear() : book.disappear();
 
     //deselects other hotbar items
@@ -67,9 +82,10 @@ window.addEventListener("keydown",function(e){
 })
 
 function loop(){
-
+    //spellbook tracking
     book && book.followCam()
 
+    //spellbook animation
     if(book.appearing){
         book.opacity+= 0.1;
         book.center.children[0].setAttribute("opacity",book.opacity);
@@ -83,11 +99,12 @@ function loop(){
         book.disappearing = book.opacity < 0 ? false:true;
     }
 
-
+    //hotbar tracking
     hotbaritems.forEach((item)=>{
         item.followCam()
     })
 
+    //attack animations
     attacks.forEach((attack,i)=>{
         if(attack instanceof Slash){
             attack.animate()
@@ -101,7 +118,7 @@ function loop(){
                 attack.remove()
                 attacks.splice(i,1);
             }
-        }
+        } else if (attack instanceof Meteor){}
 
 
     })
