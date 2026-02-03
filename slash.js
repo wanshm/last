@@ -23,11 +23,11 @@ class Slash{
         );
         this.slash.object3D.rotation.set(-Math.PI/4,0,0)
         this.center.setAttribute("position",{ x:camera.object3D.position.x,y:camera.object3D.position.y + 3,z:camera.object3D.position.z })
-        this.slash.setAttribute("position","0 0 0")
+        this.slash.setAttribute("position","0 -1 0")
         this.slash.setAttribute("theta-start", 100);
         this.slash.setAttribute("theta-length", 0);
-        this.center.setAttribute("dynamic-body", " mass:0; shape: sphere; ");
-        this.center.setAttribute("raycaster", "objects:[force-pushable]");
+        this.slash.setAttribute("dynamic-body", " mass:0; shape: sphere; ");
+        this.slash.setAttribute("raycaster", "objects:[force-pushable]");
 
         sword.object3D.scale.set(.1,1,.5)
         sword.setAttribute("rotation", "0 0 -180");
