@@ -6,9 +6,11 @@ class Slash{
         this.slash = document.createElement("a-ring");
         const sword = document.createElement("a-box");
         const crossguard = document.createElement("a-box");
+        
         this.center.append(this.slash)
         this.slash.append(sword)
         
+
         this.animated = false;
 
         sword.append(crossguard)
@@ -21,7 +23,7 @@ class Slash{
         );
         this.slash.object3D.rotation.set(-Math.PI/4,0,0)
         this.center.setAttribute("position",{ x:camera.object3D.position.x,y:camera.object3D.position.y + 3,z:camera.object3D.position.z })
-        this.slash.setAttribute("position","0 -7 0")
+        this.slash.setAttribute("position","0 -1 0")
         this.slash.setAttribute("theta-start", 100);
         this.slash.setAttribute("theta-length", 0);
         this.slash.setAttribute("dynamic-body", " mass:0; shape: sphere; ");
@@ -54,6 +56,6 @@ class Slash{
         } else {
             this.animated = true;
         }
-
+        this.slash.object3D.position.y += -1;
     }
 }

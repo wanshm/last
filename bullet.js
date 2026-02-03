@@ -22,19 +22,20 @@ class Bullet{
     bullet4.setAttribute("dynamic-body", " mass:0; shape: sphere; ");
     
     this.obj.setAttribute("radius",.5)
+    this.obj.setAttribute("scale",".5 .5 .5")
     this.obj.object3D.rotation.set(
             camera.object3D.children[0].rotation.x +Math.PI/2,
-            camera.object3D.children[0].rotation.y,
+            camera.object3D.children[0].rotation.y ,
             THREE.MathUtils.degToRad(0)
         );
     this.obj.append(bullet1);
     this.obj.append(bullet2);
     this.obj.append(bullet3);
     this.obj.append(bullet4);
-    bullet1.setAttribute("position","2 0 0");
-    bullet2.setAttribute("position","-2 0 0");
-    bullet3.setAttribute("position","0 0 2");
-    bullet4.setAttribute("position","0 0 -2");
+    bullet1.setAttribute("position","3 0 0");
+    bullet2.setAttribute("position","-3 0 0");
+    bullet3.setAttribute("position","0 0 3");
+    bullet4.setAttribute("position","0 0 -3");
     let pos = camera.object3D.position;
     this.obj.setAttribute("position",{x:pos.x,y:pos.y+2,z:pos.z});
     

@@ -3,10 +3,7 @@ class HotBarItem {
 
         this.number = number;
 
-        const scene = document.querySelector("a-scene");
-
-
-        this.center = document.createElement("a-box")
+        this.center = document.createElement("a-entity")
 
 
         this.hbb = document.createElement("a-box");
@@ -14,7 +11,7 @@ class HotBarItem {
         this.hbt = document.createElement("a-text");
 
         
-        this.selected && this.hbb.setAttribute("color","gray")
+        this.number == 1 && this.hbb.setAttribute("color","gray")
         this.hbb.object3D.scale.set(.125,.125,.01);
         this.center.setAttribute("position","0 2 0")
 
@@ -30,8 +27,6 @@ class HotBarItem {
         this.hbn.setAttribute("position","-.5 .3 1");
         this.hbt.setAttribute("color","black");
         this.hbn.setAttribute("color","black");
-
-        this.hbb.setAttribute("position",{x:camera.object3D.position.x, y : camera.object3D.position.y , z:camera.object3D.position.z })
         
         console.log(camera.children[0].object3D)
         
