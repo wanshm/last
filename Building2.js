@@ -26,7 +26,7 @@ class Wall1{
     wall.setAttribute("width","0.3");
     wall.setAttribute("depth","1.5");
     wall.setAttribute("force-pushable", "");
-    wall.setAttribute("dynamic-body", " mass:0.1; shape: box; ");
+    wall.setAttribute("dynamic-body", " mass:60.1; shape: box; ");
     this.obj.append( wall );
 
     let wall2 = document.createElement("a-box");
@@ -36,7 +36,7 @@ class Wall1{
     wall2.setAttribute("width","0.3");
     wall2.setAttribute("depth","1.5");
     wall2.setAttribute("force-pushable", "");
-    wall2.setAttribute("dynamic-body", " mass:0.1; shape: box; ");
+    wall2.setAttribute("dynamic-body", " mass:60.1; shape: box; ");
     this.obj.append( wall2 );
     
     this.obj.setAttribute("position",{x:x, y:y, z:z});
@@ -101,7 +101,7 @@ class LongWall{
         this.obj.append( longwall6.obj );
 // -------------------------------------------------------------------
       let base2 = new FloorBase(0,4,0);
-        base2.obj.setAttribute("dynamic-body", " mass:1; shape: box; ");
+        base2.obj.setAttribute("dynamic-body", " mass:100; shape: box; ");
         this.obj.append( base2.obj );
 
       this.obj.setAttribute("position",{x:x, y:y, z:z});
@@ -121,6 +121,48 @@ class LongWall{
 
       this.obj.setAttribute("position",{x:x, y:y, z:z});
       scene.append( this.obj )
+
+      let pinkwall = document.createElement("a-box");
+      pinkwall.setAttribute("color","pink");
+      pinkwall.setAttribute("position","-7.519 1.7 0");
+      pinkwall.setAttribute("height","20.1");
+      pinkwall.setAttribute("width","0.01");
+      pinkwall.setAttribute("depth","15");
+      pinkwall.setAttribute("static-body", " ");
+      pinkwall.setAttribute("opacity", "10");
+      this.obj.append( pinkwall );
+
+      let pinkwall2 = document.createElement("a-box");
+      pinkwall2.setAttribute("color","pink");
+      pinkwall2.setAttribute("position","-7.2 1.7 0");
+      pinkwall2.setAttribute("height","2.1");
+      pinkwall2.setAttribute("width","0.01");
+      pinkwall2.setAttribute("depth","15");
+      pinkwall2.setAttribute("static-body", " ");
+      pinkwall2.setAttribute("opacity", "10");
+      this.obj.append( pinkwall2 );
+
+      let pinkwall3 = document.createElement("a-box");
+      pinkwall3.setAttribute("color","pink");
+      pinkwall3.setAttribute("position","7.519 1.7 0");
+      pinkwall3.setAttribute("height","20.1");
+      pinkwall3.setAttribute("width","0.01");
+      pinkwall3.setAttribute("depth","15");
+      pinkwall3.setAttribute("static-body", " ");
+      pinkwall3.setAttribute("opacity", "10");
+      this.obj.append( pinkwall3 );
+
+      let pinkwall4 = document.createElement("a-box");
+      pinkwall4.setAttribute("color","pink");
+      pinkwall4.setAttribute("position","7.2 1.7 0");
+      pinkwall4.setAttribute("height","2.1");
+      pinkwall4.setAttribute("width","0.01");
+      pinkwall4.setAttribute("depth","15");
+      pinkwall4.setAttribute("static-body", " ");
+      pinkwall4.setAttribute("opacity", "10");
+      this.obj.append( pinkwall4 );
+
+      
   }
 
 }
