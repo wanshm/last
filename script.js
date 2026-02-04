@@ -1,4 +1,4 @@
-let camera, scene, attacks= [], hotbarinfo = ["Slash","Bullet","Spells"],hotbaritems=[], hotbarselection=0, book;
+let camera, scene, attacks= [], hotbarinfo = ["Slash","Bullet","Spells"],hotbaritems=[], hotbarselection=0, book, spells=[],activespells=[];
 window.addEventListener("DOMContentLoaded",function (){
     
     camera = document.querySelector("#camerarig")
@@ -9,18 +9,15 @@ window.addEventListener("DOMContentLoaded",function (){
     box.setAttribute("position","0 25.5 0");
     scene.append(box);
   
-    const met = new Meteor
-
-    met.addLaser()
+    // const met = new Meteor
+    // met.addLaser()
 
     // let building1 = new Building1(0.5, -0.43, 0.5);
     let building2 = new Building2(5,1,-5);
-    
-
-    console.log(camera)
 
     //create spellbook
     book = new Spellbook();
+    book.selection = 0;
 
     //create hotbar
     for(let i = 0; i < hotbarinfo.length; i++){
@@ -36,7 +33,6 @@ window.addEventListener("DOMContentLoaded",function (){
 
 //click listener
 window.addEventListener("click",function(e){
-    console.log(e);
     if(hotbarselection==0){
         const slash = new Slash();
         attacks.push(slash);
@@ -44,6 +40,14 @@ window.addEventListener("click",function(e){
     else if (hotbarselection == 1){
         const bullet = new Bullet();
         attacks.push(bullet);
+    } else if(hotbarselection == 2){
+    activespells.forEach((spell,i)=>{
+            switch(spell.type){
+                case "meteor":
+                    activespells[i].cast()
+                    console.log(activespells)
+                    break;
+            }})
     }
 })
 
@@ -56,25 +60,57 @@ window.addEventListener("wheel",(e)=>{
 //keyboard listener
 window.addEventListener("keydown",function(e){
 
-    console.log(e.key)
-
     //hotbar switch
     switch(e.key){
         case "1":
+            if(hotbarselection==0){
+                break;
+            }
             hotbaritems[0].select()
             hotbarselection=0;
             break;
         case "2":
+            if(hotbarselection==1){
+                break;
+            }
             hotbaritems[1].select()
             hotbarselection=1;
             break;
         case "3":
+            if(hotbarselection==2){
+                break;
+            }
+            
+            book.appear()
+            switch (book.selection){
+                case 0:
+                    //meteor
+                    met = new Meteor
+                    met.addLaser();
+                    attacks.push(met);
+                    activespells.push(met);
+                    break;
+        }
             hotbaritems[2].select()
             hotbarselection=2;
             break;
     }
-    //spellbook animation
-    hotbarselection == 2 ? book.appear() : book.disappear();
+
+    //on book select
+    // if(hotbarselection == 2){
+    //     book.appear()
+    // }
+
+    //on book deselect
+    if(hotbarselection!==2){
+        book.disappear()
+        activespells.forEach((spell,i)=>{
+            if(spell instanceof Meteor){
+                spell.removeLaser();
+                activespells.splice(i,1);
+            }
+        })
+    }
 
     //deselects other hotbar items
     hotbaritems.filter((item,i)=>{return i !== hotbarselection}).forEach((item)=>{item.deselect();})
@@ -118,7 +154,9 @@ function loop(){
                 attack.remove()
                 attacks.splice(i,1);
             }
-        } else if (attack instanceof Meteor){}
+        } else if (attack instanceof Meteor){
+            attack.fire();
+        }
 
 
     })

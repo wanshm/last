@@ -4,7 +4,12 @@ class Meteor{
     this.laserAngle = camera.children[0].object3D.rotation.x;
     this.laserP = {}
 
+    this.type = "meteor"
+    this.fired = false;
+
     this.laser.setAttribute("raycaster","showLine:true; lineColor:red")
+    this.laser.setAttribute("position","0 10 0")
+    
 
     this.obj = document.createElement("a-sphere");
     this.obj.setAttribute("radius",2)
@@ -23,15 +28,27 @@ class Meteor{
   }
 
   addLaser(){
-    camera.append(this.laser)
+    camera.children[0].append(this.laser)
+  }
+
+  removeLaser(){
+    if(this.laser.parentNode){
+      this.laser.parentNode.removeChild(this.laser)
+    }
+  }
+
+
+  cast(){
+    scene.append(this.obj);
+    this.fired = true;
   }
 
   fire(){
-    scene.append(this.obj);
+    if(this.fired){
     this.obj.object3D.position.x += this.dx;
     this.obj.object3D.position.y += this.dy;
     this.obj.object3D.position.z += this.dz; 
-
+  }
     //this.obj.object3D.rotation.y = this.theta - Math.PI/2;
   }
 
