@@ -1,5 +1,7 @@
-class Testing{
-    constructor(x,y,z){
+// Back up for building2.js 2/4/26
+
+class FloorBase{
+  constructor(x,y,z){
     this.obj = document.createElement("a-entity");
   
     let base = document.createElement("a-box");
@@ -9,21 +11,162 @@ class Testing{
     base.setAttribute("width","15");
     base.setAttribute("depth","15");
     this.obj.append( base );
-
-    let floor1window1 = document.createElement("a-box");
-    floor1window1.setAttribute("color","#000000");
-    floor1window1.setAttribute("opacity","1");
-    floor1window1.setAttribute("position","5.725 2.1 -7");
-    floor1window1.setAttribute("height","3.2");
-    floor1window1.setAttribute("width","2.7");
-    floor1window1.setAttribute("depth","0.15");
-    floor1window1.setAttribute("side","double");
-    floor1window1.setAttribute("class", "breakable");
-    floor1window1.setAttribute("static-body", " ");  
-    this.obj.append( floor1window1 );
     
     this.obj.setAttribute("position",{x:x, y:y, z:z});
     scene.append( this.obj )
   } 
+}
+
+class Wall1{
+    constructor(x,y,z){
+    this.obj = document.createElement("a-entity");
+  
+    let wall = document.createElement("a-box");
+    wall.setAttribute("color","#000000");
+    wall.setAttribute("position","-0.1 1.17 -6.75");
+    wall.setAttribute("height","1");
+    wall.setAttribute("width","0.3");
+    wall.setAttribute("depth","1.5");
+    wall.setAttribute("force-pushable", "");
+    wall.setAttribute("dynamic-body", " mass:60.1; shape: box; ");
+
+    this.obj.append( wall );
+
+    let wall2 = document.createElement("a-box");
+    wall2.setAttribute("color","#fcf700");
+    wall2.setAttribute("position","-0.1 1.17 -5.25");
+    wall2.setAttribute("height","1");
+    wall2.setAttribute("width","0.3");
+    wall2.setAttribute("depth","1.5");
+    wall2.setAttribute("force-pushable", "");
+    wall2.setAttribute("dynamic-body", " mass:60.1; shape: box; ");
+
+    this.obj.append( wall2 );
+    
+    this.obj.setAttribute("position",{x:x, y:y, z:z});
+    scene.append( this.obj )
+  }
+
+}
+
+class LongWall{
+  constructor(x,y,z){
+    this.obj = document.createElement("a-entity");
+
+    let wall1 = new Wall1(-7.25,0,0);
+    this.obj.append( wall1.obj );
+
+    let wall2 = new Wall1(-7.25,0,3);
+    this.obj.append( wall2.obj );
+
+    let wall3 = new Wall1(-7.25,0,6);
+    this.obj.append( wall3.obj );
+
+    let wall4 = new Wall1(-7.25,0,9);
+    this.obj.append( wall4.obj );
+
+    let wall5 = new Wall1(-7.25,0,12);
+    this.obj.append( wall5.obj );
+
+
+    this.obj.setAttribute("position",{x:x, y:y, z:z});
+    scene.append( this.obj )
+
+
+  }
+} 
+
+  class Building2WallsAndFloor{
+    constructor(x,y,z){
+      this.obj = document.createElement("a-entity");
+
+// Left walls
+      let longwall1 = new LongWall(0,-0.1,0);
+        this.obj.append( longwall1.obj );
+
+      let longwall3 = new LongWall(-14.69478,0.9,0);
+        longwall3.obj.setAttribute("rotation",{x:0, y:180, z:0});
+        this.obj.append( longwall3.obj );
+      
+      let longwall4 = new LongWall(0,1.9,0);
+        this.obj.append( longwall4.obj );
+// -------------------------------------------------------------------
+// Right walls
+      let longwall2 = new LongWall(0,-0.1,0);
+        longwall2.obj.setAttribute("rotation",{x:0, y:180, z:0});
+        this.obj.append( longwall2.obj );
+
+      let longwall5 = new LongWall(14.69478,0.9,0);
+        longwall5.obj.setAttribute("rotation",{x:0, y:0, z:0});
+        this.obj.append( longwall5.obj );
+
+      let longwall6 = new LongWall(0,1.9,0);
+        longwall6.obj.setAttribute("rotation",{x:0, y:180, z:0});
+        this.obj.append( longwall6.obj );
+// -------------------------------------------------------------------
+      let base2 = new FloorBase(0,3.1,0);
+        base2.obj.setAttribute("dynamic-body", " mass:100; shape: box; ");
+        this.obj.append( base2.obj );
+
+      this.obj.setAttribute("position",{x:x, y:y, z:z});
+      scene.append( this.obj )
+  }}
+
+  class Building2{
+    constructor(x,y,z){
+      this.obj = document.createElement("a-entity");
+
+      let base = new FloorBase(0,0,0);
+        base.obj.setAttribute("static-body", " ");
+        this.obj.append( base.obj );
+
+      let wallsandfloor = new Building2WallsAndFloor(0,0,0);
+        this.obj.append( wallsandfloor.obj );
+
+      this.obj.setAttribute("position",{x:x, y:y, z:z});
+      scene.append( this.obj )
+
+      // let pinkwall = document.createElement("a-box");
+      // pinkwall.setAttribute("color","pink");
+      // pinkwall.setAttribute("position","-7.519 1.7 0");
+      // pinkwall.setAttribute("height","20.1");
+      // pinkwall.setAttribute("width","0.01");
+      // pinkwall.setAttribute("depth","15");
+      // pinkwall.setAttribute("static-body", " ");
+      // pinkwall.setAttribute("opacity", "10");
+      // this.obj.append( pinkwall );
+
+      // let pinkwall2 = document.createElement("a-box");
+      // pinkwall2.setAttribute("color","pink");
+      // pinkwall2.setAttribute("position","-7.2 1.7 0");
+      // pinkwall2.setAttribute("height","2.1");
+      // pinkwall2.setAttribute("width","0.01");
+      // pinkwall2.setAttribute("depth","15");
+      // pinkwall2.setAttribute("static-body", " ");
+      // pinkwall2.setAttribute("opacity", "10");
+      // this.obj.append( pinkwall2 );
+
+      // let pinkwall3 = document.createElement("a-box");
+      // pinkwall3.setAttribute("color","pink");
+      // pinkwall3.setAttribute("position","7.519 1.7 0");
+      // pinkwall3.setAttribute("height","20.1");
+      // pinkwall3.setAttribute("width","0.01");
+      // pinkwall3.setAttribute("depth","15");
+      // pinkwall3.setAttribute("static-body", " ");
+      // pinkwall3.setAttribute("opacity", "10");
+      // this.obj.append( pinkwall3 );
+
+      // let pinkwall4 = document.createElement("a-box");
+      // pinkwall4.setAttribute("color","pink");
+      // pinkwall4.setAttribute("position","7.2 1.7 0");
+      // pinkwall4.setAttribute("height","2.1");
+      // pinkwall4.setAttribute("width","0.01");
+      // pinkwall4.setAttribute("depth","15");
+      // pinkwall4.setAttribute("static-body", " ");
+      // pinkwall4.setAttribute("opacity", "10");
+      // this.obj.append( pinkwall4 );
+
+      
+  }
 
 }
