@@ -1,4 +1,6 @@
 let camera, scene, attacks= [], hotbarinfo = ["Slash","Bullet","Spells"],hotbaritems=[], hotbarselection=0, book, spells=[],activespells=[];
+
+//initialization
 window.addEventListener("DOMContentLoaded",function (){
     
     camera = document.querySelector("#camerarig")
@@ -45,7 +47,6 @@ window.addEventListener("click",function(e){
             switch(spell.type){
                 case "meteor":
                     activespells[i].cast()
-                    console.log(activespells)
                     break;
             }})
     }
@@ -53,8 +54,48 @@ window.addEventListener("click",function(e){
 
 //wheel listener
 window.addEventListener("wheel",(e)=>{
-    console.log(e)
-    
+    activespells.forEach((spell)=>{
+
+        //meteor laser stuff
+
+        if(spell instanceof Meteor){
+            rot = spell.laser.object3D.rotation;
+        
+            //turn down
+            if(e.deltaY > 0 && rot.x < -.1){
+            if(e.shiftKey){
+                spell.laser.object3D.rotation.set(
+                    rot.x+(Math.PI/180),
+                    rot.y,
+                    rot.z
+                )
+            } else{
+                spell.laser.object3D.rotation.set(
+                    rot.x+(5*Math.PI/180),
+                    rot.y,
+                    rot.z
+                )
+            }
+            }
+
+            //turn up
+            if(e.deltaY < 0  && rot.x > -1){
+            if(e.shiftKey){
+                spell.laser.object3D.rotation.set(
+                    rot.x-(Math.PI/180),
+                    rot.y,
+                    rot.z
+                )
+            } else{
+                spell.laser.object3D.rotation.set(
+                    rot.x-(5*Math.PI/180),
+                    rot.y,
+                    rot.z
+                )
+            }
+            }
+        }
+    })
   })
 
 //keyboard listener
@@ -87,7 +128,6 @@ window.addEventListener("keydown",function(e){
                     //meteor
                     met = new Meteor
                     met.addLaser();
-                    attacks.push(met);
                     activespells.push(met);
                     break;
         }
@@ -96,11 +136,6 @@ window.addEventListener("keydown",function(e){
             break;
     }
 
-    //on book select
-    // if(hotbarselection == 2){
-    //     book.appear()
-    // }
-
     //on book deselect
     if(hotbarselection!==2){
         book.disappear()
@@ -108,6 +143,7 @@ window.addEventListener("keydown",function(e){
             if(spell instanceof Meteor){
                 spell.removeLaser();
                 activespells.splice(i,1);
+                !spell.fired && attacks.splice(i,1);
             }
         })
     }
@@ -140,6 +176,15 @@ function loop(){
         item.followCam()
     })
 
+    //spell animations
+    activespells.forEach((spell)=>{
+        if(spell instanceof Meteor){
+            spell.followCam();
+            spell.fire()
+            console.log(spell);
+        }
+    })
+
     //attack animations
     attacks.forEach((attack,i)=>{
         if(attack instanceof Slash){
@@ -154,11 +199,7 @@ function loop(){
                 attack.remove()
                 attacks.splice(i,1);
             }
-        } else if (attack instanceof Meteor){
-            attack.fire();
         }
-
-
     })
 
 

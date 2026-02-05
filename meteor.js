@@ -1,8 +1,6 @@
 class Meteor{
   constructor(){
     this.laser = document.createElement("a-cursor")
-    this.laserAngle = camera.children[0].object3D.rotation.x;
-    this.laserP = {}
 
     this.type = "meteor"
     this.fired = false;
@@ -17,8 +15,8 @@ class Meteor{
     this.obj.setAttribute("position",{x:pos.x,y:pos.y+10,z:pos.z});
     
     
-    this.theta = camera.object3D.rotation.y + Math.PI;
-    this.phi = THREE.MathUtils.degToRad(this.laserAngle.x) ; // do something 
+    this.theta = camera.children[0].object3D.rotation.y;
+    this.phi = THREE.MathUtils.degToRad(this.laser.object3D.rotation.x) ; // do something 
     let v = 2.1;
     let v_xz = v * Math.cos(this.phi);
     this.dz = v_xz * Math.cos(this.theta);
@@ -27,8 +25,12 @@ class Meteor{
   
   }
 
+  followCam(){
+    this.laser.object3D.rotation.y = camera.children[0].object3D.rotation.y
+  }
+
   addLaser(){
-    camera.children[0].append(this.laser)
+    camera.append(this.laser)
   }
 
   removeLaser(){
@@ -45,9 +47,9 @@ class Meteor{
 
   fire(){
     if(this.fired){
-    this.obj.object3D.position.x += this.dx;
-    this.obj.object3D.position.y += this.dy;
-    this.obj.object3D.position.z += this.dz; 
+      this.obj.object3D.position.x += this.dx;
+      this.obj.object3D.position.y += this.dy;
+      this.obj.object3D.position.z += this.dz; 
   }
     //this.obj.object3D.rotation.y = this.theta - Math.PI/2;
   }
