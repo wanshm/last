@@ -116,6 +116,25 @@ class BackWall{
 
 }
 
+class FrontWall{
+  constructor(x,y,z){
+    this.obj = document.createElement("a-entity");
+
+    let wall1 = new Wall2(0,0,0);
+    this.obj.append( wall1.obj );
+
+    let wall2 = new Wall2(-3,0,0);
+    this.obj.append( wall2.obj );
+
+    this.obj.setAttribute("position",{x:x, y:y, z:z});
+    scene.append( this.obj )
+
+  
+    
+  }
+
+}
+
 class LongWall{
   constructor(x,y,z){
     this.obj = document.createElement("a-entity");
@@ -182,6 +201,48 @@ class LongWall{
       let backwall3 = new BackWall(0,2.29,-7.4);
         this.obj.append( backwall3.obj );
 
+// Front Wall---------------------------------------------------------
+      let frontwall = new FrontWall(0,0.29,7.3);
+        this.obj.append( frontwall.obj );
+
+      let frontwall3 = new FrontWall(0,1.29,7.3);
+        this.obj.append( frontwall3.obj );
+      
+      let frontwall2 = new FrontWall(0,2.29,7.3);
+        this.obj.append( frontwall2.obj );
+
+      let frontwall4 = new FrontWall(-8.5,0.29,7.3);
+        this.obj.append( frontwall4.obj );
+      
+      let frontwall5 = new FrontWall(-8.5,1.29,7.3);
+        this.obj.append( frontwall5.obj );
+
+      let frontwall6 = new FrontWall(-8.5,2.29,7.3);
+        this.obj.append( frontwall6.obj );
+
+      let wall5 = document.createElement("a-box");
+        wall5.setAttribute("color","#00ff00");
+        wall5.setAttribute("position","-0.0 1.56 7.26");
+        wall5.setAttribute("rotation",{x:0, y:90, z:0});
+        wall5.setAttribute("height","3");
+        wall5.setAttribute("width","0.3");
+        wall5.setAttribute("depth","2.4");
+        wall5.setAttribute("dynamic-body", "");
+        wall5.setAttribute("constraint","type:hinge; target: #DoorHinge; axis: 0 1 0;targetAxis: 0 1 0; pivot: -1.125 0 0;targetPivot: 0.125 0 0.125;");
+
+        this.obj.append( wall5 );
+
+      let wall6 = document.createElement("a-box");
+        wall6.setAttribute("color","#ff00aa");
+        wall6.setAttribute("position","1.2.0 1.56 7.26");
+        wall6.setAttribute("rotation",{x:0, y:90, z:0});
+        wall6.setAttribute("height","3");
+        wall6.setAttribute("width","0.3");
+        wall6.setAttribute("depth","0.02");
+        wall6.setAttribute("static-body", "");
+        wall6.setAttribute("id","DoorHinge");
+        this.obj.append( wall6 );
+
 // -------------------------------------------------------------------
       let base2 = new FloorBase(0,3.1,0);
         base2.obj.setAttribute("dynamic-body", " mass:100; shape: box; ");
@@ -246,6 +307,10 @@ class LongWall{
       this.obj.append( pinkwall4 );
 
       
+
+      
   }
+
+  
 
 }
