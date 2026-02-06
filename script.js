@@ -1,4 +1,4 @@
-let camera, scene, attacks= [], hotbarinfo = ["Slash","Bullet","Spells"],hotbaritems=[], hotbarselection=0, book, spells=[],activespells=[];
+let camera, scene, attacks= [], hotbarinfo = ["Slash","Bullet","Spells"],hotbaritems=[], hotbarselection=0, book, spells=[], activespells=[];
 
 //initialization
 window.addEventListener("DOMContentLoaded",function (){
@@ -129,6 +129,7 @@ window.addEventListener("keydown",function(e){
                     met = new Meteor
                     met.addLaser();
                     activespells.push(met);
+                    attacks.push(met)
                     break;
         }
             hotbaritems[2].select()
@@ -142,8 +143,7 @@ window.addEventListener("keydown",function(e){
         activespells.forEach((spell,i)=>{
             if(spell instanceof Meteor){
                 spell.removeLaser();
-                activespells.splice(i,1);
-                !spell.fired && attacks.splice(i,1);
+                !spell.fired && activespells.splice(i,1);
             }
         })
     }
@@ -177,11 +177,10 @@ function loop(){
     })
 
     //spell animations
-    activespells.forEach((spell)=>{
+    activespells.forEach((spell,i)=>{
         if(spell instanceof Meteor){
             spell.followCam();
-            spell.fire()
-            console.log(spell);
+            // spell.fire()
         }
     })
 
@@ -199,6 +198,8 @@ function loop(){
                 attack.remove()
                 attacks.splice(i,1);
             }
+        } else if (attack instanceof Meteor){
+            attack.fire();
         }
     })
 
