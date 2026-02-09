@@ -220,32 +220,34 @@ class LongWall{
       let frontwall6 = new FrontWall(-8.5,2.29,7.3);
         this.obj.append( frontwall6.obj );
 
+     let wall6 = document.createElement("a-box");
+     wall6.setAttribute("id","DoorHinge");
+      wall6.setAttribute("position","1.2 1.56 7.26"); // edge of CLOSED door
+      wall6.setAttribute("height","3");
+      wall6.setAttribute("width","0.001");
+      wall6.setAttribute("depth","0.001");
+      wall6.setAttribute("static-body","");
+      wall6.setAttribute("visible","true");
+      this.obj.append(wall6);
+
       let wall5 = document.createElement("a-box");
-        wall5.setAttribute("color","#00ff00");
-        wall5.setAttribute("position","-0.0 1.56 7.26");
-        wall5.setAttribute("rotation",{x:0, y:90, z:0});
-        wall5.setAttribute("height","3");
-        wall5.setAttribute("width","0.3");
-        wall5.setAttribute("depth","2.4");
-        wall5.setAttribute("dynamic-body", "");
-        wall5.setAttribute("constraint","type:hinge; target: #DoorHinge; axis: 0 1 0;targetAxis: 0 1 0; pivot: -1.125 0 0;targetPivot: 0.125 0 0.125;");
-
-        this.obj.append( wall5 );
-
-      let wall6 = document.createElement("a-box");
-        wall6.setAttribute("color","#ff00aa");
-        wall6.setAttribute("position","1.2.0 1.56 7.26");
-        wall6.setAttribute("rotation",{x:0, y:90, z:0});
-        wall6.setAttribute("height","3");
-        wall6.setAttribute("width","0.3");
-        wall6.setAttribute("depth","0.02");
-        wall6.setAttribute("static-body", "");
-        wall6.setAttribute("id","DoorHinge");
-        this.obj.append( wall6 );
+      wall5.setAttribute("color","#00ff00");
+      wall5.setAttribute("position","0 1.56 7.26"); // CLOSED position
+      wall5.setAttribute("rotation",{x:0, y:90, z:0});
+      wall5.setAttribute("height","3");
+      wall5.setAttribute("width","0.3");
+      wall5.setAttribute("depth","2.4");
+      wall5.setAttribute("dynamic-body","mass: 10");
+      // wall5.setAttribute(
+      //   "constraint",
+      //   "type: hinge; target: #DoorHinge; axis: 0 1 0; targetAxis: 0 1 0; pivot: 1.2 0 0; targetPivot: 0 0 0"
+      // );
+      this.obj.append(wall5);
 
 // -------------------------------------------------------------------
       let base2 = new FloorBase(0,3.1,0);
         base2.obj.setAttribute("dynamic-body", " mass:100; shape: box; ");
+        base2.obj.setAttribute("scale", "1.001 1.001 1.001");
         this.obj.append( base2.obj );
 
       this.obj.setAttribute("position",{x:x, y:y, z:z});
@@ -263,6 +265,12 @@ class LongWall{
       let wallsandfloor = new Building2WallsAndFloor(0,0,0);
         this.obj.append( wallsandfloor.obj );
 
+      // let wallsandfloor2 = new Building2WallsAndFloor(0,4,0);
+      //   // wallsandfloor2.obj.setAttribute("scale","0.99 0.99 0.99");
+      //   this.obj.append( wallsandfloor2.obj );
+      
+     
+
       this.obj.setAttribute("position",{x:x, y:y, z:z});
       scene.append( this.obj )
 
@@ -273,7 +281,7 @@ class LongWall{
       pinkwall.setAttribute("width","0.01");
       pinkwall.setAttribute("depth","15");
       pinkwall.setAttribute("static-body", " ");
-      pinkwall.setAttribute("opacity", "10");
+      pinkwall.setAttribute("opacity", "1");
       this.obj.append( pinkwall );
 
       let pinkwall2 = document.createElement("a-box");
@@ -283,7 +291,7 @@ class LongWall{
       pinkwall2.setAttribute("width","0.01");
       pinkwall2.setAttribute("depth","15");
       pinkwall2.setAttribute("static-body", " ");
-      pinkwall2.setAttribute("opacity", "10");
+      pinkwall2.setAttribute("opacity", "1");
       this.obj.append( pinkwall2 );
 
       let pinkwall3 = document.createElement("a-box");
@@ -293,7 +301,7 @@ class LongWall{
       pinkwall3.setAttribute("width","0.01");
       pinkwall3.setAttribute("depth","15");
       pinkwall3.setAttribute("static-body", " ");
-      pinkwall3.setAttribute("opacity", "10");
+      pinkwall3.setAttribute("opacity", "1");
       this.obj.append( pinkwall3 );
 
       let pinkwall4 = document.createElement("a-box");
@@ -303,8 +311,107 @@ class LongWall{
       pinkwall4.setAttribute("width","0.01");
       pinkwall4.setAttribute("depth","15");
       pinkwall4.setAttribute("static-body", " ");
-      pinkwall4.setAttribute("opacity", "10");
+      pinkwall4.setAttribute("opacity", "1");
       this.obj.append( pinkwall4 );
+
+      let pinkwall5 = document.createElement("a-box");
+      pinkwall5.setAttribute("color","pink");
+      pinkwall5.setAttribute("position","0.2 1.7 7.26");
+      pinkwall5.setAttribute("rotation",{x:0, y:90, z:0});
+      pinkwall5.setAttribute("height","2.1");
+      pinkwall5.setAttribute("width","0.01");
+      pinkwall5.setAttribute("depth","13");
+      pinkwall5.setAttribute("static-body", " ");
+      pinkwall5.setAttribute("opacity", "1");
+      this.obj.append( pinkwall5 );
+
+      let pinkwall6 = document.createElement("a-box");
+      pinkwall6.setAttribute("color","pink");
+      pinkwall6.setAttribute("position","0.2 1.7 -7.22");
+      pinkwall6.setAttribute("rotation",{x:0, y:90, z:0});
+      pinkwall6.setAttribute("height","2.1");
+      pinkwall6.setAttribute("width","0.01");
+      pinkwall6.setAttribute("depth","13");
+      pinkwall6.setAttribute("static-body", " ");
+      pinkwall6.setAttribute("opacity", "1");
+      this.obj.append( pinkwall6 );
+
+      let pinkwall7 = document.createElement("a-box");
+      pinkwall7.setAttribute("color","pink");
+      pinkwall7.setAttribute("position","0.2 1.7 7.58");
+      pinkwall7.setAttribute("rotation",{x:0, y:90, z:0});
+      pinkwall7.setAttribute("height","20.1");
+      pinkwall7.setAttribute("width","0.01");
+      pinkwall7.setAttribute("depth","13");
+      pinkwall7.setAttribute("static-body", " ");
+      pinkwall7.setAttribute("opacity", "1");
+      this.obj.append( pinkwall7 );
+
+      let pinkwall8 = document.createElement("a-box");
+      pinkwall8.setAttribute("color","pink");
+      pinkwall8.setAttribute("position","0.2 1.7 -7.58");
+      pinkwall8.setAttribute("rotation",{x:0, y:90, z:0});
+      pinkwall8.setAttribute("height","20.1");
+      pinkwall8.setAttribute("width","0.01");
+      pinkwall8.setAttribute("depth","13");
+      pinkwall8.setAttribute("static-body", " ");
+      pinkwall8.setAttribute("opacity", "1");
+      this.obj.append( pinkwall8 );
+
+      let pinkwall9 = document.createElement("a-box");
+      pinkwall9.setAttribute("color","pink");
+      pinkwall9.setAttribute("position","-7.2 4.7 0");
+      pinkwall9.setAttribute("height","2.2");
+      pinkwall9.setAttribute("width","0.01");
+      pinkwall9.setAttribute("depth","14");
+      pinkwall9.setAttribute("static-body", " ");
+      pinkwall9.setAttribute("opacity", "1");
+      this.obj.append( pinkwall9 );
+
+      let pinkwall10 = document.createElement("a-box");
+      pinkwall10.setAttribute("color","pink");
+      pinkwall10.setAttribute("position","7.2 4.7 0");
+      pinkwall10.setAttribute("height","2.2");
+      pinkwall10.setAttribute("width","0.01");
+      pinkwall10.setAttribute("depth","14");
+      pinkwall10.setAttribute("static-body", " ");
+      pinkwall10.setAttribute("opacity", "1");
+      this.obj.append( pinkwall10 );
+
+      let pinkwall11 = document.createElement("a-box");
+      pinkwall11.setAttribute("color","pink");
+      pinkwall11.setAttribute("position","0.2 4.7 -7.22");
+      pinkwall11.setAttribute("rotation",{x:0, y:90, z:0});
+      pinkwall11.setAttribute("height","2.1");
+      pinkwall11.setAttribute("width","0.01");
+      pinkwall11.setAttribute("depth","13");
+      pinkwall11.setAttribute("static-body", " ");
+      pinkwall11.setAttribute("opacity", "1");
+      this.obj.append( pinkwall11 );
+
+      let pinkwall12 = document.createElement("a-box");
+      pinkwall12.setAttribute("color","pink");
+      pinkwall12.setAttribute("position","0.2 4.7 7.22");
+      pinkwall12.setAttribute("rotation",{x:0, y:90, z:0});
+      pinkwall12.setAttribute("height","2.1");
+      pinkwall12.setAttribute("width","0.01");
+      pinkwall12.setAttribute("depth","13");
+      pinkwall12.setAttribute("static-body", " ");
+      pinkwall12.setAttribute("opacity", "1");
+      this.obj.append( pinkwall12 );
+
+    const pinkWalls = [pinkwall, pinkwall2, pinkwall3, pinkwall4, pinkwall5, pinkwall6, 
+                        pinkwall7, pinkwall8, pinkwall9, pinkwall10, pinkwall11, pinkwall12];
+
+    setTimeout(() => {
+      pinkWalls.forEach(wall => {
+        wall.setAttribute("opacity", "0");
+      });
+    }, 0);
+
+    setTimeout(() => {
+      pinkWalls.forEach(wall => wall.remove());
+    }, 2000);
 
       
 
