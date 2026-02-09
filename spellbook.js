@@ -58,6 +58,20 @@ class Spellbook{
         this.appearing=false;
     }
 
+    animateAppear(){
+        this.opacity+= 0.1;
+        this.center.children[0].setAttribute("opacity",book.opacity);
+        this.center.children[1].setAttribute("opacity",book.opacity);
+        this.appearing = book.opacity > 1 ? false:true;
+    }
+
+    animateDisappear(){
+        this.opacity-= 0.1;
+        this.center.children[0].setAttribute("opacity",book.opacity);
+        this.center.children[1].setAttribute("opacity",book.opacity);
+        this.disappearing = book.opacity < 0 ? false:true;
+        
+    }
     remove(){
         if(this.center.parentNode)
         this.center.parentNode.removeChild(this.center);

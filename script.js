@@ -1,4 +1,4 @@
-let camera, scene, attacks= [], hotbarinfo = ["Slash","Bullet","Spells"],hotbaritems=[], hotbarselection=0, book, spells=[], activespells=[];
+let camera, scene, attacks= [], hotbarinfo = ["Slash","Bullet","Spells"],hotbaritems=[], hotbarselection=0, book, spells=[], activespell;
 
 //initialization
 window.addEventListener("DOMContentLoaded",function (){
@@ -43,22 +43,24 @@ window.addEventListener("click",function(e){
         const bullet = new Bullet();
         attacks.push(bullet);
     } else if(hotbarselection == 2){
-    activespells.forEach((spell,i)=>{
-            switch(spell.type){
-                case "meteor":
-                    activespells[i].cast()
-                    break;
-            }})
+    switch(book.selection){
+        case 0:
+            // console.log(spells)
+            const las = spells.find((spell)=>{return spell instanceof Laser})
+            const met = new Meteor(las.laser.object3D.rotation.x);
+            attacks.push(met);
+            break;
+    }
     }
 })
 
 //wheel listener
 window.addEventListener("wheel",(e)=>{
-    activespells.forEach((spell)=>{
+    spells.forEach((spell)=>{
 
         //meteor laser stuff
 
-        if(spell instanceof Meteor){
+        if(spell instanceof Laser){
             rot = spell.laser.object3D.rotation;
         
             //turn down
@@ -106,32 +108,39 @@ window.addEventListener("keydown",function(e){
         case "1":
             if(hotbarselection==0){
                 break;
+                //prevent reselection
             }
+            
+            //hotbar selection update
             hotbaritems[0].select()
             hotbarselection=0;
             break;
         case "2":
             if(hotbarselection==1){
                 break;
+                //prevent reselection
             }
+
+            //hotbar update
             hotbaritems[1].select()
             hotbarselection=1;
             break;
         case "3":
             if(hotbarselection==2){
                 break;
+                //prevent reselection
             }
             
             book.appear()
             switch (book.selection){
                 case 0:
                     //meteor
-                    met = new Meteor
-                    met.addLaser();
-                    activespells.push(met);
-                    attacks.push(met)
+                    las = new Laser()
+                    spells.push(las);
                     break;
-        }
+            }
+
+            //hotbar update
             hotbaritems[2].select()
             hotbarselection=2;
             break;
@@ -140,10 +149,10 @@ window.addEventListener("keydown",function(e){
     //on book deselect
     if(hotbarselection!==2){
         book.disappear()
-        activespells.forEach((spell,i)=>{
-            if(spell instanceof Meteor){
+        spells.forEach((spell,i)=>{
+            if(spell instanceof Laser){
                 spell.removeLaser();
-                !spell.fired && activespells.splice(i,1);
+                spells.splice(i,1);
             }
         })
     }
@@ -159,16 +168,10 @@ function loop(){
 
     //spellbook animation
     if(book.appearing){
-        book.opacity+= 0.1;
-        book.center.children[0].setAttribute("opacity",book.opacity);
-        book.center.children[1].setAttribute("opacity",book.opacity);
-        book.appearing = book.opacity > 1 ? false:true;
+        book.animateAppear()
     }
     if (book.disappearing){
-        book.opacity-= 0.1;
-        book.center.children[0].setAttribute("opacity",book.opacity);
-        book.center.children[1].setAttribute("opacity",book.opacity);
-        book.disappearing = book.opacity < 0 ? false:true;
+        book.animateDisappear();
     }
 
     //hotbar tracking
@@ -177,8 +180,8 @@ function loop(){
     })
 
     //spell animations
-    activespells.forEach((spell,i)=>{
-        if(spell instanceof Meteor){
+    spells.forEach((spell,i)=>{
+        if(spell instanceof Laser){
             spell.followCam();
             // spell.fire()
         }
@@ -200,6 +203,14 @@ function loop(){
             }
         } else if (attack instanceof Meteor){
             attack.fire();
+
+            if(attack.obj.object3D.position.y < 0){
+                attack.explode();
+                if(attack.exprad>50){
+                    attack.remove();
+                    attacks.splice(i,1);
+                }
+            }
         }
     })
 
