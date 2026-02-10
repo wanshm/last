@@ -9,8 +9,10 @@ class Meteor{
 
 
     this.obj.setAttribute("radius",4)
-    this.obj.setAttribute("position",{x:camera.object3D.position.x,y:camera.object3D.position.y+10,z:camera.object3D.position.z});
+    this.obj.setAttribute("position",{x:camera.object3D.position.x,y:camera.object3D.position.y+30,z:camera.object3D.position.z});
     
+    this.obj.setAttribute("dynamic-body", " mass:0; shape: sphere; ");
+    this.explosion.setAttribute("dynamic-body", " mass:0; shape: sphere; ");
     
     this.exprad = 1;
     this.explosion.setAttribute("radius-tubular","1");
@@ -33,7 +35,7 @@ class Meteor{
   explode(){
     this.dx=0; this.dy=0; this.dz=0;
     this.explosion.setAttribute("radius",this.exprad);
-    this.exprad+=.5;
+    this.exprad+=1;
 
   }
 
@@ -66,7 +68,7 @@ class Laser{
     this.laser = document.createElement("a-cursor")
 
     this.laser.setAttribute("raycaster","showLine:true; lineColor:red")
-    this.laser.setAttribute("position","0 10 0")
+    this.laser.setAttribute("position","0 30 0")
     this.laser.setAttribute("rotation","-10 0 0")
     
     camera.append(this.laser)
