@@ -237,7 +237,7 @@ class LongWall{
       wall5.setAttribute("height","3");
       wall5.setAttribute("width","0.3");
       wall5.setAttribute("depth","2.4");
-      wall5.setAttribute("dynamic-body","mass: 10");
+      // wall5.setAttribute("dynamic-body","mass: 10");
       // wall5.setAttribute(
       //   "constraint",
       //   "type: hinge; target: #DoorHinge; axis: 0 1 0; targetAxis: 0 1 0; pivot: 1.2 0 0; targetPivot: 0 0 0"

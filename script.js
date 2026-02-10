@@ -10,8 +10,9 @@ window.addEventListener("DOMContentLoaded",function (){
     scene.append(box);
   
     // let building1 = new Building1(0.5, -0.43, 0.5);
-    let building2 = new Building2(5,1,-5);
-    // building2.obj.setAttribute("rotation",{x:0, y:180, z:0});
+    // let building2 = new Building2(5,1,-5);
+    let building3 = new Building3(5,1,-5);
+    
 
     
 
