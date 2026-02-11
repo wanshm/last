@@ -41,7 +41,7 @@ class Spellbook{
     followCam(){
         this.center.object3D.rotation.set(
             - Math.PI/12,
-            camera.children[0].object3D.rotation.y + Math.PI/5,
+            camera.children[0].object3D.rotation.y + Math.PI/4,
             0
         );
     }

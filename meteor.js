@@ -6,6 +6,26 @@ class Meteor{
 
     this.obj = document.createElement("a-sphere");
     this.explosion = document.createElement("a-torus");
+    const ehb1 = document.createElement("a-box");
+    const ehb2 = document.createElement("a-box");
+    const ehb3 = document.createElement("a-box");
+    const ehb4 = document.createElement("a-box");
+    const ehb5 = document.createElement("a-box");
+    const ehb6 = document.createElement("a-box");
+    const ehb7 = document.createElement("a-box");
+    const ehb8 = document.createElement("a-box");
+
+    this.obj.append(ehb1);
+    this.obj.append(ehb2);
+    this.obj.append(ehb3);
+    this.obj.append(ehb4);
+    this.obj.append(ehb5);
+    this.obj.append(ehb6);
+    this.obj.append(ehb7);
+    this.obj.append(ehb8);
+
+    ehb1.setAttribute("scale", "16 4 16");
+
 
 
     this.obj.setAttribute("radius",4)
@@ -14,6 +34,9 @@ class Meteor{
     this.obj.setAttribute("dynamic-body", " mass:0; shape: sphere; ");
     this.explosion.setAttribute("dynamic-body", " mass:0; shape: sphere; ");
     
+
+
+
     this.exprad = 1;
     this.explosion.setAttribute("radius-tubular","1");
     this.explosion.setAttribute("rotation","90 0 0");
@@ -26,7 +49,6 @@ class Meteor{
     this.dx = v_xz * Math.sin(this.theta);
     this.dy = v * Math.sin(this.phi);
 
-
     
     this.obj.append(this.explosion)
     scene.append(this.obj);
@@ -37,6 +59,13 @@ class Meteor{
     this.explosion.setAttribute("radius",this.exprad);
     this.exprad+=1;
 
+    
+    v_xz * Math.cos(this.theta);
+    v_xz * Math.sin(this.theta);
+
+    this.obj.children[0].object3D.position.x += v_xz * Math.cos(this.theta);
+    this.obj.children[0].object3D.position.z += v_xz * Math.sin(this.theta);
+    console.log(this.obj.children[0].object3D)
   }
 
   fire(){
@@ -49,17 +78,6 @@ class Meteor{
     if(this.obj.parentNode)
     this.obj.parentNode.removeChild(this.obj);
   }
-  
-  // cast(){
-  //   console.log("casted")
-  //   this.phi = this.laser.object3D.rotation.x;
-  //   let v = 2.1;
-  //   let v_xz = v * Math.cos(this.phi);
-  //   this.dz = v_xz * Math.cos(this.theta);
-  //   this.dx = v_xz * Math.sin(this.theta);
-  //   this.dy = v * Math.sin(this.phi);
-  //   this.fired = true;
-  // }
 }
 
 class Laser{
