@@ -52,4 +52,10 @@ class Building1{
     this.obj.setAttribute("position",{x:x, y:y, z:z});
     scene.append( this.obj )
     }
+
+    ChangeDynamic(){
+    if(this.shot){
+      this.obj.children[0].setAttribute("dynamic-body", " mass:100; shape: box; ");
+    }
+  }
 }
