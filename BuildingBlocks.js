@@ -26,7 +26,7 @@ class Wall1{
     wall.setAttribute("width","0.3");
     wall.setAttribute("depth","1.5");
     wall.setAttribute("force-pushable", "");
-    wall.setAttribute("dynamic-body", " mass:60.1; shape: box; ");
+    wall.setAttribute("static-body", "");
 
     this.obj.append( wall );
 
@@ -37,7 +37,7 @@ class Wall1{
     wall2.setAttribute("width","0.3");
     wall2.setAttribute("depth","1.5");
     wall2.setAttribute("force-pushable", "");
-    wall2.setAttribute("dynamic-body", " mass:60.1; shape: box; ");
+    wall2.setAttribute("static-body", " ");
 
     this.obj.append( wall2 );
     
@@ -46,3 +46,30 @@ class Wall1{
   }
 
 }
+
+class LongWall{
+  constructor(x,y,z){
+    this.obj = document.createElement("a-entity");
+
+    let wall1 = new Wall1(-7.25,0,0);
+    this.obj.append( wall1.obj );
+
+    let wall2 = new Wall1(-7.25,0,3);
+    this.obj.append( wall2.obj );
+
+    let wall3 = new Wall1(-7.25,0,6);
+    this.obj.append( wall3.obj );
+
+    let wall4 = new Wall1(-7.25,0,9);
+    this.obj.append( wall4.obj );
+
+    let wall5 = new Wall1(-7.25,0,12);
+    this.obj.append( wall5.obj );
+
+
+    this.obj.setAttribute("position",{x:x, y:y, z:z});
+    scene.append( this.obj )
+
+
+  }
+} 
