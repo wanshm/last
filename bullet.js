@@ -53,12 +53,28 @@ class Bullet{
   }
 
 
-  fire(){
+  // fire(){
 
-    this.obj.object3D.position.x += this.dx;
-    this.obj.object3D.position.y += this.dy;
-    this.obj.object3D.position.z += this.dz; 
-  }
+  //   this.obj.object3D.position.x += this.dx;
+  //   this.obj.object3D.position.y += this.dy;
+  //   this.obj.object3D.position.z += this.dz; 
+  // }
+
+  fire() {
+  this.obj.object3D.position.x += this.dx;
+  this.obj.object3D.position.y += this.dy;
+  this.obj.object3D.position.z += this.dz;
+
+  let walls = document.querySelectorAll('.wall');
+
+  walls.forEach(wall => {
+    let dist = distance(this.obj, wall);  
+
+    if (dist < 1) {
+      wall.setDynamic();  
+    }
+  });
+}
 
   remove(){
     if(this.obj.parentNode)

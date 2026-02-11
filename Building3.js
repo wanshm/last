@@ -26,8 +26,8 @@ class Wall1S {
   }
 
   setDynamic() {
-    this.obj.setAttribute("static-body", null); // Remove static-body
-    this.obj.setAttribute("dynamic-body", ""); // Make it dynamic
+    this.obj.setAttribute("static-body", null); 
+    this.obj.setAttribute("dynamic-body", ""); 
     console.log("Wall became dynamic!");
   }
 }
@@ -36,7 +36,6 @@ class LongWallS {
   constructor(x, y, z) {
     this.obj = document.createElement("a-entity");
 
-    // Create multiple walls
     let wall1 = new Wall1S(-7.25, 0, 0);
     this.obj.append(wall1.obj);
 
@@ -100,35 +99,28 @@ class Building3 {
   constructor(x, y, z) {
     this.obj = document.createElement("a-entity");
 
-    // Create base for the building
     let base = new FloorBase(0, 0, 0);
     base.obj.setAttribute("static-body", " "); // Make the base static
     this.obj.append(base.obj);
 
-    // Add walls and floor
     let wallsandfloor = new Building2WallsAndFloorS(0, 0, 0);
     this.obj.append(wallsandfloor.obj);
 
     this.obj.setAttribute("position", { x: x, y: y, z: z });
     scene.append(this.obj);
 
-    // Assuming the bullet is created and appended to the scene, make sure it has an id like "bullet"
-    this.bullet = document.querySelector('#bullet'); // Access bullet object from the DOM
+    this.bullet = document.querySelector('#bullet');
   }
 
   update() {
-    // Continuously check the distance between the bullet and walls
-    requestAnimationFrame(() => this.update()); // Keep calling update continuously
-
-    let walls = this.obj.querySelectorAll('a-entity'); // Get all walls in the building
+    requestAnimationFrame(() => this.update()); 
+    let walls = this.obj.querySelectorAll('a-entity'); 
 
     walls.forEach(wall => {
-      // Check the distance between the bullet and the wall
       let dist = distance(this.bullet, wall);
 
-      // If the distance is less than 1 unit, make the wall dynamic
       if (dist < 1) {
-        wall.setDynamic(); // Switch to dynamic-body (movable)
+        wall.setDynamic(); 
       }
     });
   }
