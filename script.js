@@ -9,9 +9,8 @@ window.addEventListener("DOMContentLoaded",function (){
     box.setAttribute("position","0 25.5 0");
     scene.append(box);
   
-    // let building1 = new Building1(0.5, -0.43, 0.5);
-    // let building2 = new Building2(5,1,-5);
-    let building3 = new Building3(5,1,-5);
+    let building1 = new Building1(0,0,-5);
+
     
 
     
