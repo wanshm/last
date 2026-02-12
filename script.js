@@ -206,7 +206,7 @@ function loop(){
 
             if(attack.obj.object3D.position.y < 0){
                 attack.explode();
-                if(attack.exprad>50){
+                if(attack.exprad>100){
                     attack.remove();
                     attacks.splice(i,1);
                 }
