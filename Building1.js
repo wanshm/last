@@ -26,10 +26,28 @@ class Building2WallsAndFloor{
         longwall6.obj.setAttribute("rotation",{x:0, y:180, z:0});
         this.obj.append( longwall6.obj );
 
+// Back walls
+      let backwall1 = new LongWall(0,-0.1,-14.69478);
+        backwall1.obj.setAttribute("rotation",{x:0, y:90, z:0});
+        backwall1.obj.setAttribute("scale","1 1 0.96");
+        this.obj.append( backwall1.obj );
+
+      let backwall2 = new LongWall(0,0.9,-14.69478);
+        backwall2.obj.setAttribute("rotation",{x:0, y:90, z:0});
+        backwall2.obj.setAttribute("scale","1 1 0.96");
+        this.obj.append( backwall2.obj );
+
+      let backwall3 = new LongWall(0,1.9,-14.69478);
+        backwall3.obj.setAttribute("rotation",{x:0, y:90, z:0});
+        backwall3.obj.setAttribute("scale","1 1 0.96");
+        this.obj.append( backwall3.obj );
+
+// Front walls
+
 
 // -------------------------------------------------------------------
       let base2 = new FloorBase(0,3.1,0);
-        base2.obj.setAttribute("dynamic-body", " mass:100; shape: box; ");
+        base2.obj.setAttribute("static-body", " mass:100; shape: box; ");
         base2.obj.setAttribute("scale", "1.001 1.001 1.001");
         this.obj.append( base2.obj );
 
@@ -41,6 +59,7 @@ class Building2WallsAndFloor{
 class Building1{
     constructor(x,y,z){
         this.obj = document.createElement("a-entity");
+        this.walls = [];
 
         let base = new FloorBase(0,0,0);
         base.obj.setAttribute("static-body", " ");
@@ -48,14 +67,29 @@ class Building1{
 
         let wallsandfloor = new Building2WallsAndFloor(0,0,0);
         this.obj.append( wallsandfloor.obj );
+        this.extractWalls(wallsandfloor);
 
     this.obj.setAttribute("position",{x:x, y:y, z:z});
     scene.append( this.obj )
     }
 
-    ChangeDynamic(){
-    if(this.shot){
-      this.obj.children[0].setAttribute("dynamic-body", " mass:100; shape: box; ");
+    extractWalls(wallsandfloor){
+      const findWalls = (element) => {
+        for(let child of element.children){
+          if(child.tagName === 'A-BOX'){
+            this.walls.push(child);
+          } else {
+            findWalls(child);
+          }
+        }
+      };
+      findWalls(wallsandfloor.obj);
     }
-  }
+
+    makeDynamic(wallBox){
+      if(wallBox.getAttribute("dynamic-body"));
+      wallBox.removeAttribute("static-body");
+      wallBox.setAttribute("dynamic-body", " mass:70; shape: box; ");
+    }
+
 }

@@ -1,4 +1,4 @@
-let camera, scene, attacks= [], hotbarinfo = ["Slash","Bullet","Spells"],hotbaritems=[], hotbarselection=0, book;
+let camera, scene, attacks= [], hotbarinfo = ["Slash","Bullet","Spells"],hotbaritems=[], hotbarselection=0, book, building, walls=[];
 window.addEventListener("DOMContentLoaded",function (){
     
     camera = document.querySelector("#camerarig")
@@ -9,7 +9,8 @@ window.addEventListener("DOMContentLoaded",function (){
     box.setAttribute("position","0 25.5 0");
     scene.append(box);
   
-    let building1 = new Building1(0,0,-5);
+    building = new Building1(0,0,-5);
+    walls = building.walls;
 
     
 
@@ -92,20 +93,28 @@ function loop(){
 
     attacks.forEach((attack,i)=>{
         if(attack instanceof Slash){
-            attack.animate()
+            attack.animate();
+            for(let wall of walls){
+              if(distance(attack.center, wall) <= 5){
+                building.makeDynamic(wall);
+              }
+            }
             if(attack.animated) {
                 attack.remove();
                 attacks.splice(i,1);
             }
         } else if (attack instanceof Bullet){
             attack.fire();
-            if(distance(camera,attack.obj)> 200){
+            for(let wall of walls){
+              if(distance(attack.obj, wall) <= 3){
+                building.makeDynamic(wall);
+              }
+            }
+            if(attack.obj && distance(camera,attack.obj)> 200){
                 attack.remove()
                 attacks.splice(i,1);
             }
         }
-
-
     })
 
 
