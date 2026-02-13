@@ -106,7 +106,7 @@ function loop(){
         } else if (attack instanceof Bullet){
             attack.fire();
             for(let wall of walls){
-              if(distance(attack.obj, wall) <= 3){
+              if(distance(attack.obj, wall) <= 10){
                 building.makeDynamic(wall);
               }
             }

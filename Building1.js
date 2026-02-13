@@ -43,6 +43,25 @@ class Building2WallsAndFloor{
         this.obj.append( backwall3.obj );
 
 // Front walls
+      let frontwall1 = new FrontWall(0,0,0);
+        this.obj.append( frontwall1.obj );
+
+      let frontwall2 = new FrontWall(-3,0,0);
+        this.obj.append( frontwall2.obj );
+
+      let frontwall3 = new FrontWall(-9,0,0);
+        this.obj.append( frontwall3.obj );
+
+      let frontwall4 = new FrontWall(-12,0,0);
+        this.obj.append( frontwall4.obj );
+
+      let doorwall = new FrontWall(-6,0,0);
+        doorwall.obj.setAttribute("src","#DoorTexture");
+        this.obj.append( doorwall.obj );
+      
+      
+      
+        
 
 
 // -------------------------------------------------------------------
