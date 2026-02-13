@@ -17,7 +17,7 @@ class Meteor{
     
     
 
-    this.obj.setAttribute("radius",4)
+    this.obj.setAttribute("radius",7)
     this.obj.setAttribute("position",{x:camera.object3D.position.x,y:camera.object3D.position.y+30,z:camera.object3D.position.z});
     
     this.obj.setAttribute("dynamic-body", " mass:0; shape: sphere; ");
@@ -25,19 +25,15 @@ class Meteor{
     
     this.explosion.setAttribute("radius-tubular","1");
     this.explosion.setAttribute("rotation","90 0 0");
+    this.explosion.setAttribute("scale","1 1 1.5");
   
 
-    this.hitboxes = [
-      new Hitbox("16 4 16",this.dx, 0, this.dz),
-      new Hitbox("16 4 16",Math.sin(Math.PI/4), 0, Math.sin(Math.PI/4)),
-      new Hitbox("16 4 16",-1*this.dx, 0, this.dz),
-      new Hitbox("16 4 16",-1*this.dx, 0, -1*this.dz),
-      new Hitbox("16 4 16",this.dx, 0, this.dz),
-      new Hitbox("16 4 16",this.dx, 0, this.dz),
-      new Hitbox("16 4 16",this.dx, 0, this.dz),
-      new Hitbox("16 4 16",this.dx, 0, this.dz),
-    ]
+    this.hitboxes = new Array(1,1,1,1,1,1,1,1)
 
+    this.hitboxes = this.hitboxes.map((hb,i)=>{
+      hb = new Hitbox("16 4 16", Math.sin(this.theta + (i*(Math.PI/4))), 0 ,Math.cos(this.theta + (i*(Math.PI/4))));
+      return hb;
+    })
 
     this.obj.append(this.explosion)
     this.hitboxes.forEach((hb)=>{  
@@ -97,6 +93,7 @@ class Hitbox{
     this.box.setAttribute("dynamic-body", " mass:0; shape: sphere; ");
     this.dx = dx; this.dy = dy; this.dz = dz;
     this.box.setAttribute("scale",scale);
+    this.box.setAttribute("visible","false")
   }
 
   move(){
