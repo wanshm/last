@@ -91,4 +91,24 @@ class LongWall{
       this.obj.setAttribute("position",{x:x, y:y, z:z});
       scene.append( this.obj )
   }
+}
+  class DoorWall{
+    constructor(x,y,z){
+    this.obj = document.createElement("a-entity");
+    let frontwall1 = new Wall1(0,-0.1,7.5);
+        frontwall1.obj.setAttribute("rotation",{x:0, y:-90, z:0});
+        this.obj.append( frontwall1.obj );
+      
+      let frontwall2 = new Wall1(0,0.9,7.5);
+        frontwall2.obj.setAttribute("rotation",{x:0, y:-90, z:0});
+        this.obj.append( frontwall2.obj );
+
+      let frontwall3 = new Wall1(0,1.9,7.5);
+        frontwall3.obj.setAttribute("rotation",{x:0, y:-90, z:0});
+        this.obj.append( frontwall3.obj );
+
+      this.obj.setAttribute("position",{x:x, y:y, z:z});
+      this.obj.setAttribute("src","#DoorTexture");
+      scene.append( this.obj )
+  }
 } 

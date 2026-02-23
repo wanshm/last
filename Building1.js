@@ -56,9 +56,11 @@ class Building2WallsAndFloor{
         this.obj.append( frontwall4.obj );
 
       let doorwall = new FrontWall(-6,0,0);
-        doorwall.obj.setAttribute("src","#DoorTexture");
+        doorwall.obj.setAttribute("material", "src", "Door.png");
         this.obj.append( doorwall.obj );
-      
+
+      // let doorwall = new DoorWall(-6,0,0);
+      //   this.obj.append( doorwall.obj );
       
       
         
