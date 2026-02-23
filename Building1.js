@@ -55,12 +55,10 @@ class Building2WallsAndFloor{
       let frontwall4 = new FrontWall(-12,0,0);
         this.obj.append( frontwall4.obj );
 
-      let doorwall = new FrontWall(-6,0,0);
-        doorwall.obj.setAttribute("material", "src", "Door.png");
+      let doorwall = new DoorWall(-3.5,1,7.5);
+        doorwall.obj.setAttribute("rotation",{x:0, y:-90, z:0});
+        doorwall.obj.setAttribute("scale","1 1.05 0.665");
         this.obj.append( doorwall.obj );
-
-      // let doorwall = new DoorWall(-6,0,0);
-      //   this.obj.append( doorwall.obj );
       
       
         
