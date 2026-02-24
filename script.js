@@ -95,7 +95,7 @@ function loop(){
         if(attack instanceof Slash){
             attack.animate();
             for(let wall of walls){
-              if(distance(attack.center, wall) <= 5){
+              if(distance(attack.slash, wall) <= 5){
                 building.makeDynamic(wall);
               }
             }
