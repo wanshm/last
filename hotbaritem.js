@@ -35,7 +35,7 @@ class HotBarItem {
     }
 
     followCam(){
-        this.hbb.setAttribute("position",{x:0 +this.number/4, y : 0, z:-1 })
+        this.hbb.setAttribute("position",{x:0 +this.number/4, y : -1, z:-1.5 })
         this.center.object3D.rotation.set(
             camera.children[0].object3D.rotation.x,
             camera.children[0].object3D.rotation.y,

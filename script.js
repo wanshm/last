@@ -216,7 +216,7 @@ function loop(){
         } else if (attack instanceof Meteor){
             attack.fire();
                 for(let wall of walls){
-                if(distance(attack.obj, wall) <= 100){
+                if(distance(attack.obj, wall) <= 60){
                     building.makeDynamic(wall);
                 }
             }
