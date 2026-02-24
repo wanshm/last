@@ -4,6 +4,7 @@ class Spellbook{
         const cover1 = document.createElement("a-box");
         const cover2 = document.createElement("a-box");
 
+        this.selection = "meteor"
         this.appearing = false;
         this.disappearing = false;
         this.opacity = 0;
@@ -40,7 +41,7 @@ class Spellbook{
     followCam(){
         this.center.object3D.rotation.set(
             - Math.PI/12,
-            camera.children[0].object3D.rotation.y + Math.PI/5,
+            camera.children[0].object3D.rotation.y + Math.PI/4,
             0
         );
     }
@@ -57,6 +58,20 @@ class Spellbook{
         this.appearing=false;
     }
 
+    animateAppear(){
+        this.opacity+= 0.1;
+        this.center.children[0].setAttribute("opacity",book.opacity);
+        this.center.children[1].setAttribute("opacity",book.opacity);
+        this.appearing = book.opacity > 1 ? false:true;
+    }
+
+    animateDisappear(){
+        this.opacity-= 0.1;
+        this.center.children[0].setAttribute("opacity",book.opacity);
+        this.center.children[1].setAttribute("opacity",book.opacity);
+        this.disappearing = book.opacity < 0 ? false:true;
+        
+    }
     remove(){
         if(this.center.parentNode)
         this.center.parentNode.removeChild(this.center);

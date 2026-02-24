@@ -27,7 +27,6 @@ class Slash{
         this.slash.setAttribute("theta-start", 100);
         this.slash.setAttribute("theta-length", 0);
         this.slash.setAttribute("dynamic-body", " mass:0; shape: sphere; ");
-        this.slash.setAttribute("raycaster", "objects:[force-pushable]");
 
         sword.object3D.scale.set(.1,1,.5)
         sword.setAttribute("rotation", "0 0 -180");
