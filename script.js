@@ -131,21 +131,20 @@ window.addEventListener("keydown",function(e){
             }
             
             book.appear()
-            //check book selection
+            //check book selection      
             switch (book.selection){
-                case 0:
-                    //meteor
-                    las = new Laser();
-                    spell = las;
-                    break;
-                case 1:
-                    //earthwall
-                    loc = new Locator();
-                    spell = loc
-                    break;
-            
-            }
-            
+                        case 0:
+                            //meteor
+                            las = new Laser();
+                            spell = las;
+                            break;
+                        case 1:
+                            //earthwall
+                            loc = new Locator();
+                            spell = loc
+                            break;
+                    
+                    }
             
             //hotbar update
             hotbaritems[2].select()
@@ -168,13 +167,13 @@ window.addEventListener("keydown",function(e){
                 book.selection++;
                 break;
     }
-
     //on book deselect
     if(hotbarselection!==2){
         book.disappear()
-            if(spell instanceof Laser){
-                spell = undefined;
-            }
+        if(spell instanceof Laser){
+            spell.removeLaser()
+            spell = undefined;
+        }
     }
 
     //deselects other hotbar items
@@ -184,7 +183,7 @@ window.addEventListener("keydown",function(e){
 
 function loop(){
 
-    console.log(book.selection)
+    // console.log(spell)
     //spellbook tracking
     book && book.followCam()
 
@@ -202,9 +201,10 @@ function loop(){
     })
 
     //spell animations
-        if(spell instanceof Laser){
-            spell.followCam();
-        }
+    if(spell instanceof Laser){
+        spell.followCam();
+
+    }
 
     //attack animations
     attacks.forEach((attack,i)=>{
