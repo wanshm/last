@@ -359,7 +359,7 @@ class Building2WallsAndFloor2{
     this.obj = document.createElement("a-entity");
   
     let wall1 = document.createElement("a-box");
-    wall1.setAttribute("color","#ffffff");
+    // wall1.setAttribute("color","#ffffff");
     wall1.setAttribute("material", "src", "Images/Roof.png");
     wall1.setAttribute("position","-0.1 1.17 -6.75");
     wall1.setAttribute("height","1");
@@ -371,7 +371,7 @@ class Building2WallsAndFloor2{
     this.obj.append( wall1 );
 
     let wall2 = document.createElement("a-box");
-    wall2.setAttribute("color","#fcf700");
+    // wall2.setAttribute("color","#fcf700");
     wall2.setAttribute("material", "src", "Images/Roof.png");
     wall2.setAttribute("position","-0.1 1.17 -5.25");
     wall2.setAttribute("height","1");
@@ -453,7 +453,9 @@ class roof2{
     this.obj.append( longroof11.obj );
 
     let triangularRoof = document.createElement("a-triangle");
-    triangularRoof.setAttribute("color","#00ff80");
+    // triangularRoof.setAttribute("color","#00ff80");
+    triangularRoof.setAttribute("material", "src", "Images/Wood.png");
+    triangularRoof.setAttribute("repeat", "5 5");
     triangularRoof.setAttribute("position","-2.7 1.5 0");
     triangularRoof.setAttribute("rotation",{x:0, y:0, z:90});
     triangularRoof.setAttribute("side","double");
