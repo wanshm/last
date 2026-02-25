@@ -4,7 +4,7 @@ class Spellbook{
         const cover1 = document.createElement("a-box");
         const cover2 = document.createElement("a-box");
 
-        this.selection
+        this.selection = 0
         this.appearing = false;
         this.disappearing = false;
         this.opacity = 0;

@@ -1,4 +1,4 @@
-let camera, scene, attacks= [], hotbarinfo = ["Slash","Bullet","Spells"],hotbaritems=[], hotbarselection=0, book, building, walls=[], spells=[], activespell;
+let camera, scene, attacks= [], hotbarinfo = ["Slash","Bullet","Spells"],hotbaritems=[], hotbarselection=0, book, building, walls=[], spell, spellcount = 2;
 //initialization
 window.addEventListener("DOMContentLoaded",function (){
     
@@ -47,8 +47,7 @@ window.addEventListener("click",function(e){
     } else if(hotbarselection == 2){
     switch(book.selection){
         case 0:
-            // console.log(spells)
-            const las = spells.find((spell)=>{return spell instanceof Laser})
+            const las = spell
             const met = new Meteor(las.laser.object3D.rotation.x);
             attacks.push(met);
             break;
@@ -58,8 +57,7 @@ window.addEventListener("click",function(e){
 
 //wheel listener
 window.addEventListener("wheel",(e)=>{
-    spells.forEach((spell)=>{
-
+        
         //meteor laser stuff
 
         if(spell instanceof Laser){
@@ -99,7 +97,6 @@ window.addEventListener("wheel",(e)=>{
             }
             }
         }
-    })
   })
 
 //keyboard listener
@@ -134,29 +131,50 @@ window.addEventListener("keydown",function(e){
             }
             
             book.appear()
+            //check book selection
             switch (book.selection){
                 case 0:
                     //meteor
-                    las = new Laser()
-                    spells.push(las);
+                    las = new Laser();
+                    spell = las;
                     break;
+                case 1:
+                    //earthwall
+                    loc = new Locator();
+                    spell = loc
+                    break;
+            
             }
-
+            
+            
             //hotbar update
             hotbaritems[2].select()
             hotbarselection=2;
             break;
+
+            //change book selection
+            case "q":
+                if(book.selection == 0 ){
+                    book.selection = spellcount-1;
+                    break;
+                }
+                book.selection--;
+                break;
+            case "e":
+                if(book.selection == spellcount-1 ){
+                    book.selection = 0;
+                    break;
+                }
+                book.selection++;
+                break;
     }
 
     //on book deselect
     if(hotbarselection!==2){
         book.disappear()
-        spells.forEach((spell,i)=>{
             if(spell instanceof Laser){
-                spell.removeLaser();
-                spells.splice(i,1);
+                spell = undefined;
             }
-        })
     }
 
     //deselects other hotbar items
@@ -165,6 +183,8 @@ window.addEventListener("keydown",function(e){
 })
 
 function loop(){
+
+    console.log(book.selection)
     //spellbook tracking
     book && book.followCam()
 
@@ -182,17 +202,16 @@ function loop(){
     })
 
     //spell animations
-    spells.forEach((spell,i)=>{
         if(spell instanceof Laser){
             spell.followCam();
-            // spell.fire()
         }
-    })
 
     //attack animations
     attacks.forEach((attack,i)=>{
         if(attack instanceof Slash){
             attack.animate();
+            console.log(camera.object3D.position)
+            console.log(attack.slash.object3D.position)
             for(let wall of walls){
               if(distance(attack.slash, wall) <= 5){
                 building.makeDynamic(wall);

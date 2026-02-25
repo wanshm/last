@@ -22,7 +22,7 @@ class Slash{
             THREE.MathUtils.degToRad(0)
         );
         this.slash.object3D.rotation.set(-Math.PI/4,0,0)
-        this.center.setAttribute("position",{ x:camera.object3D.position.x,y:camera.object3D.position.y + 3,z:camera.object3D.position.z })
+        this.center.setAttribute("position",{ x:0, y:3,z:0 })
         this.slash.setAttribute("position","0 -1 0")
         this.slash.setAttribute("theta-start", 100);
         this.slash.setAttribute("theta-length", 0);
@@ -33,10 +33,16 @@ class Slash{
         crossguard.object3D.position.set(0,.25,0)
         crossguard.object3D.scale.set(4,.1,1)
         
-        scene.append(this.center)
+        camera.append(this.center)
 
 
     }    
+
+    absolutePosition(){
+        //calculate the world position of the slash
+
+
+    }
 
     remove(){
         if(this.center.parentNode)
