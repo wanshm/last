@@ -353,3 +353,107 @@ class Building2WallsAndFloor2{
       scene.append( this.obj )
   }}
 
+
+  class RoofBlocks{
+    constructor(x,y,z){
+    this.obj = document.createElement("a-entity");
+  
+    let wall1 = document.createElement("a-box");
+    wall1.setAttribute("color","#ffffff");
+    // wall1.setAttribute("material", "src", "Images/Bricks.png");
+    wall1.setAttribute("position","-0.1 1.17 -6.75");
+    wall1.setAttribute("height","1");
+    wall1.setAttribute("width","0.1");
+    wall1.setAttribute("depth","1.5");
+    wall1.setAttribute("force-pushable", "");
+    wall1.setAttribute("static-body", "");
+
+    this.obj.append( wall1 );
+
+    let wall2 = document.createElement("a-box");
+    wall2.setAttribute("color","#fcf700");
+    // wall2.setAttribute("material", "src", "Images/Bricks.png");
+    wall2.setAttribute("position","-0.1 1.17 -5.25");
+    wall2.setAttribute("height","1");
+    wall2.setAttribute("width","0.1");
+    wall2.setAttribute("depth","1.5");
+    wall2.setAttribute("force-pushable", "");
+    wall2.setAttribute("static-body", " ");
+
+    this.obj.append( wall2 );
+    
+    this.obj.setAttribute("position",{x:x, y:y, z:z});
+  }
+}
+
+class longRoof{
+  constructor(x,y,z){
+    this.obj = document.createElement("a-entity");
+
+    let roof = new RoofBlocks(4.8,3.6,-1.3);
+    roof.obj.setAttribute("rotation",{x:0, y:90, z:45});
+    this.obj.append( roof.obj );
+
+    let roof2 = new RoofBlocks(7.8,3.6,-1.3);
+    roof2.obj.setAttribute("rotation",{x:0, y:90, z:45});
+    this.obj.append( roof2.obj );
+
+    let roof3 = new RoofBlocks(10.8,3.6,-1.3);
+    roof3.obj.setAttribute("rotation",{x:0, y:90, z:45});
+    this.obj.append( roof3.obj );
+
+    let roof4 = new RoofBlocks(13.8,3.6,-1.3);
+    roof4.obj.setAttribute("rotation",{x:0, y:90, z:45});
+    this.obj.append( roof4.obj );
+
+    let roof5 = new RoofBlocks(16.8,3.6,-1.3);
+    roof5.obj.setAttribute("rotation",{x:0, y:90, z:45});
+    this.obj.append( roof5.obj );
+   
+    this.obj.setAttribute("position",{x:x, y:y, z:z});
+    scene.append( this.obj )
+  }
+}
+
+class roof2{
+  constructor(x,y,z){
+    this.obj = document.createElement("a-entity");
+
+    let longroof = new longRoof(0,0,0);
+    this.obj.append( longroof.obj );
+
+    let longroof2 = new longRoof(0,-0.7,-0.7);
+    this.obj.append( longroof2.obj );
+
+    let longroof3 = new longRoof(0,-1.4,-1.4);
+    this.obj.append( longroof3.obj );
+
+    let longroof4 = new longRoof(0,-2.1,-2.1);
+    this.obj.append( longroof4.obj );
+
+    let longroof5 = new longRoof(0,-2.8,-2.8);
+    this.obj.append( longroof5.obj );
+
+    let longroof6 = new longRoof(0,-3.5,-3.5);
+    this.obj.append( longroof6.obj );
+
+    let longroof7 = new longRoof(0,-4.2,-4.2);
+    this.obj.append( longroof7.obj );
+
+    let longroof8 = new longRoof(0,-4.9,-4.9);
+    this.obj.append( longroof8.obj );
+
+    let longroof9 = new longRoof(0,-5.6,-5.6);
+    this.obj.append( longroof9.obj );
+
+    let longroof10 = new longRoof(0,-6.3,-6.3);
+    this.obj.append( longroof10.obj );
+
+    let longroof11 = new longRoof(0,-6.7,-6.7);
+    this.obj.append( longroof11.obj );
+
+    this.obj.setAttribute("position",{x:x, y:y, z:z});
+    scene.append( this.obj )
+  }
+}
+
