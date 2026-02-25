@@ -13,6 +13,14 @@ window.addEventListener("DOMContentLoaded",function (){
     building = new Building1(0,0,-5);
     walls = building.walls;
 
+    // building2 = new Building1(200,0,-5);
+    // walls.push(...building2.walls);
+   
+
+   
+
+
+
     
 
     

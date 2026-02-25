@@ -72,7 +72,7 @@ class Building1{
     extractWalls(LeftRoof){
       const findWalls = (element) => {
         for(let child of element.children){
-          if(child.tagName === 'A-BOX'){
+          if((child.tagName === 'A-BOX') || (child.tagName === 'A-TRIANGLE')){
             this.walls.push(child);
           } else {
             findWalls(child);
@@ -91,7 +91,7 @@ class Building1{
     extractWalls(RightRoof){
       const findWalls = (element) => {
         for(let child of element.children){
-          if(child.tagName === 'A-BOX'){
+          if((child.tagName === 'A-BOX') || (child.tagName === 'A-TRIANGLE')){
             this.walls.push(child);
           } else {
             findWalls(child);

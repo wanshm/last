@@ -20,8 +20,8 @@ class Wall1{
     this.obj = document.createElement("a-entity");
   
     let wall = document.createElement("a-box");
-    wall.setAttribute("color","#000000");
-    // wall.setAttribute("material", "src", "Images/Bricks.png");
+    // wall.setAttribute("color","#000000");
+    wall.setAttribute("material", "src", "Images/Bricks.png");
     wall.setAttribute("position","-0.1 1.17 -6.75");
     wall.setAttribute("height","1");
     wall.setAttribute("width","0.3");
@@ -32,8 +32,8 @@ class Wall1{
     this.obj.append( wall );
 
     let wall2 = document.createElement("a-box");
-    wall2.setAttribute("color","#fcf700");
-    // wall2.setAttribute("material", "src", "Images/Bricks.png");
+    // wall2.setAttribute("color","#fcf700");
+    wall2.setAttribute("material", "src", "Images/Bricks.png");
     wall2.setAttribute("position","-0.1 1.17 -5.25");
     wall2.setAttribute("height","1");
     wall2.setAttribute("width","0.3");
@@ -360,7 +360,7 @@ class Building2WallsAndFloor2{
   
     let wall1 = document.createElement("a-box");
     wall1.setAttribute("color","#ffffff");
-    // wall1.setAttribute("material", "src", "Images/Bricks.png");
+    wall1.setAttribute("material", "src", "Images/Roof.png");
     wall1.setAttribute("position","-0.1 1.17 -6.75");
     wall1.setAttribute("height","1");
     wall1.setAttribute("width","0.1");
@@ -372,7 +372,7 @@ class Building2WallsAndFloor2{
 
     let wall2 = document.createElement("a-box");
     wall2.setAttribute("color","#fcf700");
-    // wall2.setAttribute("material", "src", "Images/Bricks.png");
+    wall2.setAttribute("material", "src", "Images/Roof.png");
     wall2.setAttribute("position","-0.1 1.17 -5.25");
     wall2.setAttribute("height","1");
     wall2.setAttribute("width","0.1");
@@ -452,8 +452,23 @@ class roof2{
     let longroof11 = new longRoof(0,-6.7,-6.7);
     this.obj.append( longroof11.obj );
 
+    let triangularRoof = document.createElement("a-triangle");
+    triangularRoof.setAttribute("color","#00ff80");
+    triangularRoof.setAttribute("position","-2.7 1.5 0");
+    triangularRoof.setAttribute("rotation",{x:0, y:0, z:90});
+    triangularRoof.setAttribute("side","double");
+    triangularRoof.setAttribute("vertex-a","3.3 0 0");
+    triangularRoof.setAttribute("vertex-b","-4.2 0 -7.5");
+    triangularRoof.setAttribute("vertex-c","-4.2 0 7.5");
+    triangularRoof.setAttribute("force-pushable", "");
+    triangularRoof.setAttribute("static-body", " ");
+
+    this.obj.append( triangularRoof );
+
     this.obj.setAttribute("position",{x:x, y:y, z:z});
     scene.append( this.obj )
   }
 }
+
+
 
