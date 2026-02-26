@@ -472,5 +472,160 @@ class roof2{
   }
 }
 
+class pillar{
+  constructor(x,y,z){
+    this.obj = document.createElement("a-entity");
+
+    let pillarA = document.createElement("a-box");
+    pillarA.setAttribute("color","#ffffff");
+    pillarA.setAttribute("position","0 0 0");
+    pillarA.setAttribute("height","1");
+    pillarA.setAttribute("width","0.2");
+    pillarA.setAttribute("depth","0.2");
+    pillarA.setAttribute("force-pushable", "");
+    pillarA.setAttribute("static-body", " ");
+    this.obj.append( pillarA );
+
+    let pillarB = document.createElement("a-box");
+    pillarB.setAttribute("color","#ff00bf");
+    pillarB.setAttribute("position","0 1 0");
+    pillarB.setAttribute("height","1");
+    pillarB.setAttribute("width","0.2");
+    pillarB.setAttribute("depth","0.2");
+    pillarB.setAttribute("force-pushable", "");
+    pillarB.setAttribute("static-body", " ");
+    this.obj.append( pillarB );
+
+    let pillarC = document.createElement("a-box");
+    pillarC.setAttribute("color","#0000ff");
+    pillarC.setAttribute("position","0 2 0");
+    pillarC.setAttribute("height","1");
+    pillarC.setAttribute("width","0.2");
+    pillarC.setAttribute("depth","0.2");
+    pillarC.setAttribute("force-pushable", "");
+    pillarC.setAttribute("static-body", " ");
+    this.obj.append( pillarC );
+
+    this.obj.setAttribute("position",{x:x, y:y, z:z});
+    scene.append( this.obj )
+  }}
+
+  class glassWall{
+    constructor(x,y,z){
+      this.obj = document.createElement("a-entity");  
+
+      let glass1 = document.createElement("a-box");
+      glass1.setAttribute("color","#00ffff");
+      glass1.setAttribute("opacity","0.5");
+      glass1.setAttribute("position","0 1.5 0");
+      glass1.setAttribute("height","1");
+      glass1.setAttribute("width","0.1");
+      glass1.setAttribute("depth","1");
+      glass1.setAttribute("side","double");
+      glass1.setAttribute("force-pushable", "");
+      glass1.setAttribute("static-body", " ");
+      this.obj.append( glass1 );
+
+      let glass2 = document.createElement("a-box");
+      glass2.setAttribute("color","#00ffff");
+      glass2.setAttribute("opacity","0.5");
+      glass2.setAttribute("position","0 0.5 0");
+      glass2.setAttribute("height","1");
+      glass2.setAttribute("width","0.1");
+      glass2.setAttribute("depth","1");
+      glass2.setAttribute("side","double");
+      glass2.setAttribute("force-pushable", "");
+      glass2.setAttribute("static-body", " ");
+      this.obj.append( glass2 );
+
+      let glass3 = document.createElement("a-box");
+      glass3.setAttribute("color","#00ffff");
+      glass3.setAttribute("opacity","0.5");
+      glass3.setAttribute("position","0 2.5 0");
+      glass3.setAttribute("height","1");
+      glass3.setAttribute("width","0.1");
+      glass3.setAttribute("depth","1");
+      glass3.setAttribute("side","double");
+      glass3.setAttribute("force-pushable", "");
+      glass3.setAttribute("static-body", " ");
+      this.obj.append( glass3 );
+
+      let glass4 = document.createElement("a-box");
+      glass4.setAttribute("color","#00ffff");
+      glass4.setAttribute("opacity","0.5");
+      glass4.setAttribute("position"," 0 0.5 1");
+      glass4.setAttribute("height","1");
+      glass4.setAttribute("width","0.1");
+      glass4.setAttribute("depth","1");
+      glass4.setAttribute("side","double");
+      glass4.setAttribute("force-pushable", "");
+      glass4.setAttribute("static-body", " ");
+      this.obj.append( glass4 );  
+
+      let glass5 = document.createElement("a-box");
+      glass5.setAttribute("color","#00ffff");
+      glass5.setAttribute("opacity","0.5");
+      glass5.setAttribute("position","0 1.5 1");
+      glass5.setAttribute("height","1");
+      glass5.setAttribute("width","0.1");
+      glass5.setAttribute("depth","1");
+      glass5.setAttribute("side","double");
+      glass5.setAttribute("force-pushable", "");
+      glass5.setAttribute("static-body", " ");
+      this.obj.append( glass5 );
+
+      let glass6 = document.createElement("a-box");
+      glass6.setAttribute("color","#00ffff");
+      glass6.setAttribute("opacity","0.5");
+      glass6.setAttribute("position","0 2.5 1");
+      glass6.setAttribute("height","1");
+      glass6.setAttribute("width","0.1");
+      glass6.setAttribute("depth","1");
+      glass6.setAttribute("side","double");
+      glass6.setAttribute("force-pushable", "");
+      glass6.setAttribute("static-body", " ");
+      this.obj.append( glass6 );
+
+      let glass7 = document.createElement("a-box");
+      glass7.setAttribute("color","#00ffff");
+      glass7.setAttribute("opacity","0.5");
+      glass7.setAttribute("position","0 0.5 -1");
+      glass7.setAttribute("height","1");
+      glass7.setAttribute("width","0.1");
+      glass7.setAttribute("depth","1");
+      glass7.setAttribute("side","double");
+      glass7.setAttribute("force-pushable", "");
+      glass7.setAttribute("static-body", " ");
+      this.obj.append( glass7 );  
+      
+      let glass8 = document.createElement("a-box");
+      glass8.setAttribute("color","#00ffff");
+      glass8.setAttribute("opacity","0.5");
+      glass8.setAttribute("position","0 1.5 -1");
+      glass8.setAttribute("height","1");
+      glass8.setAttribute("width","0.1");
+      glass8.setAttribute("depth","1");
+      glass8.setAttribute("side","double");
+      glass8.setAttribute("force-pushable", "");
+      glass8.setAttribute("static-body", " ");
+      this.obj.append( glass8 );
+
+      let glass9 = document.createElement("a-box");
+      glass9.setAttribute("color","#00ffff");
+      glass9.setAttribute("opacity","0.5");
+      glass9.setAttribute("position","0 2.5 -1");
+      glass9.setAttribute("height","1");
+      glass9.setAttribute("width","0.1");
+      glass9.setAttribute("depth","1");
+      glass9.setAttribute("side","double");
+      glass9.setAttribute("force-pushable", "");
+      glass9.setAttribute("static-body", " ");
+      this.obj.append( glass9 );
+
+      this.obj.setAttribute("position",{x:x, y:y, z:z});
+      scene.append( this.obj )
+    }
+      
+  }
 
 
