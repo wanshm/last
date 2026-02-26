@@ -13,8 +13,9 @@ window.addEventListener("DOMContentLoaded",function (){
     // building = new Building1(0,0,-5);
     // walls = building.walls;
 
-    building2 = new Building2(0,0,-5);
-    walls = building2.walls;
+    buildingA = new Building2(0,0,-5);
+    
+
 
    
 
