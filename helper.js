@@ -17,3 +17,14 @@ function distance(obj1, obj2){
 function radiansToDegrees(r){
   return r / Math.PI *180;
 }
+
+function addspell(selection){
+  switch (selection){
+    case 0:
+        //meteor
+        return new Laser();
+    case 1:
+        //earthwall
+        return new Locator();
+}
+}

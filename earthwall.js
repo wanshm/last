@@ -20,7 +20,11 @@ class Locator{
         this.locator = document.createElement("a-ring");
         const laser = document.createElement("a-cursor");
 
-        laser.setAttribute("raycaster","showline:true")
+        laser.setAttribute("raycaster","showLine:true;lineColor:red")
+        this.locator.setAttribute("side","double");
+        this.locator.setAttribute("rotation","90 0 0")
+        this.locator.setAttribute("scale","2 2 1")
+        this.locator.setAttribute("color","black")
 
         this.locator.append(laser);
         
@@ -31,6 +35,11 @@ class Locator{
     }
   followCam(){
     this.center.object3D.rotation.y = camera.children[0].object3D.rotation.y
+  }
+  remove(){
+    if(this.center.parentNode){
+        this.center.parentNode.removeChild(this.center)
+        }
   }
 
 }

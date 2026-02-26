@@ -79,7 +79,7 @@ class Laser{
     this.laser.object3D.rotation.y = camera.children[0].object3D.rotation.y
   }
 
-  removeLaser(){
+  remove(){
     if(this.laser.parentNode){
       this.laser.parentNode.removeChild(this.laser)
     }

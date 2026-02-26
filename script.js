@@ -99,11 +99,30 @@ window.addEventListener("wheel",(e)=>{
         }
   })
 
+
+
 //keyboard listener
 window.addEventListener("keydown",function(e){
 
     //hotbar switch
     switch(e.key){
+
+        
+        case "q":
+            if(book.selection == 0){
+                book.selection = spellcount-1;
+            } else book.selection--;
+            //LOGICAL ERROR, addspell doesnt remove previous spell, previous spell stays and cant be removed    
+            spell = addspell(book.selection);
+            break;
+        case "e":
+            if(book.selection == spellcount-1 ){
+                book.selection = 0;
+            } else book.selection++;
+            
+            spell = addspell(book.selection);
+            break;
+
         case "1":
             if(hotbarselection==0){
                 break;
@@ -131,50 +150,35 @@ window.addEventListener("keydown",function(e){
             }
             
             book.appear()
-            //check book selection      
-            switch (book.selection){
-                        case 0:
-                            //meteor
-                            las = new Laser();
-                            spell = las;
-                            break;
-                        case 1:
-                            //earthwall
-                            loc = new Locator();
-                            spell = loc
-                            break;
-                    
-                    }
             
+            //check book selection
+
+            spell = addspell(book.selection);
+
             //hotbar update
             hotbaritems[2].select()
             hotbarselection=2;
             break;
 
-            //change book selection
-            case "q":
-                if(book.selection == 0 ){
-                    book.selection = spellcount-1;
-                    break;
-                }
-                book.selection--;
-                break;
-            case "e":
-                if(book.selection == spellcount-1 ){
-                    book.selection = 0;
-                    break;
-                }
-                book.selection++;
-                break;
+            
     }
-    //on book deselect
+    //disappear spells
     if(hotbarselection!==2){
         book.disappear()
         if(spell instanceof Laser){
-            spell.removeLaser()
-            spell = undefined;
+            spell.remove()
         }
+        if( spell instanceof Locator){
+            spell.remove()
+        }
+        spell = undefined;
     }
+    // if(book.selection !== 0 && spell instanceof Laser){
+    //     spell.remove()
+    // }
+    // if(book.selection !== 1 && spell instanceof Locator){
+    //     spell.remove()
+    // }
 
     //deselects other hotbar items
     hotbaritems.filter((item,i)=>{return i !== hotbarselection}).forEach((item)=>{item.deselect();})
@@ -183,7 +187,7 @@ window.addEventListener("keydown",function(e){
 
 function loop(){
 
-    // console.log(spell)
+    console.log(book.selection,spell)
     //spellbook tracking
     book && book.followCam()
 
@@ -200,10 +204,13 @@ function loop(){
         item.followCam()
     })
 
-    //spell animations
+    //spell tracking
     if(spell instanceof Laser){
         spell.followCam();
 
+    }
+    if(spell instanceof Locator){
+        spell.followCam()
     }
 
     //attack animations
