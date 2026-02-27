@@ -10,7 +10,7 @@ window.addEventListener("DOMContentLoaded",function (){
     box.setAttribute("position","0 25.5 0");
     scene.append(box);
   
-    // building = new Building1(0,0,-5);
+    // building = new Building1(20,0,-5);
     // walls = building.walls;
 
     buildingA = new Building2(0,0,-5);
