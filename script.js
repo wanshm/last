@@ -113,6 +113,8 @@ window.addEventListener("keydown",function(e){
                 book.selection = spellcount-1;
             } else book.selection--;
             //LOGICAL ERROR, addspell doesnt remove previous spell, previous spell stays and cant be removed    
+            
+            spell && spell.remove()
             spell = addspell(book.selection);
             break;
         case "e":
@@ -120,6 +122,7 @@ window.addEventListener("keydown",function(e){
                 book.selection = 0;
             } else book.selection++;
             
+            spell && spell.remove()
             spell = addspell(book.selection);
             break;
 
