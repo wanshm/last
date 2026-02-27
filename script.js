@@ -1,4 +1,4 @@
-let camera, scene, attacks= [], hotbarinfo = ["Slash","Bullet","Spells"],hotbaritems=[], hotbarselection=0, book, building, walls=[], spells=[], activespell;
+let camera, scene, attacks= [], hotbarinfo = ["Slash","Bullet","Spells"],hotbaritems=[], hotbarselection=0, book, building, buildingA, walls=[], spells=[], activespell;
 //initialization
 window.addEventListener("DOMContentLoaded",function (){
     
@@ -10,10 +10,11 @@ window.addEventListener("DOMContentLoaded",function (){
     box.setAttribute("position","0 25.5 0");
     scene.append(box);
   
-    // building = new Building1(20,0,-5);
+    building = new Building1(100,0,-5);
     // walls = building.walls;
 
     buildingA = new Building2(0,0,-5);
+    walls = buildingA.walls;
     
 
 

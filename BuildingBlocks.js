@@ -628,4 +628,170 @@ class pillar{
       
   }
 
+  class Building2Floor1Wall1{
+    constructor(x,y,z){
+      this.obj = document.createElement("a-entity");
+
+      let pillarCornerA = new pillar(11,1,11);
+      pillarCornerA.obj.setAttribute("scale","2.5 1 2.5")
+      this.obj.append( pillarCornerA.obj );
+
+      let pillarCornerB = new pillar(-11,1,11);
+      pillarCornerB.obj.setAttribute("scale","2.5 1 2.5")
+      this.obj.append( pillarCornerB.obj );
+
+      let pillarCornerC = new pillar(-11,1,-11);
+      pillarCornerC.obj.setAttribute("scale","2.5 1 2.5")
+      this.obj.append( pillarCornerC.obj );
+
+      let pillarCornerD = new pillar(11,1,-11);
+      pillarCornerD.obj.setAttribute("scale","2.5 1 2.5")
+      this.obj.append( pillarCornerD.obj );
+
+      let glassWallFront1 = new glassWall(8.5,0.5,11);
+      glassWallFront1.obj.setAttribute("scale","1.5 1 1.5")
+      glassWallFront1.obj.setAttribute("rotation",{x:0, y:90, z:0})
+      this.obj.append( glassWallFront1.obj );
+
+      let glassWallFront2 = new glassWall(-8.5,0.5,11);
+      glassWallFront2.obj.setAttribute("scale","1.5 1 1.5")
+      glassWallFront2.obj.setAttribute("rotation",{x:0, y:90, z:0})
+      this.obj.append( glassWallFront2.obj );
+
+      let pillarWallFrontA = new pillar(-6.3,1,11);
+      pillarWallFrontA.obj.setAttribute("scale","1 1 1")
+      this.obj.append( pillarWallFrontA.obj );
+
+      let pillarWallFrontB = new pillar(6.3,1,11);
+      pillarWallFrontB.obj.setAttribute("scale","1 1 1")
+      this.obj.append( pillarWallFrontB.obj );
+
+      let glassWallFront3 = new glassWall(4,0.5,11);
+      glassWallFront3.obj.setAttribute("scale","1.5 1 1.5")
+      glassWallFront3.obj.setAttribute("rotation",{x:0, y:90, z:0})
+      this.obj.append( glassWallFront3.obj );
+
+      let glassWallFront4 = new glassWall(-4,0.5,11);
+      glassWallFront4.obj.setAttribute("scale","1.5 1 1.5")
+      glassWallFront4.obj.setAttribute("rotation",{x:0, y:90, z:0})
+      this.obj.append( glassWallFront4.obj );
+
+      let doorPillar1 = new pillar(-1.8,1,11);
+      doorPillar1.obj.setAttribute("scale","1.5 1 1.5")
+      this.obj.append( doorPillar1.obj );
+
+      let doorPillar2 = new pillar(1.8,1,11);
+      doorPillar2.obj.setAttribute("scale","1.5 1 1.5")
+      this.obj.append( doorPillar2.obj );
+
+      let door = new DoorWall(-3.95,1,11.1);
+      door.obj.setAttribute("scale","1 1 0.75")
+      door.obj.setAttribute("rotation",{x:0, y:-90, z:0})
+      this.obj.append( door.obj );
+    }}
+
+    class Building2Floor1Wall2{
+    constructor(x,y,z){
+      this.obj = document.createElement("a-entity");
+
+      let glassWallFront1 = new glassWall(8.5,0.5,11);
+      glassWallFront1.obj.setAttribute("scale","1.5 1 1.5")
+      glassWallFront1.obj.setAttribute("rotation",{x:0, y:90, z:0})
+      this.obj.append( glassWallFront1.obj );
+
+      let glassWallFront2 = new glassWall(-8.5,0.5,11);
+      glassWallFront2.obj.setAttribute("scale","1.5 1 1.5")
+      glassWallFront2.obj.setAttribute("rotation",{x:0, y:90, z:0})
+      this.obj.append( glassWallFront2.obj );
+
+      let pillarWallFrontA = new pillar(-6.3,1,11);
+      pillarWallFrontA.obj.setAttribute("scale","1 1 1")
+      this.obj.append( pillarWallFrontA.obj );
+
+      let pillarWallFrontB = new pillar(6.3,1,11);
+      pillarWallFrontB.obj.setAttribute("scale","1 1 1")
+      this.obj.append( pillarWallFrontB.obj );
+
+      let glassWallFront3 = new glassWall(4,0.5,11);
+      glassWallFront3.obj.setAttribute("scale","1.5 1 1.5")
+      glassWallFront3.obj.setAttribute("rotation",{x:0, y:90, z:0})
+      this.obj.append( glassWallFront3.obj );
+
+      let glassWallFront4 = new glassWall(-4,0.5,11);
+      glassWallFront4.obj.setAttribute("scale","1.5 1 1.5")
+      glassWallFront4.obj.setAttribute("rotation",{x:0, y:90, z:0})
+      this.obj.append( glassWallFront4.obj );
+
+      let pillarWallFrontC = new pillar(-1.8,1,11);
+      pillarWallFrontC.obj.setAttribute("scale","1 1 1")
+      this.obj.append( pillarWallFrontC.obj );
+
+      let pillarWallFrontD = new pillar(1.8,1,11);
+      pillarWallFrontD.obj.setAttribute("scale","1 1 1")
+      this.obj.append( pillarWallFrontD.obj );
+
+      let glassWallFront5 = new glassWall(0,0.5,11);
+      glassWallFront5.obj.setAttribute("scale","1.2 1 1.2")
+      glassWallFront5.obj.setAttribute("rotation",{x:0, y:90, z:0})
+      this.obj.append( glassWallFront5.obj );
+
+    }}
+
+    class Building2Floor1{
+      constructor(x,y,z){
+        this.obj = document.createElement("a-entity");
+
+        let FrontWall = new Building2Floor1Wall1(0,0,0);
+        this.obj.append( FrontWall.obj );
+
+        let BackWall = new Building2Floor1Wall2(0,0,0);
+        BackWall.obj.setAttribute("rotation",{x:0, y:180, z:0});
+        this.obj.append( BackWall.obj );
+
+        let LeftWall = new Building2Floor1Wall2(0,0,0);
+        LeftWall.obj.setAttribute("rotation",{x:0, y:-90, z:0});
+        this.obj.append( LeftWall.obj );
+
+        let RightWall = new Building2Floor1Wall2(0,0,0);
+        RightWall.obj.setAttribute("rotation",{x:0, y:90, z:0});
+        this.obj.append( RightWall.obj );
+
+        let base2 = new FloorBase(0,3.1,0);
+        base2.obj.setAttribute("static-body", " mass:100; shape: box; ");
+        base2.obj.setAttribute("scale", "1.51 1 1.51");
+        this.obj.append( base2.obj );
+
+        this.obj.setAttribute("position",{x:x, y:y, z:z});
+        scene.append( this.obj )
+      }}
+
+      class Building2FloorS{
+        constructor(x,y,z){
+        this.obj = document.createElement("a-entity");
+
+        let FrontWall = new Building2Floor1Wall2(0,0,0);
+        this.obj.append( FrontWall.obj );
+
+        let BackWall = new Building2Floor1Wall2(0,0,0);
+        BackWall.obj.setAttribute("rotation",{x:0, y:180, z:0});
+        this.obj.append( BackWall.obj );
+
+        let LeftWall = new Building2Floor1Wall2(0,0,0);
+        LeftWall.obj.setAttribute("rotation",{x:0, y:-90, z:0});
+        this.obj.append( LeftWall.obj );
+
+        let RightWall = new Building2Floor1Wall2(0,0,0);
+        RightWall.obj.setAttribute("rotation",{x:0, y:90, z:0});
+        this.obj.append( RightWall.obj );
+
+        let base2 = new FloorBase(0,3.1,0);
+        base2.obj.setAttribute("static-body", " mass:100; shape: box; ");
+        base2.obj.setAttribute("scale", "1.51 1 1.51");
+        this.obj.append( base2.obj );
+
+        this.obj.setAttribute("position",{x:x, y:y, z:z});
+        scene.append( this.obj )
+      }}
+
+
 

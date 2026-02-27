@@ -1,70 +1,51 @@
 class Building2{
     constructor(x,y,z){
         this.obj = document.createElement("a-entity");
-        // this.walls = [];
+        this.walls = [];
 
         let base = new FloorBase(0,0,0);
         base.obj.setAttribute("scale","1.5 1 1.5")
         base.obj.setAttribute("static-body", " ");
         this.obj.append( base.obj );
 
-        let pillarCornerA = new pillar(11,1,11);
-        pillarCornerA.obj.setAttribute("scale","2.5 1 2.5")
-        this.obj.append( pillarCornerA.obj );
+        let Floor1 = new Building2Floor1(0,0,0);
+        this.obj.append( Floor1.obj );
+        this.extractWalls(Floor1);
 
-        let pillarCornerB = new pillar(-11,1,11);
-        pillarCornerB.obj.setAttribute("scale","2.5 1 2.5")
-        this.obj.append( pillarCornerB.obj );
+        let Floor2 = new Building2FloorS(0,3.1,0);
+        this.obj.append( Floor2.obj );
+        this.extractWalls(Floor2);
 
-        let pillarCornerC = new pillar(-11,1,-11);
-        pillarCornerC.obj.setAttribute("scale","2.5 1 2.5")
-        this.obj.append( pillarCornerC.obj );
+        let Floor3 = new Building2FloorS(0,6.2,0);
+        this.obj.append( Floor3.obj );
+        this.extractWalls(Floor3);
 
-        let pillarCornerD = new pillar(11,1,-11);
-        pillarCornerD.obj.setAttribute("scale","2.5 1 2.5")
-        this.obj.append( pillarCornerD.obj );
+        let Floor4 = new Building2FloorS(0,9.3,0);
+        this.obj.append( Floor4.obj );
+        this.extractWalls(Floor4);
 
-        let glassWallFront1 = new glassWall(8.5,0.5,11);
-        glassWallFront1.obj.setAttribute("scale","1.5 1 1.5")
-        glassWallFront1.obj.setAttribute("rotation",{x:0, y:90, z:0})
-        this.obj.append( glassWallFront1.obj );
+        let Floor5 = new Building2FloorS(0,12.4,0);
+        this.obj.append( Floor5.obj );
+        this.extractWalls(Floor5);
+        
+        let Floor6 = new Building2FloorS(0,15.5,0);
+        this.obj.append( Floor6.obj );
+        this.extractWalls(Floor6);
 
-        let glassWallFront2 = new glassWall(-8.5,0.5,11);
-        glassWallFront2.obj.setAttribute("scale","1.5 1 1.5")
-        glassWallFront2.obj.setAttribute("rotation",{x:0, y:90, z:0})
-        this.obj.append( glassWallFront2.obj );
+        let Floor7 = new Building2FloorS(0,18.6,0);
+        this.obj.append( Floor7.obj );
+        this.extractWalls(Floor7);
 
-        let pillarWallFrontA = new pillar(-6.3,1,11);
-        pillarWallFrontA.obj.setAttribute("scale","1.5 1 1.5")
-        this.obj.append( pillarWallFrontA.obj );
+        let Floor8 = new Building2FloorS(0,21.7,0);
+        this.obj.append( Floor8.obj );
+        this.extractWalls(Floor8);
 
-        let pillarWallFrontB = new pillar(6.3,1,11);
-        pillarWallFrontB.obj.setAttribute("scale","1.5 1 1.5")
-        this.obj.append( pillarWallFrontB.obj );
+        let Floor9 = new Building2FloorS(0,24.8,0);
+        this.obj.append( Floor9.obj );
+        this.extractWalls(Floor9);
 
-        let glassWallFront3 = new glassWall(4,0.5,11);
-        glassWallFront3.obj.setAttribute("scale","1.5 1 1.5")
-        glassWallFront3.obj.setAttribute("rotation",{x:0, y:90, z:0})
-        this.obj.append( glassWallFront3.obj );
 
-        let glassWallFront4 = new glassWall(-4,0.5,11);
-        glassWallFront4.obj.setAttribute("scale","1.5 1 1.5")
-        glassWallFront4.obj.setAttribute("rotation",{x:0, y:90, z:0})
-        this.obj.append( glassWallFront4.obj );
-
-        let doorPillar1 = new pillar(-1.8,1,11);
-        doorPillar1.obj.setAttribute("scale","1.5 1 1.5")
-        this.obj.append( doorPillar1.obj );
-
-        let doorPillar2 = new pillar(1.8,1,11);
-        doorPillar2.obj.setAttribute("scale","1.5 1 1.5")
-        this.obj.append( doorPillar2.obj );
-
-        let door = new DoorWall(-4.2,1,11.1);
-        door.obj.setAttribute("scale","1 1 0.8")
-        door.obj.setAttribute("rotation",{x:0, y:-90, z:0})
-        this.obj.append( door.obj );
-
+        
 
 
         
@@ -73,5 +54,131 @@ class Building2{
     this.obj.setAttribute("position",{x:x, y:y, z:z});
     scene.append( this.obj )
     
-    } }
+    } 
+
+     extractWalls(Floor1){
+      const findWalls = (element) => {
+        for(let child of element.children){
+          if(child.tagName === 'A-BOX'){
+            this.walls.push(child);
+          } else {
+            findWalls(child);
+          }
+        }
+      };
+      findWalls(Floor1.obj);
+    }
+
+    makeDynamic(wallBox){
+      if(wallBox.getAttribute("dynamic-body"));
+      wallBox.removeAttribute("static-body");
+      wallBox.setAttribute("dynamic-body", " mass:70; shape: box; ");
+    }
+
+    extractWalls(Floor2){
+      const findWalls = (element) => {
+        for(let child of element.children){
+          if(child.tagName === 'A-BOX'){
+            this.walls.push(child);
+          } else {
+            findWalls(child);
+          }
+        }
+      };
+      findWalls(Floor2.obj);
+    }
+
+    extractWalls(Floor3){
+      const findWalls = (element) => {
+        for(let child of element.children){
+          if(child.tagName === 'A-BOX'){
+            this.walls.push(child);
+          } else {
+            findWalls(child);
+          }
+        }
+      };
+      findWalls(Floor3.obj);
+    }
+
+    extractWalls(Floor4){
+      const findWalls = (element) => {
+        for(let child of element.children){
+          if(child.tagName === 'A-BOX'){
+            this.walls.push(child);
+          } else {
+            findWalls(child);
+          }
+        }
+      };
+      findWalls(Floor4.obj);
+    }
+
+    extractWalls(Floor5){
+      const findWalls = (element) => {
+        for(let child of element.children){
+          if(child.tagName === 'A-BOX'){
+            this.walls.push(child);
+          } else {
+            findWalls(child);
+          }
+        }
+      };
+      findWalls(Floor5.obj);
+    }
+
+    extractWalls(Floor6){
+      const findWalls = (element) => {
+        for(let child of element.children){
+          if(child.tagName === 'A-BOX'){
+            this.walls.push(child);
+          } else {
+            findWalls(child);
+          }
+        }
+      };
+      findWalls(Floor6.obj);
+    }
+
+    extractWalls(Floor7){
+      const findWalls = (element) => {
+        for(let child of element.children){
+          if(child.tagName === 'A-BOX'){
+            this.walls.push(child);
+          } else {
+            findWalls(child);
+          }
+        }
+      };
+      findWalls(Floor7.obj);
+    }
+
+    extractWalls(Floor8){
+      const findWalls = (element) => {
+        for(let child of element.children){
+          if(child.tagName === 'A-BOX'){
+            this.walls.push(child);
+          } else {
+            findWalls(child);
+          }
+        }
+      };
+      findWalls(Floor8.obj);
+    }
+
+    extractWalls(Floor9){
+      const findWalls = (element) => {
+        for(let child of element.children){
+          if(child.tagName === 'A-BOX'){
+            this.walls.push(child);
+          } else {
+            findWalls(child);
+          }
+        }
+      };
+      findWalls(Floor9.obj);
+    }
+
+
+}
 
