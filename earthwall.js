@@ -1,14 +1,31 @@
 class EarthWall{
-    constructor(position){
+    constructor(distance){
         
         this.wall = document.createElement("a-box");
 
-        this.wall.setAttribute("position",{x:position.x, y:position.y-60, z:position.z})
-        this.wall.setAttribute("scale","32 64 8")
+
+
+        const z = distance * Math.cos(camera.children[0].object3D.rotation.y)
+        const x = distance * Math.sin(camera.children[0].object3D.rotation.y)
+        
+        this.wall.setAttribute("static-body","")
+        this.wall.setAttribute("position",{x:camera.object3D.position.x+x, y:-60, z:camera.object3D.position.z+z})
+        this.wall.setAttribute("scale","32 8 8")
+        this.wall.setAttribute("color","gray")
+        this.wall.object3D.rotation.set(
+            0,
+            camera.children[0].object3D.rotation.y,
+            Math.PI/2,
+        )
+
+        console.log(distance)
+
+        scene.append(this.wall);
     }
 
-    animate(){
-        this.wall.object3D.position.y++;
+    fire(){
+        if(this.wall.object3D.position.y<16)
+        this.wall.object3D.position.y+=1;
     }
 }
 
@@ -36,6 +53,7 @@ class Locator{
   followCam(){
     this.center.object3D.rotation.y = camera.children[0].object3D.rotation.y
   }
+
   remove(){
     if(this.center.parentNode){
         this.center.parentNode.removeChild(this.center)

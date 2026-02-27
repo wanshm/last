@@ -47,9 +47,10 @@ window.addEventListener("click",function(e){
     } else if(hotbarselection == 2){
     switch(book.selection){
         case 0:
-            const las = spell
-            const met = new Meteor(las.laser.object3D.rotation.x);
-            attacks.push(met);
+            attacks.push(new Meteor(spell.laser.object3D.rotation.x));
+            break;
+        case 1:
+            attacks.push(new EarthWall(spell.locator.object3D.position.z));
             break;
     }
     }
@@ -62,7 +63,6 @@ window.addEventListener("wheel",(e)=>{
 
         if(spell instanceof Laser){
             rot = spell.laser.object3D.rotation;
-        
             //turn down
             if(e.deltaY > 0 && rot.x < -.1){
             if(e.shiftKey){
@@ -97,6 +97,18 @@ window.addEventListener("wheel",(e)=>{
             }
             }
         }
+
+        //earthwall locator
+        if(spell instanceof Locator){
+            //thing goes back
+            if(e.deltaY > 0 && spell.locator.object3D.position.z < 0){
+                spell.locator.object3D.position.z++;
+            }
+            //thing goes forwards
+            if(e.deltaY < 0 && spell.locator.object3D.position.z > -50){
+                spell.locator.object3D.position.z--;
+            }
+        }
   })
 
 
@@ -112,7 +124,6 @@ window.addEventListener("keydown",function(e){
             if(book.selection == 0){
                 book.selection = spellcount-1;
             } else book.selection--;
-            //LOGICAL ERROR, addspell doesnt remove previous spell, previous spell stays and cant be removed    
             
             spell && spell.remove()
             spell = addspell(book.selection);
@@ -190,7 +201,8 @@ window.addEventListener("keydown",function(e){
 
 function loop(){
 
-    console.log(book.selection,spell)
+    // console.log(
+    //         camera.children[0].object3D.rotation.y)
     //spellbook tracking
     book && book.followCam()
 
@@ -220,8 +232,8 @@ function loop(){
     attacks.forEach((attack,i)=>{
         if(attack instanceof Slash){
             attack.animate();
-            console.log(camera.object3D.position)
-            console.log(attack.slash.object3D.position)
+            // console.log(camera.object3D.position)
+            // console.log(attack.slash.object3D.position)
             for(let wall of walls){
               if(distance(attack.slash, wall) <= 5){
                 building.makeDynamic(wall);
@@ -249,7 +261,7 @@ function loop(){
                     building.makeDynamic(wall);
                 }
             }
-
+            //meteor explosion
             if(attack.obj.object3D.position.y < 0){
                 attack.explode();
                 if(attack.exprad>50){
@@ -257,7 +269,9 @@ function loop(){
                     attacks.splice(i,1);
                 }
             }
-        }
+        } else if (attack instanceof EarthWall){
+                attack.fire();
+            }
     })
 
 
