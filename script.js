@@ -275,6 +275,11 @@ function loop(){
                     attack.remove();
                     attacks.splice(i,1);
                 }
+                for(let wall of walls){
+                if(distance(attack.hitboxposition, wall) <= 50){
+                    building.makeDynamic(wall);
+                }
+            }
         }
     })
 

@@ -18,9 +18,9 @@ class EarthWall{
             Math.PI/2,
         )
 
-        this.lifespan = 5000;
+        this.lifespan = 1500;
         this.creationTime = Date.now();
-
+        this.hitboxposition = {object3D:{position:{x:camera.object3D.position.x+x, y:16, z:camera.object3D.position.z+z}}}
 
         scene.append(this.wall);
     }
