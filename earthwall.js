@@ -18,7 +18,9 @@ class EarthWall{
             Math.PI/2,
         )
 
-        console.log(distance)
+        this.lifespan = 5000;
+        this.creationTime = Date.now();
+
 
         scene.append(this.wall);
     }
@@ -26,6 +28,16 @@ class EarthWall{
     fire(){
         if(this.wall.object3D.position.y<16)
         this.wall.object3D.position.y+=1;
+
+        if (Date.now() - this.creationTime > this.lifespan) {
+            
+           this.wall.object3D.position.y-=3;
+        }
+    }
+    remove(){
+        if(this.wall.parentNode){
+            this.wall.parentNode.removeChild(this.wall)
+            }
     }
 }
 

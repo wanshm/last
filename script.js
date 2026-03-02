@@ -200,9 +200,7 @@ window.addEventListener("keydown",function(e){
 })
 
 function loop(){
-
-    // console.log(
-    //         camera.children[0].object3D.rotation.y)
+    
     //spellbook tracking
     book && book.followCam()
 
@@ -271,7 +269,13 @@ function loop(){
             }
         } else if (attack instanceof EarthWall){
                 attack.fire();
-            }
+                
+                //time check
+                if (Date.now() - attack.creationTime > attack.lifespan + 1000) {
+                    attack.remove();
+                    attacks.splice(i,1);
+                }
+        }
     })
 
 
