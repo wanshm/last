@@ -101,11 +101,11 @@ window.addEventListener("wheel",(e)=>{
         if(spell instanceof Locator){
             //thing goes back
             if(e.deltaY > 0 && spell.locator.object3D.position.z < 0){
-                spell.locator.object3D.position.z++;
+                if(e.shiftKey){spell.locator.object3D.position.z++;} else spell.locator.object3D.position.z+=5;
             }
             //thing goes forwards
-            if(e.deltaY < 0 && spell.locator.object3D.position.z > -50){
-                spell.locator.object3D.position.z--;
+            if(e.deltaY < 0 && spell.locator.object3D.position.z > -100){
+                if(e.shiftKey){spell.locator.object3D.position.z--;} else spell.locator.object3D.position.z-=5;
             }
         }
   })
@@ -186,13 +186,6 @@ window.addEventListener("keydown",function(e){
         }
         spell = undefined;
     }
-    // if(book.selection !== 0 && spell instanceof Laser){
-    //     spell.remove()
-    // }
-    // if(book.selection !== 1 && spell instanceof Locator){
-    //     spell.remove()
-    // }
-
     //deselects other hotbar items
     hotbaritems.filter((item,i)=>{return i !== hotbarselection}).forEach((item)=>{item.deselect();})
 
@@ -272,8 +265,9 @@ function loop(){
                     attack.remove();
                     attacks.splice(i,1);
                 }
+                    console.log(attack.hitboxposition);
                 for(let wall of walls){
-                if(distance(attack.hitboxposition, wall) <= 50){
+                if(distance(attack.hitboxposition, wall) <= 16){
                     building.makeDynamic(wall);
                 }
             }

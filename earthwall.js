@@ -10,7 +10,7 @@ class EarthWall{
         
         this.wall.setAttribute("static-body","")
         this.wall.setAttribute("position",{x:camera.object3D.position.x+x, y:-60, z:camera.object3D.position.z+z})
-        this.wall.setAttribute("scale","32 8 8")
+        this.wall.setAttribute("scale","64 21 21")
         this.wall.setAttribute("color","gray")
         this.wall.object3D.rotation.set(
             0,
@@ -20,18 +20,18 @@ class EarthWall{
 
         this.lifespan = 1500;
         this.creationTime = Date.now();
-        this.hitboxposition = {object3D:{position:{x:camera.object3D.position.x+x, y:16, z:camera.object3D.position.z+z}}}
-
+        this.hitboxposition = {object3D:{position:{x:camera.object3D.position.x+x, y:0, z:camera.object3D.position.z+z}}}
+        
         scene.append(this.wall);
     }
 
     fire(){
         if(this.wall.object3D.position.y<16)
-        this.wall.object3D.position.y+=1;
+        this.wall.object3D.position.y+=4;
 
         if (Date.now() - this.creationTime > this.lifespan) {
             
-           this.wall.object3D.position.y-=3;
+           this.wall.object3D.position.y-=5;
         }
     }
     remove(){
