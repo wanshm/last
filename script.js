@@ -15,7 +15,7 @@ window.addEventListener("DOMContentLoaded",function (){
 
     buildingA = new Building2(0,0,-5);
     walls = buildingA.walls;
-
+   
     // building2opti = new Building2Opti(-25,0,-5);
 
     
