@@ -6,7 +6,9 @@ class Slash{
         this.slash = document.createElement("a-ring");
         const sword = document.createElement("a-box");
         const crossguard = document.createElement("a-box");
-        
+        this.hitbox = document.createElement("a-entity");
+
+
         this.center.append(this.slash)
         this.slash.append(sword)
         
@@ -32,9 +34,19 @@ class Slash{
         sword.setAttribute("rotation", "0 0 -180");
         crossguard.object3D.position.set(0,.25,0)
         crossguard.object3D.scale.set(4,.1,1)
+
+        this.hitbox.setAttribute("position",{x:camera.object3D.position.x,y:camera.object3D.position.y+3,z:camera.object3D.position.z})
         
         camera.append(this.center)
 
+        scene.append(this.hitbox)
+        this.theta = camera.object3D.children[0].rotation.y + Math.PI;
+        this.phi = camera.object3D.children[0].rotation.x ; // do something 
+        this.v = 1;
+        let v_xz = this.v * Math.cos(this.phi);
+        this.dz = v_xz * Math.cos(this.theta);
+        this.dx = v_xz * Math.sin(this.theta);
+        this.dy = this.v * Math.sin(this.phi);
 
     }    
 
@@ -50,6 +62,9 @@ class Slash{
     }
 
     animate(){
+        this.hitbox.object3D.position.x += this.dx;
+        this.hitbox.object3D.position.y += this.dy;
+        this.hitbox.object3D.position.z += this.dz; 
         const start = this.slash.getAttribute("theta-start")
         const length = this.slash.getAttribute("theta-length")
         const sword = this.slash.children[0];
@@ -61,6 +76,6 @@ class Slash{
         } else {
             this.animated = true;
         }
-        this.slash.object3D.position.y += -1;
+        this.slash.object3D.position.y -= this.v;
     }
 }

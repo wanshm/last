@@ -17,7 +17,6 @@ window.addEventListener("DOMContentLoaded",function (){
 
     
 
-    console.log(camera)
 
     //create spellbook
     book = new Spellbook();
@@ -230,10 +229,8 @@ function loop(){
     attacks.forEach((attack,i)=>{
         if(attack instanceof Slash){
             attack.animate();
-            // console.log(camera.object3D.position)
-            // console.log(attack.slash.object3D.position)
             for(let wall of walls){
-              if(distance(attack.slash, wall) <= 5){
+              if(distance(attack.hitbox, wall) <= 10){
                 building.makeDynamic(wall);
               }
             }
