@@ -14,7 +14,7 @@ function distance(obj1, obj2){
   return d;
 }
 
-function distance(obj1,obj2){
+function distance2(obj1,obj2){
   return Math.sqrt(Math.pow(obj1.x-obj2.x,2) + Math.pow(obj1.y-obj2.y,2) + Math.pow(obj1.z-obj2.z,2))
 }
 
@@ -40,9 +40,8 @@ function checkMeteorHitbox(meteor, stuff){
   const atkp = meteor.obj.object3D.position;
   meteor.hitboxes.forEach((hitbox,i) => {
     const hbp = hitbox.box.object3D.position
-    if(distance({x:atkp.x + hbp.x , y:atkp.y, z:atkp.z + hbp.z}, stuff.object3D.position)){
+    if(distance2({x:atkp.x + hbp.x , y:atkp.y, z:atkp.z + hbp.z}, stuff.object3D.position)){
       return true;
     }
   });
-  return false;
 }
