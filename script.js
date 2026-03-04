@@ -35,161 +35,17 @@ window.addEventListener("DOMContentLoaded",function (){
 } )
 
 //click listener
-window.addEventListener("click",function(e){
-    if(hotbarselection==0){
-        const slash = new Slash();
-        attacks.push(slash);
-    } 
-    else if (hotbarselection == 1){
-        const bullet = new Bullet();
-        attacks.push(bullet);
-    } else if(hotbarselection == 2){
-    switch(book.selection){
-        case 0:
-            attacks.push(new Meteor(spell.laser.object3D.rotation.x));
-            break;
-        case 1:
-            attacks.push(new EarthWall(spell.locator.object3D.position.z));
-            break;
-    }
-    }
-})
+
+
+
+window.addEventListener("click",(e)=>clickHandler(e))
 
 //wheel listener
-window.addEventListener("wheel",(e)=>{
-        
-        //meteor laser stuff
-
-        if(spell instanceof Laser){
-            rot = spell.laser.object3D.rotation;
-            //turn down
-            if(e.deltaY > 0 && rot.x < -.1){
-            if(e.shiftKey){
-                spell.laser.object3D.rotation.set(
-                    rot.x+(Math.PI/180),
-                    rot.y,
-                    rot.z
-                )
-            } else{
-                spell.laser.object3D.rotation.set(
-                    rot.x+(5*Math.PI/180),
-                    rot.y,
-                    rot.z
-                )
-            }
-            }
-
-            //turn up
-            if(e.deltaY < 0  && rot.x > -1){
-            if(e.shiftKey){
-                spell.laser.object3D.rotation.set(
-                    rot.x-(Math.PI/180),
-                    rot.y,
-                    rot.z
-                )
-            } else{
-                spell.laser.object3D.rotation.set(
-                    rot.x-(5*Math.PI/180),
-                    rot.y,
-                    rot.z
-                )
-            }
-            }
-        }
-
-        //earthwall locator
-        if(spell instanceof Locator){
-            //thing goes back
-            if(e.deltaY > 0 && spell.locator.object3D.position.z < 0){
-                if(e.shiftKey){spell.locator.object3D.position.z++;} else spell.locator.object3D.position.z+=5;
-            }
-            //thing goes forwards
-            if(e.deltaY < 0 && spell.locator.object3D.position.z > -100){
-                if(e.shiftKey){spell.locator.object3D.position.z--;} else spell.locator.object3D.position.z-=5;
-            }
-        }
-  })
-
+window.addEventListener("wheel",(e)=>wheelHandler(e))
 
 
 //keyboard listener
-window.addEventListener("keydown",function(e){
-
-    //hotbar switch
-    switch(e.key){
-
-        
-        case "q":
-            if(book.selection == 0){
-                book.selection = spellcount-1;
-            } else book.selection--;
-            
-            spell && spell.remove()
-            spell = addspell(book.selection);
-            break;
-        case "e":
-            if(book.selection == spellcount-1 ){
-                book.selection = 0;
-            } else book.selection++;
-            
-            spell && spell.remove()
-            spell = addspell(book.selection);
-            break;
-
-        case "1":
-            if(hotbarselection==0){
-                break;
-                //prevent reselection
-            }
-            
-            //hotbar selection update
-            hotbaritems[0].select()
-            hotbarselection=0;
-            break;
-        case "2":
-            if(hotbarselection==1){
-                break;
-                //prevent reselection
-            }
-
-            //hotbar update
-            hotbaritems[1].select()
-            hotbarselection=1;
-            break;
-        case "3":
-            if(hotbarselection==2){
-                break;
-                //prevent reselection
-            }
-            
-            book.appear()
-            
-            //check book selection
-
-            spell = addspell(book.selection);
-
-            //hotbar update
-            hotbaritems[2].select()
-            hotbarselection=2;
-            break;
-
-            
-    }
-    //disappear spells
-    if(hotbarselection!==2){
-        book.disappear()
-        if(spell instanceof Laser){
-            spell.remove()
-        }
-        if( spell instanceof Locator){
-            spell.remove()
-        }
-        spell = undefined;
-    }
-    //deselects other hotbar items
-    hotbaritems.filter((item,i)=>{return i !== hotbarselection}).forEach((item)=>{item.deselect();})
-
-})
+window.addEventListener("keydown",(e)=>keyboardHandler(e))
 
 function loop(){
     
@@ -238,35 +94,36 @@ function loop(){
                 building.makeDynamic(wall);
               }
             }
-            if(attack.obj && distance(camera,attack.obj)> 200){
+            if(attack.obj && distance(camera,attack.obj) > 200){
                 attack.remove()
                 attacks.splice(i,1);
             }
         } else if (attack instanceof Meteor){
             attack.fire();
-                for(let wall of walls){
-                if(distance(attack.obj, wall) <= 100){
+            for(let wall of walls){
+                
+                if(distance(attack.obj, wall) <= 14 || checkMeteorHitbox(attack,wall) ){
                     building.makeDynamic(wall);
                 }
             }
             //meteor explosion
             if(attack.obj.object3D.position.y < 0){
                 attack.explode();
+                
                 if(attack.exprad>50){
                     attack.remove();
                     attacks.splice(i,1);
                 }
             }
         } else if (attack instanceof EarthWall){
-                attack.fire();
-                
-                //time check
-                if (Date.now() - attack.creationTime > attack.lifespan + 1000) {
-                    attack.remove();
-                    attacks.splice(i,1);
-                }
-                    console.log(attack.hitboxposition);
-                for(let wall of walls){
+            attack.fire();
+            
+            //time check
+            if (Date.now() - attack.creationTime > attack.lifespan + 1000) {
+                attack.remove();
+                attacks.splice(i,1);
+            }
+            for(let wall of walls){
                 if(distance(attack.hitboxposition, wall) <= 16){
                     building.makeDynamic(wall);
                 }
