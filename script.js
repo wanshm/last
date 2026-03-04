@@ -14,9 +14,11 @@ window.addEventListener("DOMContentLoaded",function (){
     // walls = building.walls;
 
     buildingA = new Building2(0,0,-5);
-    walls = buildingA.walls;
+    // walls = buildingA.walls;
    
     // building2opti = new Building2Opti(-25,0,-5);
+
+    building2chopped = new ChoppedBuilding2(-25,0,-5);
 
     
 
