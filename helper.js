@@ -37,11 +37,13 @@ function addspell(selection){
 function checkMeteorHitbox(meteor, stuff){
   //checks if meteor's explosion comes in contact with things
   //returns boolean
+  let bool = false;
   const atkp = meteor.obj.object3D.position;
-  meteor.hitboxes.forEach((hitbox,i) => {
-    const hbp = hitbox.box.object3D.position
-    if(distance2({x:atkp.x + hbp.x , y:atkp.y, z:atkp.z + hbp.z}, stuff.object3D.position)){
-      return true;
+  meteor.hitboxes.forEach((hitbox) => {
+    const hbp = hitbox.box.object3D.position 
+    if(distance2({x:atkp.x + hbp.x , y:atkp.y, z:atkp.z + hbp.z}, stuff.parentNode.parentNode.parentNode.parentNode.object3D.position) < 10){
+      bool = true;
     }
   });
+  return bool;
 }

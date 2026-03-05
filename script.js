@@ -87,6 +87,8 @@ function loop(){
                 attack.remove();
                 attacks.splice(i,1);
             }
+
+
         } else if (attack instanceof Bullet){
             attack.fire();
             for(let wall of walls){
@@ -98,8 +100,12 @@ function loop(){
                 attack.remove()
                 attacks.splice(i,1);
             }
+
+
         } else if (attack instanceof Meteor){
             attack.fire();
+
+            
             for(let wall of walls){
                 if(distance(attack.obj, wall) <= 14 || checkMeteorHitbox(attack,wall) ){
                     building.makeDynamic(wall);
@@ -114,6 +120,8 @@ function loop(){
                     attacks.splice(i,1);
                 }
             }
+
+
         } else if (attack instanceof EarthWall){
             attack.fire();
             
