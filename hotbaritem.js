@@ -27,9 +27,6 @@ class HotBarItem {
         this.hbn.setAttribute("position","-.5 .3 1");
         this.hbt.setAttribute("color","black");
         this.hbn.setAttribute("color","black");
-        
-        console.log(camera.children[0].object3D)
-        
 
         camera.append(this.center)
     }
