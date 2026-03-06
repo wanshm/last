@@ -1,5 +1,4 @@
 function clickHandler(e){
-
     if(hotbarselection==0){
         const slash = new Slash();
         attacks.push(slash);
@@ -97,6 +96,7 @@ function wheelHandler(e){
             break;
 
         case "1":
+    clwalls();
             if(hotbarselection==0){
                 break;
                 //prevent reselection

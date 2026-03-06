@@ -59,3 +59,28 @@ function sumPositions(array){
 
   return sump;
 }
+
+
+function clwalls(){
+  
+    //used this function to figure shit out, dont mind it
+    console.log(walls[0].parentNode.parentNode.parentNode.parentNode)
+    console.log(walls[0].parentNode.parentNode.parentNode)
+    console.log(walls[0].parentNode.parentNode)
+    console.log(walls[0].parentNode)
+    console.log(walls[0])
+    walls.forEach(wall => {
+        const worldp = wall.parentNode.parentNode.parentNode.parentNode.object3D.position
+        const layer1 =wall.parentNode.parentNode.parentNode.object3D.position
+        const layer2 =wall.parentNode.parentNode.object3D.position
+        const layer3 =wall.parentNode.object3D.position
+        const layer4 =wall.object3D.position
+
+        p = sumPositions([worldp,layer1,layer2,layer3,layer4])
+      //this method yields some floating point error, lets hope that doesn't bite us
+        console.log(p)
+    });
+    
+}
+
+

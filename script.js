@@ -14,20 +14,6 @@ window.addEventListener("DOMContentLoaded",function (){
     walls = building.walls;
 
 
-    //debugging 
-    console.log(walls[0].parentNode.parentNode.parentNode.parentNode.object3D.position)
-    walls.forEach(wall => {
-        const worldp = wall.parentNode.parentNode.parentNode.parentNode.object3D.position
-        const layer1 =wall.parentNode.parentNode.parentNode.object3D.position
-        const layer2 =wall.parentNode.parentNode.object3D.position
-        const layer3 =wall.parentNode.object3D.position
-        const layer4 =wall.object3D.position
-
-        console.log({a:worldp,b:wall.parentNode.parentNode.parentNode.parentNode})
-        console.log({a:layer1,b:wall.parentNode.parentNode.parentNode})
-        console.log({a:sumPositions([worldp,layer1]),b:"l1+wp"})
-    });
-    
 
 
     //create spellbook
