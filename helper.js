@@ -47,3 +47,15 @@ function checkMeteorHitbox(meteor, stuff){
   });
   return bool;
 }
+
+function sumPositions(array){
+  const sump = {x:0,y:0,z:0};
+
+  array.forEach((obj)=>{
+    sump.x += obj.x;
+    sump.y += obj.y
+    sump.z += obj.z
+  })
+
+  return sump;
+}
