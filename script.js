@@ -13,7 +13,7 @@ window.addEventListener("DOMContentLoaded",function (){
     building = new Building1(100,0,-5);
     // walls = building.walls;
 
-    buildingA = new Building2(0,0,-5);
+    // buildingA = new Building2(0,0,-5);
     // walls = buildingA.walls;
    
     // building2opti = new Building2Opti(-25,0,-5);
