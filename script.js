@@ -8,7 +8,6 @@ window.addEventListener("DOMContentLoaded",function (){
     box.setAttribute("color","blue");
     box.setAttribute("dynamic-body","mass:0.0001; shape: box;");
     box.setAttribute("position","0 25.5 0");
-    box.setAttribute("opacity","0.9")
     scene.append(box);
   
     building = new Building1(100,0,-5);
