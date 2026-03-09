@@ -96,7 +96,7 @@ function wheelHandler(e){
             break;
 
         case "1":
-    clwalls();
+    
             if(hotbarselection==0){
                 break;
                 //prevent reselection
