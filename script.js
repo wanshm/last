@@ -30,6 +30,30 @@ window.addEventListener("DOMContentLoaded",function (){
     building2chopped10 = new ChoppedBuilding2(100,0,220);
     building2chopped11 = new ChoppedBuilding2(100,0,180);
     building2chopped12 = new ChoppedBuilding2(100,0,140);
+    building2chopped13 = new ChoppedBuilding2(60,0,220);
+    building2chopped14 = new ChoppedBuilding2(60,0,180);
+    building2chopped15 = new ChoppedBuilding2(60,0,140);
+    building2chopped16 = new ChoppedBuilding2(20,0,220);
+    building2chopped17 = new ChoppedBuilding2(20,0,180);
+    building2chopped18 = new ChoppedBuilding2(20,0,140);
+    building2chopped19 = new ChoppedBuilding2(220,0,100);
+    building2chopped20 = new ChoppedBuilding2(180,0,100);
+    building2chopped21 = new ChoppedBuilding2(140,0,100);
+    building2chopped22 = new ChoppedBuilding2(100,0,100);
+    building2chopped23 = new ChoppedBuilding2(60,0,100);
+    building2chopped24 = new ChoppedBuilding2(20,0,100);
+    building2chopped25 = new ChoppedBuilding2(220,0,60);
+    building2chopped26 = new ChoppedBuilding2(180,0,60);
+    building2chopped27 = new ChoppedBuilding2(140,0,60);
+    building2chopped28 = new ChoppedBuilding2(100,0,60);
+    building2chopped29 = new ChoppedBuilding2(60,0,60);
+    building2chopped30 = new ChoppedBuilding2(20,0,60);
+    building2chopped31 = new ChoppedBuilding2(220,0,20);
+    building2chopped32 = new ChoppedBuilding2(180,0,20);
+    building2chopped33 = new ChoppedBuilding2(140,0,20);
+    building2chopped34 = new ChoppedBuilding2(100,0,20);
+    building2chopped35 = new ChoppedBuilding2(60,0,20);
+    building2chopped36 = new ChoppedBuilding2(20,0,20);
 
 
 
