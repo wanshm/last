@@ -107,6 +107,7 @@ class ChoppedBuilding2{
         this.obj.append( door );
 
         this.obj.setAttribute("position",{x:x, y:y, z:z});
+        this.obj.setAttribute("rotation","0 -90 0");
         scene.append( this.obj )
     
 

@@ -18,7 +18,20 @@ window.addEventListener("DOMContentLoaded",function (){
    
     // building2opti = new Building2Opti(-25,0,-5);
 
-    building2chopped = new ChoppedBuilding2(-25,0,-5);
+    building2chopped1 = new ChoppedBuilding2(220,0,220);
+    building2chopped2 = new ChoppedBuilding2(220,0,180);
+    building2chopped3 = new ChoppedBuilding2(180,0,220);
+    building2chopped4 = new ChoppedBuilding2(180,0,180);
+    building2chopped5 = new ChoppedBuilding2(220,0,140);
+    building2chopped6 = new ChoppedBuilding2(180,0,140);
+    building2chopped7 = new ChoppedBuilding2(140,0,220);
+    building2chopped8 = new ChoppedBuilding2(140,0,180);
+    building2chopped9 = new ChoppedBuilding2(140,0,140);
+    building2chopped10 = new ChoppedBuilding2(100,0,220);
+    building2chopped11 = new ChoppedBuilding2(100,0,180);
+    building2chopped12 = new ChoppedBuilding2(100,0,140);
+
+
 
     
 
