@@ -8,6 +8,7 @@ class Spellbook{
         this.appearing = false;
         this.disappearing = false;
         this.opacity = 0;
+        this.vis = false;
 
         //appending
         this.center.append(cover1);
@@ -16,7 +17,9 @@ class Spellbook{
         //this.center;
         this.center.setAttribute("position","0 2 0");
         // this.center.setAttribute("opacity","0");
-        // this.center.setAttribute("visible","false");
+        
+        this.center.children[0].setAttribute("visible","false");
+        this.center.children[1].setAttribute("visible","false");
 
         //cover1
         cover1.setAttribute("scale","0.35 0.5 0.05");
@@ -30,12 +33,6 @@ class Spellbook{
         cover2.setAttribute("rotation","0 -30 0");
         cover2.setAttribute("opacity","0");
 
-
-        this.page = 0;
-
-
-        
-
         camera.append(this.center);
     }
     followCam(){
@@ -47,13 +44,13 @@ class Spellbook{
     }
 
     appear(){
-        // this.center.setAttribute("visible","true")
         this.appearing = true;
         this.disappearing=false;
+        this.center.children[0].setAttribute("visible","true");
+        this.center.children[1].setAttribute("visible","true");
     }
 
     disappear(){
-        // this.center.setAttribute("visible","false")
         this.disappearing = true;
         this.appearing=false;
     }
@@ -69,9 +66,13 @@ class Spellbook{
         this.opacity-= 0.1;
         this.center.children[0].setAttribute("opacity",book.opacity);
         this.center.children[1].setAttribute("opacity",book.opacity);
-        this.disappearing = book.opacity < 0 ? false:true;
-        
+        this.disappearing = book.opacity <= 0 ? false:true;
+        if(book.opacity <= 0){
+            this.center.children[0].setAttribute("visible","false");
+            this.center.children[1].setAttribute("visible","false");
+        }
     }
+
     remove(){
         if(this.center.parentNode)
         this.center.parentNode.removeChild(this.center);
