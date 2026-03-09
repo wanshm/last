@@ -28,9 +28,9 @@ class Meteor{
     this.explosion.setAttribute("scale","1 1 1.5");
   
 
-    this.hitboxes = new Array(1,1,1,1,1,1,1,1)
+    const hb = new Array(1,1,1,1,1,1,1,1)
 
-    this.hitboxes = this.hitboxes.map((hb,i)=>{
+    this.hitboxes = hb.map((hb,i)=>{
       hb = new Hitbox("16 4 16", Math.sin(this.theta + (i*(Math.PI/4))), 0 ,Math.cos(this.theta + (i*(Math.PI/4))));
       return hb;
     })
@@ -79,7 +79,7 @@ class Laser{
     this.laser.object3D.rotation.y = camera.children[0].object3D.rotation.y
   }
 
-  removeLaser(){
+  remove(){
     if(this.laser.parentNode){
       this.laser.parentNode.removeChild(this.laser)
     }

@@ -1,4 +1,4 @@
-let camera, scene, attacks= [], hotbarinfo = ["Slash","Bullet","Spells"],hotbaritems=[], hotbarselection=0, book, building, buildingA, walls=[], spells=[], activespell;
+let camera, scene, attacks= [], hotbarinfo = ["Slash","Bullet","Spells"],hotbaritems=[], hotbarselection=0, book, building, walls=[], spell, spellcount = 2;
 //initialization
 window.addEventListener("DOMContentLoaded",function (){
     
@@ -64,11 +64,8 @@ window.addEventListener("DOMContentLoaded",function (){
 
 
 
-    
 
-    
 
-    console.log(camera)
 
     //create spellbook
     book = new Spellbook();
@@ -87,135 +84,20 @@ window.addEventListener("DOMContentLoaded",function (){
 } )
 
 //click listener
-window.addEventListener("click",function(e){
-    if(hotbarselection==0){
-        const slash = new Slash();
-        attacks.push(slash);
-    } 
-    else if (hotbarselection == 1){
-        const bullet = new Bullet();
-        attacks.push(bullet);
-    } else if(hotbarselection == 2){
-    switch(book.selection){
-        case 0:
-            // console.log(spells)
-            const las = spells.find((spell)=>{return spell instanceof Laser})
-            const met = new Meteor(las.laser.object3D.rotation.x);
-            attacks.push(met);
-            break;
-    }
-    }
-})
+
+
+
+window.addEventListener("click",(e)=>clickHandler(e))
 
 //wheel listener
-window.addEventListener("wheel",(e)=>{
-    spells.forEach((spell)=>{
+window.addEventListener("wheel",(e)=>wheelHandler(e))
 
-        //meteor laser stuff
-
-        if(spell instanceof Laser){
-            rot = spell.laser.object3D.rotation;
-        
-            //turn down
-            if(e.deltaY > 0 && rot.x < -.1){
-            if(e.shiftKey){
-                spell.laser.object3D.rotation.set(
-                    rot.x+(Math.PI/180),
-                    rot.y,
-                    rot.z
-                )
-            } else{
-                spell.laser.object3D.rotation.set(
-                    rot.x+(5*Math.PI/180),
-                    rot.y,
-                    rot.z
-                )
-            }
-            }
-
-            //turn up
-            if(e.deltaY < 0  && rot.x > -1){
-            if(e.shiftKey){
-                spell.laser.object3D.rotation.set(
-                    rot.x-(Math.PI/180),
-                    rot.y,
-                    rot.z
-                )
-            } else{
-                spell.laser.object3D.rotation.set(
-                    rot.x-(5*Math.PI/180),
-                    rot.y,
-                    rot.z
-                )
-            }
-            }
-        }
-    })
-  })
 
 //keyboard listener
-window.addEventListener("keydown",function(e){
-
-    //hotbar switch
-    switch(e.key){
-        case "1":
-            if(hotbarselection==0){
-                break;
-                //prevent reselection
-            }
-            
-            //hotbar selection update
-            hotbaritems[0].select()
-            hotbarselection=0;
-            break;
-        case "2":
-            if(hotbarselection==1){
-                break;
-                //prevent reselection
-            }
-
-            //hotbar update
-            hotbaritems[1].select()
-            hotbarselection=1;
-            break;
-        case "3":
-            if(hotbarselection==2){
-                break;
-                //prevent reselection
-            }
-            
-            book.appear()
-            switch (book.selection){
-                case 0:
-                    //meteor
-                    las = new Laser()
-                    spells.push(las);
-                    break;
-            }
-
-            //hotbar update
-            hotbaritems[2].select()
-            hotbarselection=2;
-            break;
-    }
-
-    //on book deselect
-    if(hotbarselection!==2){
-        book.disappear()
-        spells.forEach((spell,i)=>{
-            if(spell instanceof Laser){
-                spell.removeLaser();
-                spells.splice(i,1);
-            }
-        })
-    }
-
-    //deselects other hotbar items
-    hotbaritems.filter((item,i)=>{return i !== hotbarselection}).forEach((item)=>{item.deselect();})
-
-})
+window.addEventListener("keydown",(e)=>keyboardHandler(e))
 
 function loop(){
+    
     //spellbook tracking
     book && book.followCam()
 
@@ -232,51 +114,87 @@ function loop(){
         item.followCam()
     })
 
-    //spell animations
-    spells.forEach((spell,i)=>{
-        if(spell instanceof Laser){
-            spell.followCam();
-            // spell.fire()
-        }
-    })
+    //spell tracking
+    if(spell instanceof Laser){
+        spell.followCam();
+
+    }
+    if(spell instanceof Locator){
+        spell.followCam()
+    }
 
     //attack animations
     attacks.forEach((attack,i)=>{
         if(attack instanceof Slash){
             attack.animate();
+            
+            
+            if (distance(building.obj,attack.hitbox)<10){
             for(let wall of walls){
-              if(distance(attack.slash, wall) <= 5){
                 building.makeDynamic(wall);
-              }
+                // if(distance(attack.hitbox, wall) <= 10){
+                // }
+            }
             }
             if(attack.animated) {
                 attack.remove();
                 attacks.splice(i,1);
             }
+
+
         } else if (attack instanceof Bullet){
             attack.fire();
-            for(let wall of walls){
-              if(distance(attack.obj, wall) <= 10){
-                building.makeDynamic(wall);
-              }
+            if (distance(building.obj,attack.obj)< 10){
+                for(let wall of walls){
+                        building.makeDynamic(wall);
+                    // if(distance(attack.obj, wall) <= 10){
+                    // }
+                }
             }
-            if(attack.obj && distance(camera,attack.obj)> 200){
+            if(attack.obj && distance(camera,attack.obj) > 200){
                 attack.remove()
                 attacks.splice(i,1);
             }
+
+
         } else if (attack instanceof Meteor){
             attack.fire();
+
+            
+            if (distance(building.obj,attack.obj)<14 || checkMeteorHitbox(attack,building.obj)){
                 for(let wall of walls){
-                if(distance(attack.obj, wall) <= 60){
                     building.makeDynamic(wall);
+                    // if(distance(attack.obj, wall) <= 14 || checkMeteorHitbox(attack,wall) ){
+                        
+                    // }
                 }
             }
-
+            //meteor explosion
             if(attack.obj.object3D.position.y < 0){
                 attack.explode();
+                
                 if(attack.exprad>50){
                     attack.remove();
                     attacks.splice(i,1);
+                }
+            }
+
+
+        } else if (attack instanceof EarthWall){
+            attack.fire();
+            
+            //time check
+            if (Date.now() - attack.creationTime > attack.lifespan + 1000) {
+                attack.remove();
+                attacks.splice(i,1);
+            }
+            
+            if (distance(building.obj,attack.hitboxposition)< 16){
+                for(let wall of walls){
+                    building.makeDynamic(wall);
+                    // if(distance(attack.hitboxposition, wall) <= 16){
+                        
+                    // }
                 }
             }
         }

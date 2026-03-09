@@ -14,6 +14,73 @@ function distance(obj1, obj2){
   return d;
 }
 
+function distance2(obj1,obj2){
+  return Math.sqrt(Math.pow(obj1.x-obj2.x,2) + Math.pow(obj1.y-obj2.y,2) + Math.pow(obj1.z-obj2.z,2))
+}
+
 function radiansToDegrees(r){
   return r / Math.PI *180;
 }
+
+function addspell(selection){
+  //checks the spell&works accordingly
+  switch (selection){
+    case 0:
+        //meteor
+        return new Laser();
+    case 1:
+        //earthwall
+        return new Locator();
+}
+}
+
+function checkMeteorHitbox(meteor, stuff){
+  //checks if meteor's explosion comes in contact with things
+  //returns boolean
+  let bool = false;
+  const atkp = meteor.obj.object3D.position;
+  meteor.hitboxes.forEach((hitbox) => {
+    const hbp = hitbox.box.object3D.position 
+    if(distance2({x:atkp.x + hbp.x , y:atkp.y, z:atkp.z + hbp.z}, stuff.object3D.position) < 10){
+      bool = true;
+    }
+  });
+  return bool;
+}
+
+function sumPositions(array){
+  const sump = {x:0,y:0,z:0};
+
+  array.forEach((obj)=>{
+    sump.x += obj.x;
+    sump.y += obj.y
+    sump.z += obj.z
+  })
+
+  return sump;
+}
+
+
+function clwalls(){
+  
+    //used this function to figure shit out, dont mind it
+    console.log(walls[0].parentNode.parentNode.parentNode.parentNode)
+    console.log(walls[0].parentNode.parentNode.parentNode)
+    console.log(walls[0].parentNode.parentNode)
+    console.log(walls[0].parentNode)
+    console.log(walls[0])
+    walls.forEach(wall => {
+        const worldp = wall.parentNode.parentNode.parentNode.parentNode.object3D.position
+        const layer1 =wall.parentNode.parentNode.parentNode.object3D.position
+        const layer2 =wall.parentNode.parentNode.object3D.position
+        const layer3 =wall.parentNode.object3D.position
+        const layer4 =wall.object3D.position
+
+        p = sumPositions([worldp,layer1,layer2,layer3,layer4])
+      //this method yields some floating point error, lets hope that doesn't bite us
+        console.log(p)
+    });
+    
+}
+
+

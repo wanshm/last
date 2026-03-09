@@ -8,9 +8,11 @@ class FloorBase{
     base.setAttribute("height","0.1");
     base.setAttribute("width","15");
     base.setAttribute("depth","15");
+    base.setAttribute("class","base")
     this.obj.append( base );
-    
+
     this.obj.setAttribute("position",{x:x, y:y, z:z});
+    this.obj.setAttribute("class","floorbase")
     scene.append( this.obj )
   } 
 }
@@ -28,6 +30,7 @@ class Wall1{
     wall.setAttribute("depth","1.5");
     wall.setAttribute("force-pushable", "");
     wall.setAttribute("static-body", "");
+    wall.setAttribute("class","blackpiece");
 
     this.obj.append( wall );
 
@@ -40,10 +43,12 @@ class Wall1{
     wall2.setAttribute("depth","1.5");
     wall2.setAttribute("force-pushable", "");
     wall2.setAttribute("static-body", " ");
+    wall.setAttribute("class","yellowpiece")
 
     this.obj.append( wall2 );
     
     this.obj.setAttribute("position",{x:x, y:y, z:z});
+    this.obj.setAttribute("class","wall1")
     scene.append( this.obj )
   }
 
@@ -54,22 +59,28 @@ class LongWall{
     this.obj = document.createElement("a-entity");
 
     let wall1 = new Wall1(-7.25,0,0);
+    wall1.obj.setAttribute("id","1");
     this.obj.append( wall1.obj );
 
     let wall2 = new Wall1(-7.25,0,3);
+    wall2.obj.setAttribute("id","2");
     this.obj.append( wall2.obj );
 
     let wall3 = new Wall1(-7.25,0,6);
+    wall3.obj.setAttribute("id","3");
     this.obj.append( wall3.obj );
 
     let wall4 = new Wall1(-7.25,0,9);
+    wall4.obj.setAttribute("id","4");
     this.obj.append( wall4.obj );
 
     let wall5 = new Wall1(-7.25,0,12);
+    wall5.obj.setAttribute("id","5");
     this.obj.append( wall5.obj );
 
 
     this.obj.setAttribute("position",{x:x, y:y, z:z});
+    this.obj.setAttribute("class","longwall")
     scene.append( this.obj )
 
 
@@ -91,6 +102,7 @@ class LongWall{
         this.obj.append( frontwall3.obj );
 
       this.obj.setAttribute("position",{x:x, y:y, z:z});
+      this.obj.setAttribute("class","Frontwall")
       scene.append( this.obj )
   }
 }
@@ -106,6 +118,8 @@ class LongWall{
     doorl.setAttribute("force-pushable", "");
     doorl.setAttribute("static-body", "");
     doorl.setAttribute("material", "src", "Images/Door/Door3.png");
+    doorl.setAttribute("class","doorpiece")
+    doorl.setAttribute("id","1")
 
     this.obj.append( doorl );
 
@@ -117,6 +131,8 @@ class LongWall{
     door2.setAttribute("force-pushable", "");
     door2.setAttribute("static-body", "");
     door2.setAttribute("material", "src", "Images/Door/Door2.png");
+    door2.setAttribute("class","doorpiece")
+    door2.setAttribute("id","2")
 
     this.obj.append( door2 );
 
@@ -128,6 +144,8 @@ class LongWall{
     door3.setAttribute("force-pushable", "");
     door3.setAttribute("static-body", "");
     door3.setAttribute("material", "src", "Images/Door/Door1.png");
+    door3.setAttribute("class","doorpiece")
+    door3.setAttribute("id","3")
 
     this.obj.append( door3 );
 
@@ -139,6 +157,8 @@ class LongWall{
     door4.setAttribute("force-pushable", "");
     door4.setAttribute("static-body", "");
     door4.setAttribute("material", "src", "Images/Door/Door4.png");
+    door4.setAttribute("class","doorpiece")
+    door4.setAttribute("id","4")
 
     this.obj.append( door4 );
 
@@ -150,6 +170,8 @@ class LongWall{
     door5.setAttribute("force-pushable", "");
     door5.setAttribute("static-body", "");
     door5.setAttribute("material", "src", "Images/Door/Door6.png");
+    door5.setAttribute("class","doorpiece")
+    door5.setAttribute("id","5")
 
     this.obj.append( door5 );
 
@@ -161,6 +183,8 @@ class LongWall{
     door6.setAttribute("force-pushable", "");
     door6.setAttribute("static-body", "");
     door6.setAttribute("material", "src", "Images/Door/Door5.png");
+    door6.setAttribute("class","doorpiece")
+    door6.setAttribute("id","6")
 
     this.obj.append( door6 );
 
@@ -172,6 +196,8 @@ class LongWall{
     door7.setAttribute("force-pushable", "");
     door7.setAttribute("static-body", "");
     door7.setAttribute("material", "src", "Images/Door/Door7.png");
+    door7.setAttribute("class","doorpiece")
+    door7.setAttribute("id","7")
 
     this.obj.append( door7 );
 
@@ -183,6 +209,8 @@ class LongWall{
     door8.setAttribute("force-pushable", "");
     door8.setAttribute("static-body", "");
     door8.setAttribute("material", "src", "Images/Door/Door8.png");
+    door8.setAttribute("class","doorpiece")
+    door8.setAttribute("id","8")
 
     this.obj.append( door8 );
 
@@ -194,10 +222,13 @@ class LongWall{
     door9.setAttribute("force-pushable", "");
     door9.setAttribute("static-body", "");
     door9.setAttribute("material", "src", "Images/Door/Door9.png");
+    door9.setAttribute("class","doorpiece")
+    door9.setAttribute("id","9")
 
     this.obj.append( door9 );
     
     this.obj.setAttribute("position",{x:x, y:y, z:z});
+    this.obj.setAttribute("class","doorwall")
     scene.append( this.obj )
   }
 } 
