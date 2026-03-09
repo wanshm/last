@@ -129,8 +129,8 @@ function loop(){
             attack.animate();
             
             
-            if (distance(building.obj,attack.hitbox)<10){
-            for(let wall of walls){
+            if (distance(building.obj,attack.hitbox)< 10){
+            for(let wall of building.walls){
                 building.makeDynamic(wall);
                 // if(distance(attack.hitbox, wall) <= 10){
                 // }
