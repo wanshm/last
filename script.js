@@ -8,6 +8,7 @@ window.addEventListener("DOMContentLoaded",function (){
     box.setAttribute("color","blue");
     box.setAttribute("dynamic-body","mass:0.0001; shape: box;");
     box.setAttribute("position","0 25.5 0");
+    box.setAttribute("opacity","0.9")
     scene.append(box);
   
     building = new Building1(100,0,-5);
@@ -76,11 +77,14 @@ function loop(){
     attacks.forEach((attack,i)=>{
         if(attack instanceof Slash){
             attack.animate();
-
+            
+            
+            if (distance(building.obj,attack.hitbox)<10){
             for(let wall of walls){
-                if(distance(attack.hitbox, wall) <= 10){
                 building.makeDynamic(wall);
-              }
+                // if(distance(attack.hitbox, wall) <= 10){
+                // }
+            }
             }
             if(attack.animated) {
                 attack.remove();
@@ -90,10 +94,12 @@ function loop(){
 
         } else if (attack instanceof Bullet){
             attack.fire();
-            for(let wall of walls){
-              if(distance(attack.obj, wall) <= 10){
-                building.makeDynamic(wall);
-              }
+            if (distance(building.obj,attack.obj)< 10){
+                for(let wall of walls){
+                        building.makeDynamic(wall);
+                    // if(distance(attack.obj, wall) <= 10){
+                    // }
+                }
             }
             if(attack.obj && distance(camera,attack.obj) > 200){
                 attack.remove()
@@ -105,9 +111,12 @@ function loop(){
             attack.fire();
 
             
-            for(let wall of walls){
-                if(distance(attack.obj, wall) <= 14 || checkMeteorHitbox(attack,wall) ){
+            if (distance(building.obj,attack.obj)<14 || checkMeteorHitbox(attack,building.obj)){
+                for(let wall of walls){
                     building.makeDynamic(wall);
+                    // if(distance(attack.obj, wall) <= 14 || checkMeteorHitbox(attack,wall) ){
+                        
+                    // }
                 }
             }
             //meteor explosion
@@ -129,9 +138,13 @@ function loop(){
                 attack.remove();
                 attacks.splice(i,1);
             }
-            for(let wall of walls){
-                if(distance(attack.hitboxposition, wall) <= 16){
+            
+            if (distance(building.obj,attack.hitboxposition)< 16){
+                for(let wall of walls){
                     building.makeDynamic(wall);
+                    // if(distance(attack.hitboxposition, wall) <= 16){
+                        
+                    // }
                 }
             }
         }
