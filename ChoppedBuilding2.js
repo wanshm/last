@@ -116,4 +116,9 @@ class ChoppedBuilding2{
     this.obj.setAttribute("position",{x:x, y:y, z:z});
     scene.append( this.obj )
     }
+
+    remove(){
+      if(this.obj.parentNode)
+        this.obj.parentNode.removeChild(this.obj);
+    }
 }

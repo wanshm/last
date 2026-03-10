@@ -76,11 +76,23 @@ function clwalls(){
         const layer3 =wall.parentNode.object3D.position
         const layer4 =wall.object3D.position
 
+        
+
         p = sumPositions([worldp,layer1,layer2,layer3,layer4])
       //this method yields some floating point error, lets hope that doesn't bite us
         console.log(p)
     });
     
+}
+
+function buildingswap(chopped,list,i){
+  // const cp = chopped.obj.object3D.position
+  // console.log(chopped.obj.object3D.position)
+  // const nb = new Building2(cp.x,cp.y,cp.z)
+  // nb.generate()
+  chopped.remove();
+  list.splice(i,1)
+  console.log(list.length)
 }
 
 

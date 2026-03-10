@@ -96,10 +96,7 @@ function wheelHandler(e){
             break;
 
         case "1":
-<<<<<<< HEAD
     
-=======
->>>>>>> 0ad785a892bf3eba79fd0862b0e78a9ccea747df
             if(hotbarselection==0){
                 break;
                 //prevent reselection

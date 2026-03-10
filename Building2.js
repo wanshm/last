@@ -48,11 +48,8 @@ class Building2{
         
 
 
-        
-      
-
     this.obj.setAttribute("position",{x:x, y:y, z:z});
-    scene.append( this.obj )
+    // scene.append( this.obj )
     
     } 
 
@@ -182,6 +179,10 @@ class Building2{
         }
       };
       findWalls(Floor9.obj);
+    }
+
+    generate(){
+      scene.append(this.obj)
     }
 
 
