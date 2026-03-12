@@ -43,7 +43,7 @@ class Wall1{
     wall2.setAttribute("depth","1.5");
     wall2.setAttribute("force-pushable", "");
     wall2.setAttribute("static-body", " ");
-    wall.setAttribute("class","yellowpiece")
+    wall2.setAttribute("class","yellowpiece")
 
     this.obj.append( wall2 );
     
