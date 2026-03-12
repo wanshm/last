@@ -30,6 +30,30 @@ class pillarChopped{
     scene.append( this.obj )
   }}
 
+class pillar6000{
+  constructor(x,y,z){;
+
+    let doorPillar1 = new pillar(-1.8,5.2,11);
+    doorPillar1.obj.setAttribute("scale","1.5 9.3 1.5")
+    this.obj.append( doorPillar1.obj );
+
+    let doorPillar2 = new pillar(1.8,5.2,11);
+    doorPillar2.obj.setAttribute("scale","1.5 9.3 1.5")
+    this.obj.append( doorPillar2.obj );
+
+    let doorPillar3 = new pillar(-5.8,5.2,11);
+    doorPillar3.obj.setAttribute("scale","1.5 9.3 1.5")
+    this.obj.append( doorPillar3.obj );
+
+    let doorPillar4 = new pillar(5.8,5.2,11);
+    doorPillar4.obj.setAttribute("scale","1.5 9.3 1.5")
+    this.obj.append( doorPillar4.obj );
+
+  }}
+
+
+  
+
 class ChoppedBuilding2{
     constructor(x,y,z){
         this.obj = document.createElement("a-entity");
@@ -94,6 +118,41 @@ class ChoppedBuilding2{
         let pillarD = new pillarChopped(11,14.5,-11);
         pillarD.obj.setAttribute("scale","2.7 28 2.7");
         this.obj.append( pillarD.obj );
+
+        let doorPillar1 = new pillar(-1.8,5.2,11);
+        doorPillar1.obj.setAttribute("scale","1.5 9.3 1.5")
+        this.obj.append( doorPillar1.obj );
+
+        let doorPillar2 = new pillar(1.8,5.2,11);
+        doorPillar2.obj.setAttribute("scale","1.5 9.3 1.5")
+        this.obj.append( doorPillar2.obj );
+
+        let doorPillar3 = new pillar(-5.8,5.2,11);
+        doorPillar3.obj.setAttribute("scale","1.5 9.3 1.5")
+        this.obj.append( doorPillar3.obj );
+
+        let doorPillar4 = new pillar(5.8,5.2,11);
+        doorPillar4.obj.setAttribute("scale","1.5 9.3 1.5")
+        this.obj.append( doorPillar4.obj );
+
+        let BackPillar1 = new pillar(1.8,5.2,-11);
+        BackPillar1.obj.setAttribute("scale","1.5 9.3 1.5")
+        this.obj.append( BackPillar1.obj );
+
+        let BackPillar2 = new pillar(-1.8,5.2,-11);
+        BackPillar2.obj.setAttribute("scale","1.5 9.3 1.5")
+        this.obj.append( BackPillar2.obj );
+
+        let BackPillar3 = new pillar(-5.8,5.2,-11);
+        BackPillar3.obj.setAttribute("scale","1.5 9.3 1.5")
+        this.obj.append( BackPillar3.obj );
+
+        let BackPillar4 = new pillar(5.8,5.2,-11);
+        BackPillar4.obj.setAttribute("scale","1.5 9.3 1.5")
+        this.obj.append( BackPillar4.obj );
+
+
+        
 
         let door = document.createElement("a-box");
         door.setAttribute("src","Images/Door/Door.png");
