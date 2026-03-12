@@ -35,7 +35,7 @@ class Building1{
     extractWalls(wallsandfloor){
       const findWalls = (element) => {
         for(let child of element.children){
-          if(child.tagName === 'A-BOX'){
+          if(child.tagName === 'A-BOX' || child.tagName === 'A-TRIANGLE'){
             this.walls.push(child);
           } else {
             findWalls(child);
@@ -46,64 +46,13 @@ class Building1{
     }
 
     makeDynamic(wallBox){
+      if(wallBox.getAttribute("static-body")){
+        const lifenoise = randInt(0,500); 
+        console.log("a")
+        wallBox.setAttribute("ttl",`time:${500+lifenoise}`)
+      }
       if(wallBox.getAttribute("dynamic-body"));
-      wallBox.removeAttribute("static-body");
-      wallBox.setAttribute("dynamic-body", " mass:70; shape: box; ");
-    }
-
-    extractWalls(wallsandfloor2){
-      const findWalls = (element) => {
-        for(let child of element.children){
-          if(child.tagName === 'A-BOX'){
-            this.walls.push(child);
-          } else {
-            findWalls(child);
-          }
-        }
-      };
-      findWalls(wallsandfloor2.obj);
-    }
-
-    makeDynamic(wallBox){
-      if(wallBox.getAttribute("dynamic-body"));
-      wallBox.removeAttribute("static-body");
-      wallBox.setAttribute("dynamic-body", " mass:70; shape: box; ");
-    }
-
-    extractWalls(LeftRoof){
-      const findWalls = (element) => {
-        for(let child of element.children){
-          if((child.tagName === 'A-BOX') || (child.tagName === 'A-TRIANGLE')){
-            this.walls.push(child);
-          } else {
-            findWalls(child);
-          }
-        }
-      };
-      findWalls(LeftRoof.obj);
-    }
-
-    makeDynamic(wallBox){
-      if(wallBox.getAttribute("dynamic-body"));
-      wallBox.removeAttribute("static-body");
-      wallBox.setAttribute("dynamic-body", " mass:70; shape: box; ");
-    }
-
-    extractWalls(RightRoof){
-      const findWalls = (element) => {
-        for(let child of element.children){
-          if((child.tagName === 'A-BOX') || (child.tagName === 'A-TRIANGLE')){
-            this.walls.push(child);
-          } else {
-            findWalls(child);
-          }
-        }
-      };
-      findWalls(RightRoof.obj);
-    }
-
-    makeDynamic(wallBox){
-      if(wallBox.getAttribute("dynamic-body"));
+      this.obj.setAttribute("ttl","time:1000")
       wallBox.removeAttribute("static-body");
       wallBox.setAttribute("dynamic-body", " mass:70; shape: box; ");
     }
