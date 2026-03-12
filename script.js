@@ -8,11 +8,13 @@ window.addEventListener("DOMContentLoaded",function (){
     box.setAttribute("color","blue");
     box.setAttribute("dynamic-body","mass:0.0001; shape: box;");
     box.setAttribute("position","0 25.5 0");
+    
     scene.append(box);
-  
+    
+    box.setAttribute("ttl","time:500")
 
-
-    building = new Building1(100,0,-5);
+    const building = new Building1(100,0,-5);
+    buildings.push(building)
     // walls = building.walls;
 
     // buildingA = new Building2(0,0,-5);
@@ -101,14 +103,13 @@ function loop(){
             attack.animate();
             
             buildings.forEach((building,i)=>{   
-                console.log("a") 
-                if (distance(building.obj,attack.hitbox)< 10){
-                    buildingswap(building,buildings,i)
-                for(let wall of building.walls){
-                    building.makeDynamic(wall);
-                    console.log("a")
-                    
-                }
+                if (distance(building.obj,attack.hitbox)< 30){
+                    if(building instanceof ChoppedBuilding2){
+                        // buildingswap(building,buildings,i)
+                    }
+                    for(let wall of building.walls){
+                        building.makeDynamic(wall);
+                    }
                 }
             })
                 if(attack.animated) {
@@ -119,13 +120,16 @@ function loop(){
 
         } else if (attack instanceof Bullet){
             attack.fire();
-            if (distance(building.obj,attack.obj)< 10){
-                for(let wall of building.walls){
-                        building.makeDynamic(wall);
-                    // if(distance(attack.obj, wall) <= 10){
-                    // }
+
+            buildings.forEach((building,i)=>{
+                if (distance(building.obj,attack.obj)< 10){
+                    for(let wall of building.walls){
+                            building.makeDynamic(wall);
+                        // if(distance(attack.obj, wall) <= 10){
+                        // }
+                    }
                 }
-            }
+            })
             if(attack.obj && distance(camera,attack.obj) > 200){
                 attack.remove()
                 attacks.splice(i,1);
@@ -135,15 +139,16 @@ function loop(){
         } else if (attack instanceof Meteor){
             attack.fire();
 
-            
-            if (distance(building.obj,attack.obj)<14 || checkMeteorHitbox(attack,building.obj)){
-                for(let wall of building.walls){
-                    building.makeDynamic(wall);
-                    // if(distance(attack.obj, wall) <= 14 || checkMeteorHitbox(attack,wall) ){
-                        
-                    // }
+            buildings.forEach((building,i)=>{
+                if (distance(building.obj,attack.obj)<14){
+                    for(let wall of building.walls){
+                        building.makeDynamic(wall);
+                        // if(distance(attack.obj, wall) <= 14 || checkMeteorHitbox(attack,wall) ){
+                            
+                        // }
+                    }
                 }
-            }
+            })
             //meteor explosion
             if(attack.obj.object3D.position.y < 0){
                 attack.explode();
@@ -163,15 +168,16 @@ function loop(){
                 attack.remove();
                 attacks.splice(i,1);
             }
-
-            if (distance(building.obj,attack.hitboxposition) < 16){
-                for(let wall of building.walls){
-                    building.makeDynamic(wall);
-                    // if(distance(attack.hitboxposition, wall) <= 16){
-                        
-                    // }
+            buildings.forEach((building,i)=>{
+                if (distance(building.obj,attack.hitboxposition) < 16){
+                    for(let wall of building.walls){
+                        building.makeDynamic(wall);
+                        // if(distance(attack.hitboxposition, wall) <= 16){
+                            
+                        // }
+                    }
                 }
-            }
+            })
         }
     })
 
