@@ -105,7 +105,7 @@ function loop(){
             buildings.forEach((building,i)=>{   
                 if (distance(building.obj,attack.hitbox)< 30){
                     if(building instanceof ChoppedBuilding2){
-                        // buildingswap(building,buildings,i)
+                        buildingswap(building,buildings,i)
                     }
                     for(let wall of building.walls){
                         building.makeDynamic(wall);

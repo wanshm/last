@@ -86,10 +86,12 @@ function clwalls(){
 }
 
 function buildingswap(chopped,list,i){
-  // const cp = chopped.obj.object3D.position
-  // console.log(chopped.obj.object3D.position)
-  // const nb = new Building2(cp.x,cp.y,cp.z)
+  const cp = chopped.obj.object3D.position
+  console.log(chopped.obj.object3D.position)
+  const nb = new Building2(cp.x,cp.y,cp.z)
   // nb.generate()
+  console.log(nb.obj)
+  // scene.append()
   chopped.remove();
   list.splice(i,1)
   console.log(list.length)
