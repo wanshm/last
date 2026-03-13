@@ -30,29 +30,6 @@ class pillarChopped{
     scene.append( this.obj )
   }}
 
-class pillar6000{
-  constructor(x,y,z){;
-
-    let doorPillar1 = new pillar(-1.8,5.2,11);
-    doorPillar1.obj.setAttribute("scale","1.5 9.3 1.5")
-    this.obj.append( doorPillar1.obj );
-
-    let doorPillar2 = new pillar(1.8,5.2,11);
-    doorPillar2.obj.setAttribute("scale","1.5 9.3 1.5")
-    this.obj.append( doorPillar2.obj );
-
-    let doorPillar3 = new pillar(-5.8,5.2,11);
-    doorPillar3.obj.setAttribute("scale","1.5 9.3 1.5")
-    this.obj.append( doorPillar3.obj );
-
-    let doorPillar4 = new pillar(5.8,5.2,11);
-    doorPillar4.obj.setAttribute("scale","1.5 9.3 1.5")
-    this.obj.append( doorPillar4.obj );
-
-  }}
-
-
-  
 
 class ChoppedBuilding2{
     constructor(x,y,z){
@@ -150,6 +127,38 @@ class ChoppedBuilding2{
         let BackPillar4 = new pillar(5.8,5.2,-11);
         BackPillar4.obj.setAttribute("scale","1.5 9.3 1.5")
         this.obj.append( BackPillar4.obj );
+
+        let LeftPillar1 = new pillar(11,5.2,1.8);
+        LeftPillar1.obj.setAttribute("scale","1.5 9.3 1.5")
+        this.obj.append( LeftPillar1.obj );
+
+        let LeftPillar2 = new pillar(11,5.2,-1.8);
+        LeftPillar2.obj.setAttribute("scale","1.5 9.3 1.5")
+        this.obj.append( LeftPillar2.obj );
+
+        let LeftPillar3 = new pillar(11,5.2,5.8);
+        LeftPillar3.obj.setAttribute("scale","1.5 9.3 1.5")
+        this.obj.append( LeftPillar3.obj );
+
+        let LeftPillar4 = new pillar(11,5.2,-5.8);
+        LeftPillar4.obj.setAttribute("scale","1.5 9.3 1.5")
+        this.obj.append( LeftPillar4.obj );
+
+        let RightPillar1 = new pillar(-11,5.2,1.8);
+        RightPillar1.obj.setAttribute("scale","1.5 9.3 1.5")
+        this.obj.append( RightPillar1.obj );
+
+        let RightPillar2 = new pillar(-11,5.2,-1.8);
+        RightPillar2.obj.setAttribute("scale","1.5 9.3 1.5")
+        this.obj.append( RightPillar2.obj );
+
+        let RightPillar3 = new pillar(-11,5.2,5.8);
+        RightPillar3.obj.setAttribute("scale","1.5 9.3 1.5")
+        this.obj.append( RightPillar3.obj );
+
+        let RightPillar4 = new pillar(-11,5.2,-5.8);
+        RightPillar4.obj.setAttribute("scale","1.5 9.3 1.5")
+        this.obj.append( RightPillar4.obj );
 
 
         

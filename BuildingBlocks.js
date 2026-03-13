@@ -4,6 +4,8 @@ class FloorBase{
   
     let base = document.createElement("a-box");
     base.setAttribute("color","red");
+    // base.setAttribute("src", "Images/Sliver.png")
+    // base.setAttribute("repeat", "10 10"); 
     base.setAttribute("position","0 0.5 0");
     base.setAttribute("height","0.1");
     base.setAttribute("width","15");
@@ -519,6 +521,8 @@ class pillar{
 
     let pillarB = document.createElement("a-box");
     pillarB.setAttribute("color","red");
+    // pillarB.setAttribute("src", "Images/Sliver.png")
+    // pillarB.setAttribute("repeat", "1 10");
     pillarB.setAttribute("position","0 1 0");
     pillarB.setAttribute("height","3");
     pillarB.setAttribute("width","0.2");
