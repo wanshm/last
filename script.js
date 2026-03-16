@@ -18,6 +18,8 @@ window.addEventListener("DOMContentLoaded",function (){
    
     // building2opti = new Building2Opti(-25,0,-5);
 
+    building1chpped1 = new Choppedbuilding1(0, 0 ,0);
+
     building2chopped1 = new ChoppedBuilding2(220,0,220);
     building2chopped2 = new ChoppedBuilding2(220,0,180);
     building2chopped3 = new ChoppedBuilding2(180,0,220);
