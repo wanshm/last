@@ -17,7 +17,8 @@ window.addEventListener("DOMContentLoaded",function (){
     buildings.push(building)
     // walls = building.walls;
 
-    // buildingA = new Building2(0,0,-5);
+    const buildingA = new Building2(0,0,-5);
+    buildings.push(buildingA)
     // walls = buildingA.walls;
    
     // building2opti = new Building2Opti(-25,0,-5);
@@ -122,14 +123,14 @@ function loop(){
             attack.fire();
 
             buildings.forEach((building,i)=>{
-                if (distance(building.obj,attack.obj)< 10){
+                    if(building.checkCollsion(attack.obj.object3D.position,50)){
                     for(let wall of building.walls){
                             building.makeDynamic(wall);
                         // if(distance(attack.obj, wall) <= 10){
                         // }
-                    }
+                    }}
                 }
-            })
+            )
             if(attack.obj && distance(camera,attack.obj) > 200){
                 attack.remove()
                 attacks.splice(i,1);

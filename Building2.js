@@ -49,11 +49,12 @@ class Building2{
 
 
     this.obj.setAttribute("position",{x:x, y:y, z:z});
-    // scene.append( this.obj )
+    scene.append( this.obj )
     
     } 
 
      extractWalls(Floor1){
+      console.log(Floor1)
       const findWalls = (element) => {
         for(let child of element.children){
           if(child.tagName === 'A-BOX'){
@@ -67,124 +68,38 @@ class Building2{
     }
 
     makeDynamic(wallBox){
+      if(wallBox.getAttribute("static-body")){
+        const lifenoise = randInt(0,500); 
+        wallBox.setAttribute("ttl",`time:${500+lifenoise}`)
+      }
       if(wallBox.getAttribute("dynamic-body"));
+      this.obj.setAttribute("ttl","time:1000")
       wallBox.removeAttribute("static-body");
       wallBox.setAttribute("dynamic-body", " mass:70; shape: box; ");
-
-      // wallBox.setTimeout(() => {
-      //   wallBox.removeAttribute("dynamic-body");
-      //   wallBox.setAttribute("static-body", " ");
-      // }, 5000);
-    }
-
-    extractWalls(Floor2){
-      const findWalls = (element) => {
-        for(let child of element.children){
-          if(child.tagName === 'A-BOX'){
-            this.walls.push(child);
-          } else {
-            findWalls(child);
-          }
-        }
-      };
-      findWalls(Floor2.obj);
-    }
-
-    extractWalls(Floor3){
-      const findWalls = (element) => {
-        for(let child of element.children){
-          if(child.tagName === 'A-BOX'){
-            this.walls.push(child);
-          } else {
-            findWalls(child);
-          }
-        }
-      };
-      findWalls(Floor3.obj);
-    }
-
-    extractWalls(Floor4){
-      const findWalls = (element) => {
-        for(let child of element.children){
-          if(child.tagName === 'A-BOX'){
-            this.walls.push(child);
-          } else {
-            findWalls(child);
-          }
-        }
-      };
-      findWalls(Floor4.obj);
-    }
-
-    extractWalls(Floor5){
-      const findWalls = (element) => {
-        for(let child of element.children){
-          if(child.tagName === 'A-BOX'){
-            this.walls.push(child);
-          } else {
-            findWalls(child);
-          }
-        }
-      };
-      findWalls(Floor5.obj);
-    }
-
-    extractWalls(Floor6){
-      const findWalls = (element) => {
-        for(let child of element.children){
-          if(child.tagName === 'A-BOX'){
-            this.walls.push(child);
-          } else {
-            findWalls(child);
-          }
-        }
-      };
-      findWalls(Floor6.obj);
-    }
-
-    extractWalls(Floor7){
-      const findWalls = (element) => {
-        for(let child of element.children){
-          if(child.tagName === 'A-BOX'){
-            this.walls.push(child);
-          } else {
-            findWalls(child);
-          }
-        }
-      };
-      findWalls(Floor7.obj);
-    }
-
-    extractWalls(Floor8){
-      const findWalls = (element) => {
-        for(let child of element.children){
-          if(child.tagName === 'A-BOX'){
-            this.walls.push(child);
-          } else {
-            findWalls(child);
-          }
-        }
-      };
-      findWalls(Floor8.obj);
-    }
-
-    extractWalls(Floor9){
-      const findWalls = (element) => {
-        for(let child of element.children){
-          if(child.tagName === 'A-BOX'){
-            this.walls.push(child);
-          } else {
-            findWalls(child);
-          }
-        }
-      };
-      findWalls(Floor9.obj);
-    }
-
-    generate(){
-      scene.append(this.obj)
     }
 
 
+    checkCollsion(position,radius){
+
+      const absp = this.obj.object3D.position;
+      if (distance2(position,absp)>radius){
+        return false;
+      }
+
+      const xrange = [absp.x+7.5,absp.x-7.5]
+      const yrange = [absp.y+29,absp.y]
+      const zrange = [absp.z+7.5,absp.z-7.5]
+
+      // console.log(position)
+
+      if(
+        rangeCheck(xrange,position.x) &&
+        rangeCheck(yrange,position.y) &&
+        rangeCheck(zrange,position.z)
+      ){
+        return true;
+      }
+      return false;
+    }
 }
 

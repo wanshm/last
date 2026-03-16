@@ -48,13 +48,32 @@ class Building1{
     makeDynamic(wallBox){
       if(wallBox.getAttribute("static-body")){
         const lifenoise = randInt(0,500); 
-        console.log("a")
         wallBox.setAttribute("ttl",`time:${500+lifenoise}`)
       }
       if(wallBox.getAttribute("dynamic-body"));
       this.obj.setAttribute("ttl","time:1000")
       wallBox.removeAttribute("static-body");
       wallBox.setAttribute("dynamic-body", " mass:70; shape: box; ");
+    }
+    checkCollsion(position,radius){
+      const absp = this.obj.object3D.position
+      if (distance2(position,absp)>radius){
+        return false;
+      }
+      const xrange = [absp.x+7.5,absp.x-7.5]
+      const yrange = [absp.y+16,absp.y]
+      const zrange = [absp.z+7.5,absp.z-7.5]
+
+      // console.log(position)
+
+      if(
+        rangeCheck(xrange,position.x) &&
+        rangeCheck(yrange,position.y) &&
+        rangeCheck(zrange,position.z)
+      ){
+        return true;
+      }
+      return false;
     }
 
 }

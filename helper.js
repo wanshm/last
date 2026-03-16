@@ -86,9 +86,10 @@ function clwalls(){
 }
 
 function buildingswap(chopped,list,i){
+  //on hold lmao
   const cp = chopped.obj.object3D.position
   console.log(chopped.obj.object3D.position)
-  const nb = new Building2(cp.x,cp.y,cp.z)
+  const nb = new Building1(cp.x,cp.y,cp.z)
   // nb.generate()
   console.log(nb.obj)
   // scene.append()
@@ -97,4 +98,20 @@ function buildingswap(chopped,list,i){
   console.log(list.length)
 }
 
+
+//rangecheck functions take a range argument, which is an array with lengt 2. first value is the upper and second value is the lower bound.
+function rangeCheck(range,point){
+  if(point < range[0] && point > range[1]){
+    return true;
+  }
+  return false;
+}
+
+function rangeCheckInclusive(range,point){
+
+  if(point <= range[0] && point >= range[1]){
+    return true;
+  }
+  return false;
+}
 
