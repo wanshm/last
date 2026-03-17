@@ -10,7 +10,7 @@ window.addEventListener("DOMContentLoaded",function (){
     box.setAttribute("position","0 25.5 0");
     scene.append(box);
   
-    building = new Building1(0,0,-20);
+    building = new Building1(100,0,-20);
     // walls = building.walls;
 
     // buildingA = new Building2(0,0,-5);
@@ -18,7 +18,7 @@ window.addEventListener("DOMContentLoaded",function (){
    
     // building2opti = new Building2Opti(-25,0,-5);
 
-    building1chpped1 = new ChoppedBuilding1(0, 0 ,0);
+    // building1chpped1 = new ChoppedBuilding1(0, 0 ,0);
 
     building2chopped1 = new ChoppedBuilding2(220,0,220);
     building2chopped2 = new ChoppedBuilding2(220,0,180);
