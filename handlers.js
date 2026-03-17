@@ -74,6 +74,8 @@ function wheelHandler(e){
         }
   }
 
+
+
   function keyboardHandler(e){
 
     //hotbar switch
@@ -108,6 +110,9 @@ function wheelHandler(e){
             break;
 
         case "2":
+            
+            
+
             if(hotbarselection==1){
                 break;
                 //prevent reselection

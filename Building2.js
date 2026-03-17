@@ -49,12 +49,14 @@ class Building2{
 
 
     this.obj.setAttribute("position",{x:x, y:y, z:z});
+    console.log(this.obj.object3D.components)
+    this.obj.getC
     scene.append( this.obj )
     
     } 
 
      extractWalls(Floor1){
-      console.log(Floor1)
+      // console.log(Floor1)
       const findWalls = (element) => {
         for(let child of element.children){
           if(child.tagName === 'A-BOX'){
@@ -100,6 +102,11 @@ class Building2{
         return true;
       }
       return false;
+    }
+    
+
+    generate(){
+      scene.append(this.obj)
     }
 }
 
