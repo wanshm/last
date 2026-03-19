@@ -73,11 +73,6 @@ class Building2{
       if(wallBox.getAttribute("dynamic-body"));
       wallBox.removeAttribute("static-body");
       wallBox.setAttribute("dynamic-body", " mass:70; shape: box; ");
-
-      // wallBox.setTimeout(() => {
-      //   wallBox.removeAttribute("dynamic-body");
-      //   wallBox.setAttribute("static-body", " ");
-      // }, 5000);
     }
 
     extractWalls(Floor2){
