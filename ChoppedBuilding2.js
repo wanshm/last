@@ -112,6 +112,7 @@ class ChoppedBuilding2{
     
 
       
+    this.obj.setAttribute("static-body","")
 
     this.obj.setAttribute("position",{x:x, y:y, z:z});
     scene.append( this.obj )

@@ -44,14 +44,14 @@ class Building2{
         this.obj.append( Floor9.obj );
         this.extractWalls(Floor9);
 
-
+    this.obj.setAttribute("static-body","")
+    this.obj.setAttribute("class","b2")
         
-
+    // this.obj.addEventListener("DOMContentLoaded",function(){scene.append(this.obj);console.log("a")})
 
     this.obj.setAttribute("position",{x:x, y:y, z:z});
-    console.log(this.obj.object3D.components)
-    this.obj.getC
-    scene.append( this.obj )
+    // console.log(this.obj.components["static-body"])
+    // scene.append( this.obj )
     
     } 
 
@@ -106,7 +106,6 @@ class Building2{
     
 
     generate(){
-      scene.append(this.obj)
+      console.log(this.loaded)
     }
-}
-
+  }

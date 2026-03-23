@@ -88,21 +88,30 @@ function clwalls(){
 function buildingswap(chopped,list,i){
   //on hold lmao
   const cp = chopped.obj.object3D.position
-  console.log(chopped.obj.object3D.position)
+  // console.log(chopped.obj.components)
   const nb = new Building2(cp.x,cp.y,cp.z)
-  nb.generate()
-  // console.log(nb.obj.children[0])
-  // scene.append()
-  chopped.remove();
-  list.splice(i,1)
-
-  // scene.append(nb)
-  // chopped.obj.innerHTML = nb.obj.innerHTML;
   
+  // console.log(nb)
+  
+
+  // console.log(cp)
+  // scene.append(nb)
+  list.splice(i,1)
+  chopped.remove();
+
+
+  // nb.walls.forEach((wall)=>{
+  //   if(wall.components["static-body"]){
+  //   // wall.components["static-body"].initBody();
+  //   console.log(wall.components["static-body"].body)}
+    
+  // })
+  // nb.generate()
+
 }
 
 
-//rangecheck functions take a range argument, which is an array with lengt 2. first value is the upper and second value is the lower bound.
+//rangecheck functions take a range argument, which is an array with length 2. first value is the upper and second value is the lower bound.
 function rangeCheck(range,point){
   if(point < range[0] && point > range[1]){
     return true;

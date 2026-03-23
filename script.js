@@ -1,4 +1,5 @@
-let camera, scene, attacks= [], hotbarinfo = ["Slash","Bullet","Spells"],hotbaritems=[], hotbarselection=0, book, buildings =[], walls=[], spell, spellcount = 2;
+let camera, scene, attacks= [], hotbarinfo = ["Slash","Bullet","Spells"],hotbaritems=[], hotbarselection=0, book, buildings =[], walls=[], spell, spellcount = 2, buildingA;
+
 //initialization
 window.addEventListener("DOMContentLoaded",function (){
     
@@ -13,11 +14,16 @@ window.addEventListener("DOMContentLoaded",function (){
     
     box.setAttribute("ttl","time:500")
 
+
     const building = new Building1(100,0,-5);
+    // building.obj.addEventListener("collide",(e)=>{
+    //     console.log("a")
+    // })
     buildings.push(building)
     // walls = building.walls;
 
-    // const buildingA = new Building2(0,0,-5);
+    // buildingA = new Building2(0,0,-5000000);
+    // scene.append(buildingA)
     // buildings.push(buildingA)
     // walls = buildingA.walls;
    
@@ -107,6 +113,7 @@ function loop(){
                 if (distance(building.obj,attack.hitbox)< 30){
                     if(building instanceof ChoppedBuilding2){
                         buildingswap(building,buildings,i)
+                        
                     }
                     for(let wall of building.walls){
                         building.makeDynamic(wall);
@@ -123,7 +130,11 @@ function loop(){
             attack.fire();
 
             buildings.forEach((building,i)=>{
-                    if(building.checkCollsion(attack.obj.object3D.position,50)){
+                    if(building.checkCollsion(attack.obj.object3D.position,50)){  
+                    if(building instanceof ChoppedBuilding2){
+                        buildingswap(building,buildings,i)
+                        
+                    }
                     for(let wall of building.walls){
                             building.makeDynamic(wall);
                         // if(distance(attack.obj, wall) <= 10){
@@ -141,7 +152,12 @@ function loop(){
             attack.fire();
 
             buildings.forEach((building,i)=>{
-                if (distance(building.obj,attack.obj)<14){
+                    
+                if (distance(building.obj,attack.obj)<14 || checkMeteorHitbox(attack,building.obj)){
+                    if(building instanceof ChoppedBuilding2){
+                        buildingswap(building,buildings,i)
+                        
+                    }
                     for(let wall of building.walls){
                         building.makeDynamic(wall);
                         // if(distance(attack.obj, wall) <= 14 || checkMeteorHitbox(attack,wall) ){
@@ -170,7 +186,12 @@ function loop(){
                 attacks.splice(i,1);
             }
             buildings.forEach((building,i)=>{
+                    
                 if (distance(building.obj,attack.hitboxposition) < 16){
+                    if(building instanceof ChoppedBuilding2){
+                        buildingswap(building,buildings,i)
+                        
+                    }
                     for(let wall of building.walls){
                         building.makeDynamic(wall);
                         // if(distance(attack.hitboxposition, wall) <= 16){
