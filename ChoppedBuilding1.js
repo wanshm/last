@@ -95,6 +95,8 @@ class ChoppedBuilding1{
     door.setAttribute("static-body", " ");
     scene.append( door );
 
+    
+
 
 
 

@@ -1,7 +1,7 @@
 let camera, scene, attacks= [], hotbarinfo = ["Slash","Bullet","Spells"],hotbaritems=[], hotbarselection=0, book, building, walls=[], spell, spellcount = 2;
 //initialization
 
-let gridSize = 0;
+let gridSize = 2;
 let spacing = 15;
 
 window.addEventListener("DOMContentLoaded",function (){
@@ -16,18 +16,18 @@ window.addEventListener("DOMContentLoaded",function (){
 
     mcHouse = document.getElementById("mcHouse-1");
 
-   for (let i = 0; i < gridSize; i++) {
-    for (let o = 0; o < gridSize; o++) {
-      let x = (i - gridSize / 2) * spacing;  
-      let z = (o - gridSize / 2) * spacing;  
-      let y = Math.random() * -3 - 1;   
-      let clone = mcHouse.cloneNode(true);
-      clone.setAttribute("id","mcHouse-"+(i+2));
-      clone.setAttribute("position",{x:x,y:13,z:z});
-      scene.appendChild(clone);     
-    }
-  }
- 
+//    for (let i = 0; i < gridSize; i++) {
+//     for (let o = 0; o < gridSize; o++) {
+//       let x = (i - gridSize / 2) * spacing;  
+//       let z = (o - gridSize / 2) * spacing;  
+//       let y = Math.random() * -3 - 1;   
+//       let clone = mcHouse.cloneNode(true);
+//       clone.setAttribute("id","mcHouse-"+(i+2));
+//       clone.setAttribute("position",{x:x,y:13,z:z});
+//       scene.appendChild(clone);     
+//     }
+//   }
+
 
   
     building = new Building1(100,0,-20);
