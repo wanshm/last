@@ -1,4 +1,4 @@
-let camera, scene, attacks= [], hotbarinfo = ["Slash","Bullet","Spells"],hotbaritems=[], hotbarselection=0, book, buildings =[], walls=[], spell, spellcount = 2, buildingA;
+let camera, scene, attacks= [], hotbarinfo = ["Slash","Bullet","Spells"],hotbaritems=[], hotbarselection=0, book, buildings =[], backlogbuildings =[], walls=[], spell, spellcount = 2, buildingA, looprunning=true;
 
 //initialization
 window.addEventListener("DOMContentLoaded",function (){
@@ -15,6 +15,8 @@ window.addEventListener("DOMContentLoaded",function (){
     box.setAttribute("ttl","time:500")
 
 
+
+
     const building = new Building1(100,0,-5);
     // building.obj.addEventListener("collide",(e)=>{
     //     console.log("a")
@@ -22,8 +24,14 @@ window.addEventListener("DOMContentLoaded",function (){
     buildings.push(building)
     // walls = building.walls;
 
-    // buildingA = new Building2(0,0,-5000000);
+
+    // for(let i = 0; i<6;i++){
+
+    //     const buildingA = new Building2(0,0,-5000);
+    //     backlogbuildings.push(buildingA)
+    // }    
     // scene.append(buildingA)
+    // buildingA = new Building2(0,0,-5000);
     // buildings.push(buildingA)
     // walls = buildingA.walls;
    
@@ -36,16 +44,12 @@ window.addEventListener("DOMContentLoaded",function (){
         buildings.push(bc)
     }
 
-
-
-    
-
-
-   
-
-
-
-
+    // for(let i = 0; i < 36 ; i++){
+    //     const z = Math.floor(i/6)*40;
+    //     const x = (i)%6*40;
+    //     const bc = new Building2(x+20,-50000000,z+20)
+    //     stashbuildings.push(bc)
+    // }
 
 
     //create spellbook
@@ -61,7 +65,7 @@ window.addEventListener("DOMContentLoaded",function (){
     }
 
     //start loop
-    loop();
+    // loop();
 } )
 
 //click listener
@@ -203,8 +207,8 @@ function loop(){
         }
     })
 
-
-    window.requestAnimationFrame(loop)
-
+    if(looprunning){
+        window.requestAnimationFrame(loop)
+    }
 }
 

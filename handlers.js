@@ -124,6 +124,11 @@ function wheelHandler(e){
             break;
 
         case "3":
+        
+            const nb = new Building2(0,0,0)
+            
+
+
             if(hotbarselection==2){
                 break;
                 //prevent reselection
@@ -133,12 +138,17 @@ function wheelHandler(e){
             
             spell = addspell(book.selection);
 
+
+
+
             //hotbar update
             hotbaritems[2].select()
             hotbarselection=2;
             break;
 
-            
+        case "r":    
+            window.location.reload()
+            break;
     }
     //disappear spells
     if(hotbarselection!==2){

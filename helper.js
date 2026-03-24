@@ -85,12 +85,23 @@ function clwalls(){
     
 }
 
+function toggleloop(){
+  looprunning= looprunning ? false:true;
+  console.log(looprunning);
+  if (looprunning){
+    loop();
+  }
+
+}
+
 function buildingswap(chopped,list,i){
   //on hold lmao
   const cp = chopped.obj.object3D.position
-  // console.log(chopped.obj.components)
-  const nb = new Building2(cp.x,cp.y,cp.z)
+  // console.log(chopped.obj.components)\
   
+  buildingA.obj.setAttribute("position",{x:cp.x,y:cp.y,z:cp.z})
+  // const nb = new Building2(cp.x,cp.y,cp.z)
+  // list.push(nb)
   // console.log(nb)
   
 
