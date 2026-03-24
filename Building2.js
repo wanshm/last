@@ -5,7 +5,7 @@ class Building2{
 
         let base = new FloorBase(0,0,0);
         base.obj.setAttribute("scale","1.5 1 1.5")
-        base.obj.setAttribute("static-body", " ");
+        
         this.obj.append( base.obj );
 
         let Floor1 = new Building2Floor1(0,0,0);
@@ -44,7 +44,7 @@ class Building2{
         this.obj.append( Floor9.obj );
         this.extractWalls(Floor9);
 
-    this.obj.setAttribute("static-body","")
+        
     this.obj.setAttribute("class","b2")
     
     this.obj.setAttribute("position",{x:x, y:y, z:z});

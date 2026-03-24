@@ -4,7 +4,7 @@ class Building1{
         this.walls = [];
 
         let base = new FloorBase(0,0,0);
-        base.obj.setAttribute("static-body", " ");
+        
         this.obj.append( base.obj );
 
         let wallsandfloor = new Building2WallsAndFloor(0,0,0);
