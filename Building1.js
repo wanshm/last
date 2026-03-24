@@ -28,6 +28,7 @@ class Building1{
       
 
     this.obj.setAttribute("position",{x:x, y:y, z:z});
+    this.obj.setAttribute("rotation","0 -90 0");
     this.obj.setAttribute("class","b1")
     scene.append( this.obj )
     }

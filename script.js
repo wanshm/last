@@ -19,11 +19,18 @@ window.addEventListener("DOMContentLoaded",function (){
     box.setAttribute("ttl","time:500")
 
 
-    const building = new Building1(100,0,-5);
+    const building = new Building1(40,-1.5,-30);
+    const building2 = new Building1(40,-1.5,-50);
+    // const building3 = new Building1(40,-1.5,-50);
+    // const building4= new Building1(60,-1.5,-50);
+
     // building.obj.addEventListener("collide",(e)=>{
     //     console.log("a")
     // })
     buildings.push(building)
+    buildings.push(building2)
+    // buildings.push(building3)
+    // buildings.push(building4)
     // walls = building.walls;
 
     // buildingA = new Building2(0,0,-5000000);
@@ -39,7 +46,7 @@ window.addEventListener("DOMContentLoaded",function (){
         const bc = new ChoppedBuilding2(x+20,-1.5,z+20)
         buildings.push(bc)
     }
-
+    
 
 
     
