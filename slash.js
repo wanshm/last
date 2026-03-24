@@ -24,7 +24,7 @@ class Slash{
             THREE.MathUtils.degToRad(0)
         );
         this.slash.object3D.rotation.set(-Math.PI/4,0,0)
-        this.center.setAttribute("position",{ x:0, y:3,z:0 })
+        this.center.setAttribute("position",{x:camera.object3D.position.x,y:camera.object3D.position.y+3,z:camera.object3D.position.z})
         this.slash.setAttribute("position","0 -1 0")
         this.slash.setAttribute("theta-start", 100);
         this.slash.setAttribute("theta-length", 0);
@@ -37,7 +37,7 @@ class Slash{
 
         this.hitbox.setAttribute("position",{x:camera.object3D.position.x,y:camera.object3D.position.y+3,z:camera.object3D.position.z})
         
-        camera.append(this.center)
+        scene.append(this.center)
 
         scene.append(this.hitbox)
         this.theta = camera.object3D.children[0].rotation.y + Math.PI;
@@ -49,12 +49,6 @@ class Slash{
         this.dy = this.v * Math.sin(this.phi);
 
     }    
-
-    absolutePosition(){
-        //calculate the world position of the slash
-
-
-    }
 
     remove(){
         if(this.center.parentNode)
