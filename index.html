@@ -1,69 +1,11 @@
 <!DOCTYPE html>
-<html lang="en">
-<head>
-  
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <script src="script.js"></script>
-    <script src="https://aframe.io/releases/1.7.1/aframe.min.js"></script>
-    <script src="https://cdn.jsdelivr.net/gh/c-frame/aframe-extras@7.6.1/dist/aframe-extras.min.js"></script>
-    <script src="https://unpkg.com/aframe-environment-component@1.5.x/dist/aframe-environment-component.min.js"></script>
-    <script src="kinema.js"></script>
-    <script src="helper.js"></script>
-    <script src="slash.js"></script>
-    <script src="hotbaritem.js"></script>
-    <script src="bullet.js"></script>
-    <script src="https://cdn.jsdelivr.net/gh/c-frame/aframe-physics-system@v4.2.4/dist/aframe-physics-system.min.js"></script>
-    <!-- <script src="https://cdn.jsdelivr.net/gh/n5ro/aframe-physics-system@v$npm_package_version/dist/aframe-physics-system.min.js"></script> Physics system -->
-    <script src="Building1.js"></script>
-    <script src="Building2.js"></script>
-    <script src="BuildingBlocks.js"></script>
-    <script src="spellbook.js"></script>
-    <script src="meteor.js"></script>
-    <script src="ChoppedBuilding1.js"></script>
-    <script src="ChoppedBuilding2.js"></script>
-    <script src="Testing.js"></script> <!--Testing stuff please Ignore-->
-    <script src="earthwall.js"></script>
-    <script src="handlers.js"></script>
-    <title>last</title>
 
-<script>
-  AFRAME.registerComponent('breakable', {
-  init: function () {
-    this.el.addEventListener('click', () => {
-      if (this.el.hasAttribute('dynamic-body')) return;
+<html>
 
-      this.el.removeAttribute('static-body');
-      this.el.setAttribute('dynamic-body', 'mass: 70; shape: box');
-    });
-  }
-});
-</script>
-</head>
-<body>
-  
-    <a-scene>
-        <a-assets>
-          <img id="bulletTexture" src="Sliver.png">
-          <img id="WindowBanner1" src="Images/McImg/WindowBanner1.png">
-        </a-assets>
-       
-
-         
-        <a-entity position="0 2 0" id="camerarig" movement-controls="constrainToNavMesh:true; fly:true; speed:2" position="0 21.8 -1">
-             <a-entity camera
-                position="0 2 0"
-                look-controls="pointerLockEnabled: true"
-                >
-                <a-cursor></a-cursor>
-            </a-entity>
-        </a-entity>
-        <a-sky color="#87CEEB" ></a-sky>
-        <a-plane static-body position="0 -1 0" scale="500 500 0.1" rotation="90 0 0" side="double" color="green"></a-plane>
-
-        <a-entity> <!-- R1 -->
-            <a-box position="0 -0.91 0" width="15" height="0.1" depth="500" color="#8B4513" static-body></a-box>
-            <a-box position="0 -0.91 0" width="500" height="0.1" depth="15" color="#8B4513" static-body></a-box>
+    <head>
+        <title>last</title>
+        <link rel="stylesheet" href="index.css">
+    </head>
 
         </a-entity>
 

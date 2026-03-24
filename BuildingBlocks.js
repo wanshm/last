@@ -34,6 +34,14 @@ class Wall1{
     wall.setAttribute("static-body", "");
     wall.setAttribute("class","blackpiece");
 
+
+    // wall.addEventListener("collide",()=>{
+
+    //   if(wall.getAttribute("static-body")){
+    //   wall.removeAttribute("static-body")
+    //   wall.setAttribute("dynamic-body","")}
+    // })
+
     this.obj.append( wall );
 
     let wall2 = document.createElement("a-box");
@@ -45,12 +53,18 @@ class Wall1{
     wall2.setAttribute("depth","1.5");
     wall2.setAttribute("force-pushable", "");
     wall2.setAttribute("static-body", " ");
-    wall.setAttribute("class","yellowpiece")
+    wall2.setAttribute("class","yellowpiece")
 
     this.obj.append( wall2 );
+    // wall2.addEventListener("collide",()=>{
+    //   if(wall2.getAttribute("static-body")){
+    //   wall2.removeAttribute("static-body")
+    //   wall2.setAttribute("dynamic-body","")}
+    // })
     
     this.obj.setAttribute("position",{x:x, y:y, z:z});
     this.obj.setAttribute("class","wall1")
+    // console.log(wall.components["static-body"])
     scene.append( this.obj )
   }
 
@@ -307,7 +321,7 @@ class Building2WallsAndFloor{
         base2.obj.setAttribute("scale", "1.001 1.001 1.001");
         this.obj.append( base2.obj );
 
-      this.obj.setAttribute("position",{x:x, y:y, z:z});
+      this.obj.object3D.position.set(x,y,z);
       scene.append( this.obj )
   }}
 

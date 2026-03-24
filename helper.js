@@ -76,6 +76,8 @@ function clwalls(){
         const layer3 =wall.parentNode.object3D.position
         const layer4 =wall.object3D.position
 
+        
+
         p = sumPositions([worldp,layer1,layer2,layer3,layer4])
       //this method yields some floating point error, lets hope that doesn't bite us
         console.log(p)
@@ -83,4 +85,45 @@ function clwalls(){
     
 }
 
+function buildingswap(chopped,list,i){
+  //on hold lmao
+  const cp = chopped.obj.object3D.position
+  // console.log(chopped.obj.components)
+  const nb = new Building2(cp.x,cp.y,cp.z)
+  
+  // console.log(nb)
+  
+
+  // console.log(cp)
+  // scene.append(nb)
+  list.splice(i,1)
+  chopped.remove();
+
+
+  // nb.walls.forEach((wall)=>{
+  //   if(wall.components["static-body"]){
+  //   // wall.components["static-body"].initBody();
+  //   console.log(wall.components["static-body"].body)}
+    
+  // })
+  // nb.generate()
+
+}
+
+
+//rangecheck functions take a range argument, which is an array with length 2. first value is the upper and second value is the lower bound.
+function rangeCheck(range,point){
+  if(point < range[0] && point > range[1]){
+    return true;
+  }
+  return false;
+}
+
+function rangeCheckInclusive(range,point){
+
+  if(point <= range[0] && point >= range[1]){
+    return true;
+  }
+  return false;
+}
 

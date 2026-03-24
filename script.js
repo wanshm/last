@@ -1,4 +1,5 @@
-let camera, scene, attacks= [], hotbarinfo = ["Slash","Bullet","Spells"],hotbaritems=[], hotbarselection=0, book, building, walls=[], spell, spellcount = 2;
+let camera, scene, attacks= [], hotbarinfo = ["Slash","Bullet","Spells"],hotbaritems=[], hotbarselection=0, book, buildings =[], walls=[], spell, spellcount = 2, buildingA;
+
 //initialization
 
 let gridSize = 2;
@@ -12,70 +13,32 @@ window.addEventListener("DOMContentLoaded",function (){
     box.setAttribute("color","blue");
     box.setAttribute("dynamic-body","mass:0.0001; shape: box;");
     box.setAttribute("position","0 25.5 0");
+    
     scene.append(box);
-
-    mcHouse = document.getElementById("mcHouse-1");
-
-//    for (let i = 0; i < gridSize; i++) {
-//     for (let o = 0; o < gridSize; o++) {
-//       let x = (i - gridSize / 2) * spacing;  
-//       let z = (o - gridSize / 2) * spacing;  
-//       let y = Math.random() * -3 - 1;   
-//       let clone = mcHouse.cloneNode(true);
-//       clone.setAttribute("id","mcHouse-"+(i+2));
-//       clone.setAttribute("position",{x:x,y:13,z:z});
-//       scene.appendChild(clone);     
-//     }
-//   }
+    
+    box.setAttribute("ttl","time:500")
 
 
-  
-    building = new Building1(100,0,-20);
+    const building = new Building1(100,0,-5);
+    // building.obj.addEventListener("collide",(e)=>{
+    //     console.log("a")
+    // })
+    buildings.push(building)
     // walls = building.walls;
 
-    // buildingA = new Building2(0,0,-5);
+    // buildingA = new Building2(0,0,-5000000);
+    // scene.append(buildingA)
+    // buildings.push(buildingA)
     // walls = buildingA.walls;
    
     // building2opti = new Building2Opti(-25,0,-5);
 
-    // building1chpped1 = new ChoppedBuilding1(0, 0 ,0);
-
-    building2chopped1 = new ChoppedBuilding2(220,0,220);
-    building2chopped2 = new ChoppedBuilding2(220,0,180);
-    building2chopped3 = new ChoppedBuilding2(180,0,220);
-    building2chopped4 = new ChoppedBuilding2(180,0,180);
-    building2chopped5 = new ChoppedBuilding2(220,0,140);
-    building2chopped6 = new ChoppedBuilding2(180,0,140);
-    building2chopped7 = new ChoppedBuilding2(140,0,220);
-    building2chopped8 = new ChoppedBuilding2(140,0,180);
-    building2chopped9 = new ChoppedBuilding2(140,0,140);
-    building2chopped10 = new ChoppedBuilding2(100,0,220);
-    building2chopped11 = new ChoppedBuilding2(100,0,180);
-    building2chopped12 = new ChoppedBuilding2(100,0,140);
-    building2chopped13 = new ChoppedBuilding2(60,0,220);
-    building2chopped14 = new ChoppedBuilding2(60,0,180);
-    building2chopped15 = new ChoppedBuilding2(60,0,140);
-    building2chopped16 = new ChoppedBuilding2(20,0,220);
-    building2chopped17 = new ChoppedBuilding2(20,0,180);
-    building2chopped18 = new ChoppedBuilding2(20,0,140);
-    building2chopped19 = new ChoppedBuilding2(220,0,100);
-    building2chopped20 = new ChoppedBuilding2(180,0,100);
-    building2chopped21 = new ChoppedBuilding2(140,0,100);
-    building2chopped22 = new ChoppedBuilding2(100,0,100);
-    building2chopped23 = new ChoppedBuilding2(60,0,100);
-    building2chopped24 = new ChoppedBuilding2(20,0,100);
-    building2chopped25 = new ChoppedBuilding2(220,0,60);
-    building2chopped26 = new ChoppedBuilding2(180,0,60);
-    building2chopped27 = new ChoppedBuilding2(140,0,60);
-    building2chopped28 = new ChoppedBuilding2(100,0,60);
-    building2chopped29 = new ChoppedBuilding2(60,0,60);
-    building2chopped30 = new ChoppedBuilding2(20,0,60);
-    building2chopped31 = new ChoppedBuilding2(220,0,20);
-    building2chopped32 = new ChoppedBuilding2(180,0,20);
-    building2chopped33 = new ChoppedBuilding2(140,0,20);
-    building2chopped34 = new ChoppedBuilding2(100,0,20);
-    building2chopped35 = new ChoppedBuilding2(60,0,20);
-    building2chopped36 = new ChoppedBuilding2(20,0,20);
+    for(let i = 0; i < 36 ; i++){
+        const z = Math.floor(i/6)*40;
+        const x = (i)%6*40;
+        const bc = new ChoppedBuilding2(x+20,-1.5,z+20)
+        buildings.push(bc)
+    }
 
 
 
@@ -150,29 +113,39 @@ function loop(){
         if(attack instanceof Slash){
             attack.animate();
             
+            buildings.forEach((building,i)=>{   
+                if (distance(building.obj,attack.hitbox)< 30){
+                    if(building instanceof ChoppedBuilding2){
+                        buildingswap(building,buildings,i)
+                        
+                    }
+                    for(let wall of building.walls){
+                        building.makeDynamic(wall);
+                    }
+                }
+            })
+                if(attack.animated) {
+                    attack.remove();
+                    attacks.splice(i,1);
+                }
             
-            if (distance(building.obj,attack.hitbox)< 10){
-            for(let wall of building.walls){
-                building.makeDynamic(wall);
-                // if(distance(attack.hitbox, wall) <= 10){
-                // }
-            }
-            }
-            if(attack.animated) {
-                attack.remove();
-                attacks.splice(i,1);
-            }
-
 
         } else if (attack instanceof Bullet){
             attack.fire();
-            if (distance(building.obj,attack.obj)< 10){
-                for(let wall of walls){
-                        building.makeDynamic(wall);
-                    // if(distance(attack.obj, wall) <= 10){
-                    // }
+
+            buildings.forEach((building,i)=>{
+                    if(building.checkCollsion(attack.obj.object3D.position,50)){  
+                    if(building instanceof ChoppedBuilding2){
+                        buildingswap(building,buildings,i)
+                        
+                    }
+                    for(let wall of building.walls){
+                            building.makeDynamic(wall);
+                        // if(distance(attack.obj, wall) <= 10){
+                        // }
+                    }}
                 }
-            }
+            )
             if(attack.obj && distance(camera,attack.obj) > 200){
                 attack.remove()
                 attacks.splice(i,1);
@@ -182,15 +155,21 @@ function loop(){
         } else if (attack instanceof Meteor){
             attack.fire();
 
-            
-            if (distance(building.obj,attack.obj)<14 || checkMeteorHitbox(attack,building.obj)){
-                for(let wall of walls){
-                    building.makeDynamic(wall);
-                    // if(distance(attack.obj, wall) <= 14 || checkMeteorHitbox(attack,wall) ){
+            buildings.forEach((building,i)=>{
+                    
+                if (distance(building.obj,attack.obj)<14 || checkMeteorHitbox(attack,building.obj)){
+                    if(building instanceof ChoppedBuilding2){
+                        buildingswap(building,buildings,i)
                         
-                    // }
+                    }
+                    for(let wall of building.walls){
+                        building.makeDynamic(wall);
+                        // if(distance(attack.obj, wall) <= 14 || checkMeteorHitbox(attack,wall) ){
+                            
+                        // }
+                    }
                 }
-            }
+            })
             //meteor explosion
             if(attack.obj.object3D.position.y < 0){
                 attack.explode();
@@ -210,15 +189,21 @@ function loop(){
                 attack.remove();
                 attacks.splice(i,1);
             }
-            
-            if (distance(building.obj,attack.hitboxposition)< 16){
-                for(let wall of walls){
-                    building.makeDynamic(wall);
-                    // if(distance(attack.hitboxposition, wall) <= 16){
+            buildings.forEach((building,i)=>{
+                    
+                if (distance(building.obj,attack.hitboxposition) < 16){
+                    if(building instanceof ChoppedBuilding2){
+                        buildingswap(building,buildings,i)
                         
-                    // }
+                    }
+                    for(let wall of building.walls){
+                        building.makeDynamic(wall);
+                        // if(distance(attack.hitboxposition, wall) <= 16){
+                            
+                        // }
+                    }
                 }
-            }
+            })
         }
     })
 

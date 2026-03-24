@@ -180,8 +180,34 @@ class ChoppedBuilding2{
     
 
       
+    this.obj.setAttribute("static-body","")
 
     this.obj.setAttribute("position",{x:x, y:y, z:z});
     scene.append( this.obj )
+    }
+
+    remove(){
+      if(this.obj.parentNode)
+        this.obj.parentNode.removeChild(this.obj);
+    }
+    checkCollsion(position,radius){
+      const absp = this.obj.object3D.position
+      if (distance2(position,absp)>radius){
+        return false;
+      }
+      const xrange = [absp.x+7.5,absp.x-7.5]
+      const yrange = [absp.y+29,absp.y]
+      const zrange = [absp.z+7.5,absp.z-7.5]
+
+      // console.log(position)
+
+      if(
+        rangeCheck(xrange,position.x) &&
+        rangeCheck(yrange,position.y) &&
+        rangeCheck(zrange,position.z)
+      ){
+        return true;
+      }
+      return false;
     }
 }
