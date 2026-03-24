@@ -1,6 +1,10 @@
 let camera, scene, attacks= [], hotbarinfo = ["Slash","Bullet","Spells"],hotbaritems=[], hotbarselection=0, book, buildings =[], backlogbuildings =[], walls=[], spell, spellcount = 2, buildingA, looprunning=true;
 
 //initialization
+
+let gridSize = 2;
+let spacing = 15;
+
 window.addEventListener("DOMContentLoaded",function (){
     
     camera = document.querySelector("#camerarig")
