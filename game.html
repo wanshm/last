@@ -44,7 +44,7 @@
             </a-entity>
         </a-entity>
         <a-sky color="#87CEEB" ></a-sky>
-        <a-box static-body position="0 -50 0" scale="500 500 100" rotation="90 0 0" side="double" color="green"></a-box>
+        <a-box static-body position="0 -50.5 0" scale="500 500 100" rotation="90 0 0"color="green"></a-box>
 
         <a-entity> <!-- R1 -->
             <a-box position="0 0 0" width="15" height="0.1" depth="500" color="#8B4513" static-body></a-box>
@@ -53,7 +53,9 @@
 
 
         </a-entity>
-        
+        <a-sky color="black"></a-sky>
+        <a-entity id="floor" environment="playArea:1; stageSize:2000; groundFrequency:10; groundYScale: 200; seed:2; "></a-entity>
+        <a-entity id="ceiling" rotation="190 0 0" position="0 200 0" environment="playArea:1; stageSize:1000;ground:canyon; groundYScale: 200; seed:1"></a-entity>
        <a-entity position="0  10 0" src="#DoorTexture"></a-entity>
         <!-- <a-camera position="0 1.4 15" id="camerarig"  wasd-controls="acceleration: 50; fly: true" look-controls >
             <a-cursor></a-cursor>
