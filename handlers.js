@@ -138,7 +138,9 @@ function wheelHandler(e){
             hotbarselection=2;
             break;
 
-            
+        case "r":    
+            window.location.reload()
+            break;
     }
     //disappear spells
     if(hotbarselection!==2){

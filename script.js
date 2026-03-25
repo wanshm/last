@@ -1,9 +1,22 @@
-let camera, scene, attacks= [], hotbarinfo = ["Slash","Bullet","Spells"],hotbaritems=[], hotbarselection=0, book, buildings =[], walls=[], spell, spellcount = 2, buildingA;
+let 
+    camera,
+    scene,
+    attacks= [],
+    hotbarinfo = ["Slash","Bullet","Spells"],
+    hotbaritems=[],
+    hotbarselection=0,
+    book,
+    buildings =[],
+    backlogbuildings =[],
+    walls=[], 
+    spell, 
+    spellcount = 2, 
+    buildingA, 
+    looprunning=true,
+    timestopped=false;
 
 //initialization
 
-let gridSize = 2;
-let spacing = 15;
 
 window.addEventListener("DOMContentLoaded",function (){
     
@@ -33,8 +46,13 @@ window.addEventListener("DOMContentLoaded",function (){
     // buildings.push(building4)
     // walls = building.walls;
 
-    // buildingA = new Building2(0,0,-5000000);
+
+    // for(let i = 0; i<36;i++){
+    //     const nb = new Building2(0,0,-5000);
+    //     backlogbuildings.push(nb)
+    // }    
     // scene.append(buildingA)
+    buildingA = new Building2(0,0,-5000);
     // buildings.push(buildingA)
     // walls = buildingA.walls;
    
@@ -43,7 +61,7 @@ window.addEventListener("DOMContentLoaded",function (){
     for(let i = 0; i < 36 ; i++){
         const z = Math.floor(i/6)*40;
         const x = (i)%6*40;
-        const bc = new ChoppedBuilding2(x+20,-1.5,z+20)
+        const bc = new ChoppedBuilding2(x+20,0,z+20)
         buildings.push(bc)
     }
     
@@ -115,107 +133,11 @@ function loop(){
         spell.followCam()
     }
 
-    //attack animations
-    attacks.forEach((attack,i)=>{
-        if(attack instanceof Slash){
-            attack.animate();
-            
-            buildings.forEach((building,i)=>{   
-                if (distance(building.obj,attack.hitbox)< 30){
-                    if(building instanceof ChoppedBuilding2){
-                        buildingswap(building,buildings,i)
-                        
-                    }
-                    for(let wall of building.walls){
-                        building.makeDynamic(wall);
-                    }
-                }
-            })
-                if(attack.animated) {
-                    attack.remove();
-                    attacks.splice(i,1);
-                }
-            
-
-        } else if (attack instanceof Bullet){
-            attack.fire();
-
-            buildings.forEach((building,i)=>{
-                    if(building.checkCollsion(attack.obj.object3D.position,50)){  
-                    if(building instanceof ChoppedBuilding2){
-                        buildingswap(building,buildings,i)
-                        
-                    }
-                    for(let wall of building.walls){
-                            building.makeDynamic(wall);
-                        // if(distance(attack.obj, wall) <= 10){
-                        // }
-                    }}
-                }
-            )
-            if(attack.obj && distance(camera,attack.obj) > 200){
-                attack.remove()
-                attacks.splice(i,1);
-            }
-
-
-        } else if (attack instanceof Meteor){
-            attack.fire();
-
-            buildings.forEach((building,i)=>{
-                    
-                if (distance(building.obj,attack.obj)<14 || checkMeteorHitbox(attack,building.obj)){
-                    if(building instanceof ChoppedBuilding2){
-                        buildingswap(building,buildings,i)
-                        
-                    }
-                    for(let wall of building.walls){
-                        building.makeDynamic(wall);
-                        // if(distance(attack.obj, wall) <= 14 || checkMeteorHitbox(attack,wall) ){
-                            
-                        // }
-                    }
-                }
-            })
-            //meteor explosion
-            if(attack.obj.object3D.position.y < 0){
-                attack.explode();
-                
-                if(attack.exprad>50){
-                    attack.remove();
-                    attacks.splice(i,1);
-                }
-            }
-
-
-        } else if (attack instanceof EarthWall){
-            attack.fire();
-            
-            //time check
-            if (Date.now() - attack.creationTime > attack.lifespan + 1000) {
-                attack.remove();
-                attacks.splice(i,1);
-            }
-            buildings.forEach((building,i)=>{
-                    
-                if (distance(building.obj,attack.hitboxposition) < 16){
-                    if(building instanceof ChoppedBuilding2){
-                        buildingswap(building,buildings,i)
-                        
-                    }
-                    for(let wall of building.walls){
-                        building.makeDynamic(wall);
-                        // if(distance(attack.hitboxposition, wall) <= 16){
-                            
-                        // }
-                    }
-                }
-            })
-        }
-    })
-
-
-    window.requestAnimationFrame(loop)
-
+    if(!timestopped){
+        attackloop();
+    }
+    if(looprunning){
+        window.requestAnimationFrame(loop)
+    }
 }
 

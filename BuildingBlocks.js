@@ -35,13 +35,6 @@ class Wall1{
     wall.setAttribute("class","blackpiece");
 
 
-    // wall.addEventListener("collide",()=>{
-
-    //   if(wall.getAttribute("static-body")){
-    //   wall.removeAttribute("static-body")
-    //   wall.setAttribute("dynamic-body","")}
-    // })
-
     this.obj.append( wall );
 
     let wall2 = document.createElement("a-box");
@@ -56,15 +49,9 @@ class Wall1{
     wall2.setAttribute("class","yellowpiece")
 
     this.obj.append( wall2 );
-    // wall2.addEventListener("collide",()=>{
-    //   if(wall2.getAttribute("static-body")){
-    //   wall2.removeAttribute("static-body")
-    //   wall2.setAttribute("dynamic-body","")}
-    // })
     
     this.obj.setAttribute("position",{x:x, y:y, z:z});
     this.obj.setAttribute("class","wall1")
-    // console.log(wall.components["static-body"])
     scene.append( this.obj )
   }
 
@@ -317,7 +304,7 @@ class Building2WallsAndFloor{
 
 // -------------------------------------------------------------------
       let base2 = new FloorBase(0,3.1,0);
-        base2.obj.setAttribute("static-body", " mass:100; shape: box; ");
+        // base2.obj.setAttribute("static-body", " mass:100; shape: box; ");
         base2.obj.setAttribute("scale", "1.001 1.001 1.001");
         this.obj.append( base2.obj );
 
@@ -392,7 +379,7 @@ class Building2WallsAndFloor2{
 
 // -------------------------------------------------------------------
       let base2 = new FloorBase(0,3.1,0);
-        base2.obj.setAttribute("static-body", " mass:100; shape: box; ");
+        // base2.obj.setAttribute("static-body", " mass:100; shape: box; ");
         base2.obj.setAttribute("scale", "1.001 1.001 1.001");
         this.obj.append( base2.obj );
 
@@ -806,7 +793,7 @@ class pillar{
         this.obj.append( RightWall.obj );
 
         let base2 = new FloorBase(0,3.1,0);
-        base2.obj.setAttribute("static-body", " mass:100; shape: box; ");
+        // base2.obj.setAttribute("static-body", " mass:100; shape: box; ");
         base2.obj.setAttribute("scale", "1.51 1 1.51");
         this.obj.append( base2.obj );
 
@@ -850,7 +837,7 @@ class pillar{
         this.obj.append( pillarCornerD.obj );
 
         let base2 = new FloorBase(0,3.1,0);
-        base2.obj.setAttribute("static-body", " mass:100; shape: box; ");
+        // base2.obj.setAttribute("static-body", " mass:100; shape: box; ");
         base2.obj.setAttribute("scale", "1.51 1 1.51");
         this.obj.append( base2.obj );
 

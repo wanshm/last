@@ -85,12 +85,23 @@ function clwalls(){
     
 }
 
+function toggleloop(){
+  looprunning= !looprunning;
+  console.log(looprunning);
+  if (looprunning){
+    loop();
+  }
+
+}
+
 function buildingswap(chopped,list,i){
   //on hold lmao
   const cp = chopped.obj.object3D.position
-  // console.log(chopped.obj.components)
-  const nb = new Building2(cp.x,cp.y,cp.z)
+  // console.log(chopped.obj.components)\
   
+  buildingA.obj.setAttribute("position",{x:cp.x,y:cp.y,z:cp.z})
+  // const nb = new Building2(cp.x,cp.y,cp.z)
+  list.push(buildingA)
   // console.log(nb)
   
 
@@ -127,3 +138,103 @@ function rangeCheckInclusive(range,point){
   return false;
 }
 
+function attackloop(){
+  //attack animations
+    attacks.forEach((attack,i)=>{
+        if(attack instanceof Slash){
+            attack.animate();
+            
+            buildings.forEach((building,i)=>{   
+                if (building.checkCollsion(attack.hitbox.object3D.position,50)){
+                    if(building instanceof ChoppedBuilding2){
+                        buildingswap(building,buildings,i); 
+                    }
+                    
+                    for(let wall of building.walls){
+                      building.makeDynamic(wall);
+                    }
+                }
+            })
+                if(attack.animated) {
+                    attack.remove();
+                    attacks.splice(i,1);
+                }
+            
+
+        } else if (attack instanceof Bullet){
+            attack.fire();
+
+            buildings.forEach((building,i)=>{
+                    if(building.checkCollsion(attack.obj.object3D.position,50)){  
+                    if(building instanceof ChoppedBuilding2){
+                        buildingswap(building,buildings,i)
+                        
+                    }
+                    for(let wall of building.walls){
+                            building.makeDynamic(wall);
+                        // if(distance(attack.obj, wall) <= 10){
+                        // }
+                    }}
+                }
+            )
+            if(attack.obj && distance(camera,attack.obj) > 200){
+                attack.remove()
+                attacks.splice(i,1);
+            }
+
+
+        } else if (attack instanceof Meteor){
+            attack.fire();
+
+            buildings.forEach((building,i)=>{
+                    
+                if (building.checkCollsion(attack.obj.object3D.position,50) || checkMeteorHitbox(attack,building.obj)){
+                    if(building instanceof ChoppedBuilding2){
+                        buildingswap(building,buildings,i)
+                        
+                    }
+                    for(let wall of building.walls){
+                        building.makeDynamic(wall);
+                        // if(distance(attack.obj, wall) <= 14 || checkMeteorHitbox(attack,wall) ){
+                            
+                        // }
+                    }
+                }
+            })
+            //meteor explosion
+            if(attack.obj.object3D.position.y < 0){
+                attack.explode();
+                
+                if(attack.exprad>50){
+                    attack.remove();
+                    attacks.splice(i,1);
+                }
+            }
+
+
+        } else if (attack instanceof EarthWall){
+            attack.fire();
+            
+            //time check
+            if (Date.now() - attack.creationTime > attack.lifespan + 1000) {
+                attack.remove();
+                attacks.splice(i,1);
+            }
+            buildings.forEach((building,i)=>{
+                    
+                if (building.checkCollsion(attack.hitboxposition,50)){
+                    if(building instanceof ChoppedBuilding2){
+                        buildingswap(building,buildings,i)
+                        
+                    }
+                    for(let wall of building.walls){
+                        building.makeDynamic(wall);
+                        // if(distance(attack.hitboxposition, wall) <= 16){
+                            
+                        // }
+                    }
+                }
+            })
+        }
+    })
+}
