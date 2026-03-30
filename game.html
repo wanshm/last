@@ -25,6 +25,9 @@
     <script src="earthwall.js"></script>
     <script src="handlers.js"></script>
     <script src="components.js"></script>
+
+    <!-- Joystick component for mobile -->
+    <script src="https://cdn.jsdelivr.net/npm/aframe-joystick@1.0.0/dist/aframe-joystick.min.js"></script>
     <title>last</title>
 
     <script>
@@ -49,15 +52,27 @@
         </a-assets>
        
 
-         <!--   -->
-        <a-entity position="0 2 0" kinema-body="radius:2" id="camerarig" movement-controls="constrainToNavMesh:true; fly:false; speed:2" position="0 21.8 -1">
+         <!-- Old camera -->
+        <!-- <a-entity position="0 2 0" kinema-body="radius:2" id="camerarig" movement-controls="constrainToNavMesh:true; fly:false; speed:2" position="0 21.8 -1">
              <a-entity camera
                 position="0 2 0"
                 look-controls="pointerLockEnabled: true"
                 >
                 <a-cursor></a-cursor>
             </a-entity>
+        </a-entity> -->
+
+        <!-- New camera -->
+        <a-entity position="0 2 0" kinema-body="radius:2" id="camerarig" movement-controls="constrainToNavMesh:true; fly:false; speed:2" position="0 21.8 -1">
+                <a-entity camera
+                  position="0 2 0"
+                  look-controls="pointerLockEnabled: true; touchEnabled: true">
+                <a-cursor></a-cursor>
+            </a-entity>
         </a-entity>
+
+
+
         <a-box static-body position="0 -50.5 0" scale="500 500 100" rotation="90 0 0"color="green"></a-box>
 
         <a-entity> <!-- R1 -->

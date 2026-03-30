@@ -17,7 +17,6 @@ let
 
 //initialization
 
-
 window.addEventListener("DOMContentLoaded",function (){
     
     camera = document.querySelector("#camerarig")
@@ -97,7 +96,23 @@ window.addEventListener("DOMContentLoaded",function (){
 
 
 
-window.addEventListener("click",(e)=>clickHandler(e))
+// window.addEventListener("click",(e)=>clickHandler(e))
+
+// touch listener and click listener with touch delay to prevent double firing on mobile devices
+let lastTouchTime = 0;
+
+window.addEventListener("touchstart", (e) => {
+    lastTouchTime = Date.now();
+    clickHandler(e);
+});
+
+window.addEventListener("click", (e) => {
+    if (Date.now() - lastTouchTime < 300) return;
+    clickHandler(e);
+});
+
+window.addEventListener("wheel", wheelHandler);
+window.addEventListener("keydown", keyboardHandler);
 
 //wheel listener
 window.addEventListener("wheel",(e)=>wheelHandler(e))
