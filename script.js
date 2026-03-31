@@ -93,26 +93,7 @@ window.addEventListener("DOMContentLoaded",function (){
 } )
 
 //click listener
-
-
-
-// window.addEventListener("click",(e)=>clickHandler(e))
-
-// touch listener and click listener with touch delay to prevent double firing on mobile devices
-let lastTouchTime = 0;
-
-window.addEventListener("touchstart", (e) => {
-    lastTouchTime = Date.now();
-    clickHandler(e);
-});
-
-window.addEventListener("click", (e) => {
-    if (Date.now() - lastTouchTime < 300) return;
-    clickHandler(e);
-});
-
-window.addEventListener("wheel", wheelHandler);
-window.addEventListener("keydown", keyboardHandler);
+window.addEventListener("click",(e)=>clickHandler(e))
 
 //wheel listener
 window.addEventListener("wheel",(e)=>wheelHandler(e))
